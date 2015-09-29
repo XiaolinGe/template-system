@@ -1,0 +1,51 @@
+.triangle(top,@w:20px,@c:pink){
+  border-width: @w;
+  border-color: transparent transparent @c transparent;
+  border-style: dashed dashed solid dashed;
+}
+.triangle(bottom,@w:20px,@c:pink){
+  border-width: @w;
+  border-color: @c transparent transparent transparent;
+  border-style: solid dashed dashed dashed;
+}
+.triangle(left,@w:20px,@c:pink){
+  border-width: @w;
+  border-color: transparent transparent transparent @c;
+  border-style: dashed dashed dashed solid;
+}
+.triangle(right,@w:20px,@c:pink){
+  border-width: @w;
+  border-color: transparent @c transparent transparent;
+  border-style: dashed solid dashed dashed;
+}
+.triangle(@_,@w:20px,@c:pink){
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.sanjiao{
+  .triangle(left);
+}
+
+//定位
+.pos(a){
+  position: absolute;
+}
+.pos(r){
+  position: relative;
+}
+.pos(f){
+  position: fixed;
+}
+.pos(@_){
+  top:100px;
+  left: 40px;
+}
+
+.sanjiao{
+  .pos(a);
+}
+
+
+
+
