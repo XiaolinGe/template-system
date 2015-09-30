@@ -5,11 +5,14 @@ import withTimeout from "./withTimeout";
 import ReactUpdates from "react/lib/ReactUpdates";
 import StoresWrapper from "./StoresWrapper";
 
+
 export default function renderApplication(routes, stores, options) {
 	var timeout = options.timeout || 600;
 
 	var initialRun = true;
+	var content = document.getElementById("content");
 
+	content.style.height = "100%";
 	// react-router handles location
 	Router.run(routes, Router.HistoryLocation, function(Application, state) {
 

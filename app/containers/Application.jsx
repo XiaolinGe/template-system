@@ -2,7 +2,7 @@ import React from "react";
 import { RouteHandler } from "react-router";
 import MainMenu from "components/MainMenu";
 
-import styles from "./Application.css";
+import styles from "./Application.less";
 
 export default class Application extends React.Component {
 	static getProps(stores, params) {
