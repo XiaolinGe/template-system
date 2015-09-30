@@ -6,11 +6,7 @@ import Prerenderer from "./Prerenderer";
 
 export default class MainRenderer {
 	constructor(options) {
-		this.prerenderer = new Prerenderer(routes);
-		this.html = html
-			.replace("STYLE_URL", options.styleUrl)
-			.replace("SCRIPT_URL", options.scriptUrl)
-			.replace("COMMONS_URL", options.commonsUrl);
+
 	}
 
 	render(path, readItems, callback) {
