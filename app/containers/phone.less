@@ -1,0 +1,46 @@
+@import "commen.less";
+
+.font-type(@fs:14px,@ff:Verdana,@fc:#333,@fw:300) {
+  font-size: @fs;
+  font-family: @ff;
+  color: @fc;
+  font-weight: @fw;
+}
+
+.infor {
+  width: 76%;
+  height:500px;
+  .p;
+  margin:110px auto;
+  color: @fc;
+  //.br;
+}
+
+.inforbox{
+  width: 17%;
+  margin: 0 8%;
+  .fl;
+  h4 {
+    .tc;
+    margin: 10px 0;
+    .font-type(@fs:18px,@ff:Verdana,@fc:#333,@fw:500);
+  }
+.content {
+  width: 150%;
+  margin-left: -25%;
+  .tc;
+  font-size: 14px;
+  line-height: 1.5;
+}
+  .timeTable {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .days {
+    .tr;
+    .font-type(@fs:14px,@ff:Verdana,@fc:#333,@fw:500);
+    .p(0,7px);
+  }
+
+}
+
