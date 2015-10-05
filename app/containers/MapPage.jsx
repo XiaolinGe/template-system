@@ -5,7 +5,7 @@ import styles from "./MapPage.less";
 
 (function (app) {
     app.loadMap = function () {
-       // alert("callback");
+        // alert("callback");
         var map;
         var directionsDisplay;
         var directionsService;
@@ -13,7 +13,7 @@ import styles from "./MapPage.less";
         var markerArray = [];
         /*location*/
         /*  var stockholm = new google.maps.LatLng(-36.8121758,174.7265294);*/
-        var parliament = new google.maps.LatLng(-36.8121758,174.7265294);
+        var parliament = new google.maps.LatLng(-36.8121758, 174.7265294);
         var marker;
 
         function initialize() {
@@ -21,7 +21,7 @@ import styles from "./MapPage.less";
             directionsService = new google.maps.DirectionsService();
 
             // Create a map and center it on Manhattan.
-            var manhattan = new google.maps.LatLng(-36.8121758,174.7265294);
+            var manhattan = new google.maps.LatLng(-36.8121758, 174.7265294);
             var mapOptions = {
                 zoom: 13,
                 center: manhattan
@@ -38,18 +38,17 @@ import styles from "./MapPage.less";
             stepDisplay = new google.maps.InfoWindow();
 
 
-
-
             /*location*/
 
             marker = new google.maps.Marker({
-                map:map,
-                draggable:true,
+                map: map,
+                draggable: true,
                 animation: google.maps.Animation.DROP,
                 position: parliament
             });
             google.maps.event.addListener(marker, 'click', toggleBounce);
         }
+
         function showSteps(directionResult) {
             // For each step, place a marker, and add the text to the marker's
             // info window. Also attach the marker to an array so we
@@ -66,6 +65,7 @@ import styles from "./MapPage.less";
                 markerArray[i] = marker;
             }
         }
+
         function toggleBounce() {
 
             if (marker.getAnimation() != null) {
@@ -83,50 +83,51 @@ import styles from "./MapPage.less";
                 stepDisplay.open(map, marker);
             });
         }
+
         this.calcRoute = function () {
-                console.log("calc");
-                // First, remove any existing markers from the map.
-                for (var i = 0; i < markerArray.length; i++) {
-                    markerArray[i].setMap(null);
+            console.log("calc");
+            // First, remove any existing markers from the map.
+            for (var i = 0; i < markerArray.length; i++) {
+                markerArray[i].setMap(null);
+            }
+
+            // Now, clear the array itself.
+            markerArray = [];
+
+            // Retrieve the start and end locations and create
+            // a DirectionsRequest using WALKING directions.
+            var start = "3-5 Birkenhead ave, Birkenhead, Auckland";
+            var end = document.getElementById('end').value;
+            var selectedMode = document.getElementById('mode').value;
+            var request = {
+                origin: start,
+                destination: end,
+                travelMode: google.maps.TravelMode[selectedMode]
+            };
+
+            // Route the directions and pass the response to a
+            // function to create markers for each step.
+            /*			directionsService.route(request, function(response, status) {
+             if (status == google.maps.DirectionsStatus.OK) {
+             var warnings = document.getElementById('warnings_panel');
+             warnings.innerHTML = '<b>' + response.routes[0].warnings + '</b>';
+             directionsDisplay.setDirections(response);
+             showSteps(response);
+             }
+             });*/
+
+
+            directionsService.route(request, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
                 }
-
-                // Now, clear the array itself.
-                markerArray = [];
-
-                // Retrieve the start and end locations and create
-                // a DirectionsRequest using WALKING directions.
-                var start = "3-5 Birkenhead ave, Birkenhead, Auckland";
-                var end = document.getElementById('end').value;
-                var selectedMode = document.getElementById('mode').value;
-                var request = {
-                    origin: start,
-                    destination: end,
-                    travelMode: google.maps.TravelMode[selectedMode]
-                };
-
-                // Route the directions and pass the response to a
-                // function to create markers for each step.
-                /*			directionsService.route(request, function(response, status) {
-                 if (status == google.maps.DirectionsStatus.OK) {
-                 var warnings = document.getElementById('warnings_panel');
-                 warnings.innerHTML = '<b>' + response.routes[0].warnings + '</b>';
-                 directionsDisplay.setDirections(response);
-                 showSteps(response);
-                 }
-                 });*/
-
-
-                directionsService.route(request, function (response, status) {
-                    if (status == google.maps.DirectionsStatus.OK) {
-                        directionsDisplay.setDirections(response);
-                    }
-                });
+            });
 
         }
 
 
         initialize();
-        $("#submit").bind("click",this.calcRoute);
+        $("#submit").bind("click", this.calcRoute);
 
     };
 
@@ -148,9 +149,10 @@ export default class MapPage extends React.Component {
 
     }
 
-    componentDidMount(){
+    componentDidMount() {
 
     }
+
     sleep(numberMillis) {
         var now = new Date();
         var exitTime = now.getTime() + numberMillis;
@@ -180,7 +182,7 @@ export default class MapPage extends React.Component {
                 <option value="TRANSIT">Transit</option>
             </select>
         </span>
-                    <input type="submit" value="get road" id="submit" />
+                    <input type="submit" value="get road" id="submit"/>
                 </div>
             </div>
 
