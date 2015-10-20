@@ -1,0 +1,4 @@
+[{"display":"home" ,"link":"/home"},
+ {"display":"gallery" ,"link":"/gallery"},
+ {"display":"phone" ,"link":"/phone"},
+ {"display":"map" ,"link":"/map"}]

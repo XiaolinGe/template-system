@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Jibble Website Generator System</title>
+    <link href="Css/default.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="js/themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="js/themes/icon.css" />
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src='js/XiuCai.index.js'> </script>
+
+    <script type="text/javascript">
+
+     var _menus = {
+       "menus": [{
+	 "menuid": "1",
+	 "icon": "icon-sys",
+	 "menuname": "Website Management",
+	 "menus": [{
+	   "menuid": "11",
+	   "menuname": "Website",
+	   "icon": "icon-nav",
+	   "url": "websites.html"
+	 }, {
+	   "menuid": "12",
+	   "menuname": "Template",
+	   "icon": "icon-nav",
+	   "url": "templates.html",
+	 },{
+	   "menuid": "13",
+	   "menuname": "Customer",
+	   "icon": "icon-nav",
+	   "url": "customers.html"
+	 }]
+       },{
+         "menuid": "2",
+	 "icon": "icon-sys",
+	 "menuname": "User Management",
+	 "menus": [{
+	   "menuid": "21",
+	   "menuname": "User",
+	   "icon": "icon-nav",
+	   "url": "users.html"
+	 }, {
+	   "menuid": "22",
+	   "menuname": "Role",
+	   "icon": "icon-nav",
+	   "url": "roles.html",
+	 }]
+       }]
+     };
+
+        //设置登录窗口
+        function openPwd() {
+            $('#w').window({
+                title: 'Modify Password',
+                width: 300,
+                modal: true,
+                shadow: true,
+                closed: true,
+                height: 160,
+                resizable: false
+            });
+        }
+        //关闭登录窗口
+        function closePwd() {
+            $('#w').window('close');
+        }
+
+        
+
+        //修改密码
+        function serverLogin() {
+            var $newpass = $('#txtNewPass');
+            var $rePass = $('#txtRePass');
+
+            if ($newpass.val() == '') {
+                msgShow('System information', 'Please inpugt password！', 'warning');
+                return false;
+            }
+            if ($rePass.val() == '') {
+                msgShow('System information', 'Please input password again!', 'warning');
+                return false;
+            }
+
+            if ($newpass.val() != $rePass.val()) {
+                msgShow('System information', '两次密码不一至！请重新输入', 'warning');
+                return false;
+            }
+
+            $.post('/ajax/editpassword.ashx?newpass=' + $newpass.val(), function(msg) {
+                msgShow('系统提示', '恭喜，密码修改成功！<br>您的新密码为：' + msg, 'info');
+                $newpass.val('');
+                $rePass.val('');
+                close();
+            })
+            
+        }
+
+        $(function() {
+
+            openPwd();
+
+            $('#editpass').click(function() {
+                $('#w').window('open');
+            });
+
+            $('#btnEp').click(function() {
+                serverLogin();
+            })
+
+	    $('#btnCancel').click(function(){closePwd();})
+
+            $('#loginOut').click(function() {
+                $.messager.confirm('System information', 'Are you sure to logout?', function(r) {
+
+                    if (r) {
+                        location.href = '/ajax/loginout.ashx';
+                    }
+                });
+            })
+        });
+		
+		
+
+    </script>
+
+</head>
+<body class="easyui-layout" style="overflow-y: hidden"  fit="true"   scroll="no">
+
+  <div id="loading-mask" style="position:absolute;top:0px; left:0px; width:100%; height:100%; background:#D2E0F2; z-index:20000">
+    <div id="pageloading" style="position:absolute; top:50%; left:50%; margin:-120px 0px 0px -120px; text-align:center;  border:2px solid #8DB2E3; width:200px; height:40px;  font-size:14px;padding:10px; font-weight:bold; background:#fff; color:#15428B;"> 
+      <img src="images/loading.gif" align="absmiddle" /> 正在加载中,请稍候...</div>
+  </div>
+
+  <div region="north" split="true" border="false" style="overflow: hidden; height: 30px;
+                                                         background: url(images/layout-browser-hd-bg.gif) #7f99be repeat-x center 50%;
+                                                         line-height: 20px;color: #fff; font-family: Verdana, 微软雅黑,黑体">
+    <span style="float:right; padding-right:20px;" class="head">Welcome someone <a href="#" id="editpass">Modify password</a> <a href="#" id="loginOut">Logout</a></span>
+    <span style="padding-left:10px; font-size: 16px; "><img src="images/blocks.gif" width="20" height="20" align="absmiddle" /> Jibble Website Generator System</span>
+  </div>
+  <div region="south" split="true" style="height: 30px; background: #D2E0F2; ">
+    <div class="footer"></div>
+  </div>
+  <div region="west" split="true"  title="" style="width:180px;" id="west">
+    <div id="nav">
+      <!--  导航内容 -->
+      
+    </div>
+
+  </div>
+  <div id="mainPanle" region="center" style="background: #eee; overflow-y:hidden">
+    <div id="tabs" class="easyui-tabs"  fit="true" border="false" >
+      <div title="Welcome to use" style="padding:20px;overflow:hidden; color:red; " >
+	Home page
+      </div>
+    </div>
+  </div>
+  
+  
+  <!--修改密码窗口-->
+  <div id="w" class="easyui-window" title="Modify password" collapsible="false" minimizable="false"
+       maximizable="false" icon="icon-save"  style="width: 300px; height: 150px; padding: 5px;
+                                                    background: #fafafa;">
+    <div class="easyui-layout" fit="true">
+      <div region="center" border="false" style="padding: 10px; background: #fff; border: 1px solid #ccc;">
+        <table cellpadding=3>
+          <tr>
+            <td>New password：</td>
+            <td><input id="txtNewPass" type="Password" class="txt01" /></td>
+          </tr>
+          <tr>
+            <td>Confirm password：</td>
+            <td><input id="txtRePass" type="Password" class="txt01" /></td>
+          </tr>
+        </table>
+      </div>
+      <div region="south" border="false" style="text-align: right; height: 30px; line-height: 30px;">
+        <a id="btnEp" class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)" >
+          Confirm</a> <a id="btnCancel" class="easyui-linkbutton" icon="icon-cancel" href="javascript:void(0)">Cancel</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="mm" class="easyui-menu" style="width:150px;">
+    <div id="tabupdate">Refresh</div>
+    <div class="menu-sep"></div>
+    <div id="close">Close</div>
+    <div id="closeall">Close all</div>
+    <div id="closeother">Close all but current</div>
+    <div class="menu-sep"></div>
+    <div id="closeright">当前页右侧全部关闭</div>
+    <div id="closeleft">当前页左侧全部关闭</div>
+    <div class="menu-sep"></div>
+    <div id="exit">Quit</div>
+  </div>
+
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+@import "commen.less";
+
+.contain {
+  height: 100%;
+}
+.nav {
+
+  ul {
+    .fl;
+    padding: 0 10px;
+    margin: 0 50px;
+    bottom: 0;
+    border: transparent;
+    list-style: none;
+  }
+  li {
+    .fl;
+    margin-bottom: -1px;
+    .pr;
+    display: block;
+    .p(0px,0px);
+  }
+  a {
+    margin: 0 10px;
+    .p(24px,20px);
+    color: #ccc;
+    font-family: @ff;
+    font-size: 15px;
+    font-weight: 200;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #222222;
+    }
+  }
+}
+
+
+body{
+    width:100%;
+    heigh:100%;
+    padding:0;
+    margin:0;
+    background-color: rgba(0,0,0,.1);
+    position: relative;
+}
+
+.layout {
+  width: 100%;
+  height: 700px;
+  padding: 0;
+  margin: 0;
+
+}
+
+#header{
+    width:100%;
+    height:60px;
+    padding:0;
+    margin:0;
+    margin-top: -50px;
+    background-color:#ffffff;
+    position:fixed;
+    overflow: visible;
+    z-index: 12;
+    box-shadow: 0px 2px 7px rgba(0,0,0,.2);
+}
+#logo{
+    color:#aaaaaa;
+    font-size: 38px;
+    font-family:Verdana;
+    font-weight: 100;
+    float:left;
+    margin:5px 5px;
+}
+#logo>span{
+    margin-left: 30px;
+    color:red;
+    font-weight: 900;
+}
+
+#home{
+    width:80%;
+    height: 500px;
+    padding:0;
+    margin:0 auto;
+    margin-top: 50px;
+    margin-bottom: -18px;
+    z-index: 8;
+    position: relative;
+}
+#comprehensiveness{
+    width:30%;
+    height:500px;
+    filter: alpha(opacity=70);
+    opacity: .7;
+    background: #000000;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    padding-top: 30px;
+}
+#comprehensiveness>p{
+    width:74%;
+    color:#ffffff;
+    padding:0;
+    margin:20px auto;
+    text-align: center;
+    font-family:Verdana;
+}
+#todaytime{
+    width:74%;
+    color:#ffffff;
+    padding:0;
+    margin:5px auto;
+    text-align: center;
+}
+#todaytime>tr>td{
+    padding:0;
+    margin:0;
+}
+#logo-img{
+    background-image:url("/images/icons.png") ;
+    background-repeat: no-repeat;
+    width:120px;
+    height:120px;
+    padding:0;
+    margin:0px auto;
+    background-position: 0px 0px;
+    border-radius: 100px;
+}
+#name{
+    font-size: 18px;
+    font-weight: 300;
+    padding-bottom: 0px;
+}
+#contact{
+    font-size: 12px;
+    font-weight: 200;
+    margin-bottom: 30px;
+}
+#opentime,#todaytime{
+     font-size: 13px;
+     font-weight: 300;
+ }
+ #opentime>p {
+      width:74%;
+    color:#ffffff;
+    padding:0;
+    margin:20px auto;
+    text-align: center;
+    font-family:Verdana;
+}
+#ViewLargerMap{
+    padding:1px 5px;
+    position: relative;
+    top:-17px;
+    left:0;
+    background-color: red;
+    opacity: 0.6;
+    color:#ffffff;
+}
+
+#navigation-bar{
+    width:80%;
+    height:48px;
+    padding:0;
+    margin:0 auto;
+    margin-top: 18px;
+    background-color: #ffffff;
+}
+#myTab{
+    width:50%;
+    padding:0 10px;
+    margin:0 auto;
+    bottom:0px;
+    border-bottom:1px solid transparent;
+}
+#myTab li a{
+    padding:9px 0px;
+    padding-bottom: 9px;
+    margin:4px 25px;
+    color:#737373;
+    font-size: 16px;
+    font-family:Verdana;
+    font-weight: 100;
+    font-family:Verdana;
+
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+    color: #555;
+    cursor: default;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-bottom: 3px solid #427fed;
+}
+.nav > li > a:hover, .nav > li > a:focus{
+    text-decoration: none;
+    background-color: #ffffff;
+    border: 0px;
+    border: 1px solid #ffffff;
+}
+#myTab li a:hover{
+    border-bottom: 3px solid #427fed;
+}

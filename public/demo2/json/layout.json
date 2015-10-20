@@ -1,0 +1,14 @@
+{"name":"J's Tea",
+  "logoimg":"",
+  "introduction":"   This is a wondeful world. This is a beautiful and wondeful world.",
+  "contact":" 919 Dominion Road, Mt Roskill, Auckland, 09 5507775",
+  "type":"Restaurant or Porterhouse",
+  "opentime":"Today:",
+  "src":"https://www.google.com/maps/embed?pb=!1m0!3m2!1sen!2snz!4v1436170131780!6m8!1m7!1sHgRaNXxF_McAAAAGOiCg5g!2m2!1d-36.900635!2d174.742684!3f250.1897867357879!4f-17.25214675495522!5f0.7820865974627469",
+  "children":[
+      {"link":"home", "display":"J's Tea"},
+      {"link":"gallery", "display":"gallery"},
+      {"link":"phone", "display":"phone"},
+      {"link":"map", "display":"map"}
+  ]
+}

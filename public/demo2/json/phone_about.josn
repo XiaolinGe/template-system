@@ -1,0 +1,6 @@
+{ "img": "/images/hexagon.png",
+   "id": "img1",
+   "icon": "/images/icon1-bw.jpg",
+   "hoveredIcon": "/images/icon1.jpg",
+   "title": "ABOUT"
+}

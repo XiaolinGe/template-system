@@ -1,0 +1,17 @@
+[{
+    "id": "homeinformation-1",
+    "inforid": "home-map-canvas",
+    "title":"map",
+    "content": ""
+}, {
+    "id": "homeinformation-2",
+    "inforid": "about",
+    "title":"about",
+    "content": "The only Dutch restaurant in New Zealand. It’s a place where the the Dutch feel at home, and where the Kiwis can explore the delicacies of the low lands. Try our pancakes, poffertjes or a broodje frikandel. Or pick your favourite Dutch Cheese to take home. Choose your restaurant by clicking on the tiles above."
+}, {
+    "id": "homeinformation-3",
+    "inforid": "gallery",
+    "title":"gallery",
+    "content": "gallery"
+}
+]
