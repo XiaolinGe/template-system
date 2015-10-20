@@ -1,0 +1,132 @@
+<nav class="navbar navbar-default navbar-fixed-top" id="header-nav">
+    <!--<div class="header-nav">-->
+    <div class="container">
+        <div class="logo">
+            <a href="index.html"><img src="images/skysee.png" alt=" "/></a>
+        </div>
+        <div class="logo-right">
+            <span class="menu"><img src="images/menu.png" alt="menu"/></span>
+            <ul class="nav1" style="padding-top: 15px">
+                <li><a href="index_en.html">HOME</a></li>
+                <li><a href="about_en.html">ABOUT</a></li>
+                <li><a href="portfolio_en.html">PORTFOLIO</a></li>
+                <li><a href="services_en.html">SERVICES</a></li>
+                <li><a href="faq_en.html">FAQ</a></li>
+                <li><a href="contact_en.html"  style="color: #f4992b;">CONTACT</a></li>
+            </ul>
+        </div>
+        <div class="language">
+            <a href="contact_en.html">English</a> | <a href="contact.html">中文</a></div>
+        <div class="clearfix"></div>
+        <!-- script for menu -->
+        <script>
+            $("span.menu").click(function () {
+                $("ul.nav1").slideToggle(300, function () {
+                    // Animation complete.
+                });
+            });
+        </script>
+        <!-- //script for menu -->
+    </div>
+    <!--</div>-->
+</nav>
+
+<div class="container-fluid" id="subpage_main_1">
+    <div class="row">
+        <div class="col-md-12" id="subpage_main_1_h">
+            <h1>Contact</h1>
+        </div>
+    </div>
+</div>
+<!-- //end of header -->
+
+<div class="container-fluid" id="contact_main_2">
+    <div class="row">
+        <div class="col-md-3" id="contact_main_2_1">
+            <img src="images/skysee_black.png" alt="skysee" />
+           111 {{address}}
+            <p>{{address}}
+
+                Phone (English):  <a href="tel:0212130292">{{phoneEn}}</a><br />
+                Phone (中文):  <a href="tel:02102200379">{{phoneCn}}</a><br />
+                Email: <a href="mailto:info@jibble.co.nz">{{email}}</a>
+
+                <a class="facebook"  href="https://www.facebook.com/skyseenz" target="_blank">Facebook</a><br /><br/>
+                <a href="terms_en.html">Terms and Conditions</a>
+                </p>
+            <img src="images/trusted-photos-large.png" alt="Google Business Photos Trusted Photographer" />
+        </div>
+
+        <div class="col-md-4" id="contact_main_2_2">
+            <p>Fill Your Details</p>
+            <form action="">
+                <input type="text" placeholder="Your Name"/><br/>
+                <input type="text" placeholder="Your Phone"/><br/>
+                <input type="text" placeholder="Your Email"/><br/>
+                <textarea  rows="5" cols="38"  placeholder="Your Message"></textarea><br/>
+                <input type="submit"/>
+            </form>
+        </div>
+        <div class="col-md-5" id="contact_main_2_3">
+            <div id="map-canvas"></div>
+        </div>
+
+        <script>
+            function initialize() {
+                var mapOptions = {
+                    zoom: 14,
+                    center: new google.maps.LatLng(-36.801060, 174.747563)
+                };
+
+                var map = new google.maps.Map(document.getElementById('map-canvas'),
+                        mapOptions);
+
+                var marker = new google.maps.Marker({
+                    position: map.getCenter(),
+                    map: map,
+                    title: 'Click to zoom'
+                });
+
+                google.maps.event.addListener(map, 'center_changed', function () {
+                    // 3 seconds after the center of the map has changed, pan back to the
+                    // marker.
+                    window.setTimeout(function () {
+                        map.panTo(marker.getPosition());
+                    }, 3000);
+                });
+
+                google.maps.event.addListener(marker, 'click', function () {
+                    map.setZoom(8);
+                    map.setCenter(marker.getPosition());
+                });
+            }
+
+            google.maps.event.addDomListener(window, 'load', initialize);
+
+        </script>
+    </div>
+</div>
+
+<!-- //start of footer -->
+<div class="footer">
+    <div class="container-fluid" id="footer_top">
+        <div class="row">
+            <div class="col-md-3" id="footer_top_1">
+                <a href="index.html"  class="center-block">
+                    <img src="images/skysee.png" alt="skysee"/>
+                </a>
+            </div>
+            <div class="col-md-6" id="footer_top_3">
+
+            </div>
+            <div class="col-md-3" id="footer_top_2">
+                <a href="contact_en.html" class="book-btn">
+                    <span>Please contact us</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,19 @@
+[{ "img": "/images/hexagon.png",
+   "id": "img1",
+   "icon": "/images/icon1-bw.jpg",
+   "hoveredIcon": "/images/icon1.jpg",
+   "title": "ABOUT"
+ },
+ { "img": "/images/hexagon.png",
+   "id": "img2",
+   "icon": "/images/icon2-bw.jpg",
+   "hoveredIcon": "/images/icon2.jpg",
+   "title": "ABOUT"
+ },
+ { "img": "/images/hexagon.png",
+   "id": "img3",
+   "icon": "/images/icon3-bw.jpg",
+   "hoveredIcon": "/images/icon3.jpg",
+   "title": "ABOUT"
+ }
+]

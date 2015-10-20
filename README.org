@@ -1,0 +1,21 @@
+#+TITLE:     README
+#+AUTHOR:    Leon ZHOU
+#+EMAIL:     zhouleib1412@gmail.com
+#+DATE:      2015-10-14
+#+DESCRIPTION: 
+#+KEYWORDS: 
+#+LANGUAGE:  zh_CN
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LATEX_CLASS: cn-article
+
+
+* Front-end
+
+  npm run dev
+
+* Back-end
+  npm start
+
+* Production mode
+  先执行 npm run build 编译出bundle.js 到public/目录

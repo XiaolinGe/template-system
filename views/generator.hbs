@@ -1,0 +1,18 @@
+import sequelize from './db.js';
+import Sequelize from 'sequelize';
+let {{table_name_single_upper}} =  sequelize.define('{{table_name}}', {
+
+
+{{#each column_info}}
+  {{column_name}}:{
+  type: Sequelize.STRING
+  }{{#unless @last}},{{/unless}}
+
+{{/each}}
+}, {
+underscored: true
+});
+
+
+
+export default {{table_name_single_upper}};
