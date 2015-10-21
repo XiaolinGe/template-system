@@ -1,52 +1,59 @@
 import $ from 'jquery';
 
-export const RECEIVE_INFO = 'RECEIVE_INFO';
-export const FETCH_INFO = 'FETCH_INFO';
-export const SELECT_USER = 'SELECT_USER';
 
-function receiveInfo(customer, json) {
+function receive_info(customer, json) {
   return {
-    type: RECEIVE_INFO,
-    data: json
+    type: "RECEIVE_INFO",
+    context:{
+      fetching: false,
+      data: json
+    }
   };
 }
 
-export function fetchInfo(customer) {
-  return dispatch => {
-    return fetch("/api/customers/"+customer)
-      .then(response => response.json())
-      .then(json => dispatch(receiveInfo(customer, json)));
+function fetch_info(id) {
+  console.log("不改变状态直接渲染静态页面，让ajax请求异步获取数据");
+  return {
+    type: "FETCH_INFO",
+    context: {
+      fetching: true
+    }
   };
 }
 
-export function fetchInfoIfNeeded(customer) {
-  return (dispatch, getState) => {
-      return dispatch(fetchInfo(customer));
-  };
-}
 
-export function test(id) {
-    return { type: "TEST", text:id };
-}
-
-
-
-export function deleteTodo(id) {
+//high order function
+export function getInfo(id) {
     return (dispatch, state) => {
         $.get("/api/users",function(data){
-            dispatch(receiveInfo(id,data));
+            dispatch(receive_info(id,data));
         });
-        dispatch(test(id));
+        dispatch(fetch_info(id));
     };
 
 }
 
 
-function fetchPosts(reddit) {
-  return dispatch => {
-    dispatch(requestPosts(reddit));
-    return fetch(`http://www.reddit.com/r/${reddit}.json`)
-      .then(response => response.json())
-      .then(json => dispatch(receivePosts(reddit, json)));
-  };
-}
+//let xx =function (dispatch, state) {
+//  $.get("/api/users",function(data){
+//    dispatch(receiveInfo(1,data));
+//  });
+//  dispatch(test(1));
+//};
+
+
+
+//function add(base_value){
+
+//  return function(a ,b){
+//    return a+b+base_value;
+//  };
+
+//}
+
+//add(5)(1,2);
+
+
+//function f5(a,b){
+//  return a+b+5;
+//}

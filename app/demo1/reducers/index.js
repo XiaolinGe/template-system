@@ -3,7 +3,7 @@ import home from './home';
 import info from './info';
 const rootReducer = combineReducers({
     home,
-    info
+    info,
 });
 
 export default rootReducer;

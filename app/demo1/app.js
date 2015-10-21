@@ -8,7 +8,7 @@ import Gallery from './gallery';
 import Phone from './phone';
 import Map from './map';
 import Layout from './layout';
-import {fetchInfoIfNeeded, deleteTodo} from './actions/index';
+import {getInfo} from './actions/index';
 
 let history = createHashHistory();
 
@@ -18,14 +18,16 @@ class NoMatch extends React.Component{
     }
 }
 
+
 class App extends React.Component {
     constructor(){
         super();
     }
     componentDidMount(){
-        const { dispatch, home,selectedReddit } = this.props;
-
-        dispatch(deleteTodo(1));
+        const {dispatch} = this.props;
+      //dispatch 可以触发一个 action,action是一个普通的map
+      // 也可以触发一个action,action是一个function.function 第一个参数是dispatch,第二个参数是state,常用来做异步数据获取。
+      dispatch(getInfo(1));
 
     }
     render() {
@@ -34,7 +36,7 @@ class App extends React.Component {
                  <Route path="/" component={Layout}>
                      <IndexRoute component={Home} />
                      <Route path="home" component={Home}/>
-                     <Route path="gallery" component={Gallery}/>;
+                     <Route path="gallery" component={Gallery}/>
                      <Route path="phone" component={Phone}/>
                      <Route path="map" component={Map}/>
                  </Route>
@@ -45,11 +47,7 @@ class App extends React.Component {
     }
 }
 function mapStateToProps(state) {
-    const { selectedReddit,home} = state;
-    return {
-        selectedReddit,
-        home
-    };
+    return {};
 }
 
 export default connect(mapStateToProps)(App);
