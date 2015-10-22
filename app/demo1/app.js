@@ -20,16 +20,16 @@ class NoMatch extends React.Component{
 
 
 class App extends React.Component {
-    constructor(){
+    constructor() {
         super();
     }
-    componentDidMount(){
+    componentDidMount() {
         const {dispatch} = this.props;
-      //dispatch 可以触发一个 action,action是一个普通的map
+      //dispatch 可以触发一个 action,action 可以是一个普通的map，这个map必须有一个value为type的key
       // 也可以触发一个action,action是一个function.function 第一个参数是dispatch,第二个参数是state,常用来做异步数据获取。
       dispatch(getInfo(1));
-
     }
+
     render() {
         return (
                 <Router history={history}>
@@ -51,3 +51,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(App);
+
+//rootReducer 接受action，--> 改变state(即返回新的state,即改变了store里的state)，然后被Provider包装的 component 检测到（component从store里面取出它所关注的state（ 用connect方法）），渲染到页面
+//reducers 是所需要关注的所有的 action 的列表

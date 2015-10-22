@@ -1,6 +1,5 @@
 import React from 'react';
 import "./gallery.less";
-import Layout from "./Layout";
 import 'jquery';
 import 'bootstrap';
 import ImageGallery from 'react-image-gallery';
@@ -34,17 +33,12 @@ export default class Gallery extends React.Component {
 
     render() {
         return(
-          <Layout  url="/json/layout.json">
           <ImageGallery
           items={this.state.slides}
           autoPlay={true}
           slideInterval={4000}
           onSlide={this.handleSlide}
-          id="image-gallery"/>
+          id="image-gallery"/>)
 
-
-
-
-          </Layout>)
     }
 }

@@ -27,14 +27,11 @@ $.ajax({
     url: "json/map.json",
     async: false,
     success : function(data) {
-        console.log(data);
         start=data.start;
         address=data.address;
         destination=data.destination;
     }
 });
-
-console.log("start"+start);
 
         function initialize() {
             // Instantiate a directions service.
@@ -186,35 +183,28 @@ export default class MapPage extends React.Component {
     }
 
     render() {
-        console.log(destination);
-        console.log(address);
-        return <Layout  url="/json/layout.json">
-
-            <div  id="address">
-
-           <div id="map-canvas"></div>
+        return  <div  id="address">
+            <div id="map-canvas"/>
             <div id="frmholder">
-            <div id="map-form">
-            <span className="address-lable">From:</span>
-            <input type="search" size="25" id="end" placeholder="Enter your address here"/>
-            <span className="address-lable">{destination}</span>
-            <span id="toaddress">{address}</span>
+              <div id="map-form">
+              <span className="address-lable">From:</span>
+              <input type="search" size="25" id="end" placeholder="Enter your address here"/>
+              <span className="address-lable">{destination}</span>
+              <span id="toaddress">{address}</span>
 
-            <span id="panel2">
+              <span id="panel2">
 
-            <select id="mode">
-            <option value="DRIVING">Driving</option>
-            <option value="WALKING">Walking</option>
-            <option value="BICYCLING">Bicycling</option>
-            <option value="TRANSIT">Transit</option>
-            </select>
-            </span>
+              <select id="mode">
+                <option value="DRIVING">Driving</option>
+                <option value="WALKING">Walking</option>
+                <option value="BICYCLING">Bicycling</option>
+                <option value="TRANSIT">Transit</option>
+              </select>
+              </span>
             <input type="submit" value="get road" id="submit" onClick={calcRoute}/>
-            </div>
+              </div>
             </div>
 
-        </div>
-
-        </Layout>;
+          </div>;
     }
 }

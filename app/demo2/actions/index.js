@@ -1,7 +1,10 @@
 import $ from 'jquery';
 
 
-function receive_info(customer, data) {
+
+function receive_info(data) {
+    console.log("成功返回数据");
+
   return {
     type: "RECEIVE_INFO",
     context:{
@@ -21,39 +24,13 @@ function fetch_info(id) {
   };
 }
 
-
 //high order function
 export function getInfo(id) {
     return (dispatch, state) => {
-        $.get("/json/xx.json",function(data){
-            dispatch(receive_info(id,data));
+        $.get("/demo2/json/info.json",function(data){
+            dispatch(receive_info(data));
         });
         dispatch(fetch_info(id));
     };
 
 }
-
-
-//let xx =function (dispatch, state) {
-//  $.get("/api/users",function(data){
-//    dispatch(receiveInfo(1,data));
-//  });
-//  dispatch(test(1));
-//};
-
-
-
-//function add(base_value){
-
-//  return function(a ,b){
-//    return a+b+base_value;
-//  };
-
-//}
-
-//add(5)(1,2);
-
-
-//function f5(a,b){
-//  return a+b+5;
-//}

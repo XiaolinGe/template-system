@@ -22,8 +22,10 @@ class Home extends React.Component {
 };
 
 
-function mapStateToProps(state) { //返回值作为Home Component的props
-    return state.home;
+function mapStateToProps(state) {//返回的是component的property；
+    return {
+        home: state.info.home
+    };
 }
 
 export default connect(mapStateToProps)(Home);

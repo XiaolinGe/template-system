@@ -340,7 +340,7 @@ export default class PhonePage extends React.Component {
                 "times": "9:00am - 6:00pm"
             }
         ];
-        return <Layout url="json/layout.json">
+        return (
             <div className="infor">
       <InfoBoxAbout url="json/phone_about.json"  id="information-1" className="information">
                     <p>The only Dutch restaurant in New Zealand. It’s a place where the the Dutch feel at home, and
@@ -373,8 +373,8 @@ export default class PhonePage extends React.Component {
                         Email: info@jibble.co.nz<br/>
                     </p>
                 </InfoBoxContact>
-            </div>
-        </Layout>;
+            </div>)
+        ;
     }
 
 }

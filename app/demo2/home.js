@@ -2,16 +2,7 @@ import React from 'react';
 import Layout from "./Layout";
 import $ from 'jquery';
 import  "./home.less";
-
-
-$.ajax({
-  type: "GET",
-  url: "json/home.json",
-  async: false,
-  success : function(data) {
-    console.log(data);
-  }
-});
+import { connect } from 'react-redux';
 
 
 var marker;
@@ -39,43 +30,55 @@ function toggleBounce() {
   }
 }
 
-export default class Home extends React.Component {
+class Home extends React.Component {
 
-  
-  constructor(props) {
-    super(props);
-    $.ajax({
-      type: "GET",
-      // url: this.props.url,
-      url:"json/home.json",
-      async: false,
-      success : function(data) {
-        this.state = {data: data};
-      }.bind(this)
-    });
+
+  show_map(){
+    let props = this.props;
+    let home = props.home;
+    if(home != undefined) {
+      let googleMap = home[0];
+      if(googleMap != undefined) {
+        let inforid = googleMap.inforid;
+        if(inforid != undefined){
+          alert('map');
+          initMap();
+        }
+      }
+    }
   }
-
-  componentDidMount(){
-    initMap();
+  componentDidMount() {
+    this.show_map();
+  //  props.home[0].inforid
 
   }
 
 
   render() {
-    return <Layout url="/json/layout.json">
+   // this.show_map();
+    let {home} =  this.props;
+    console.log(home);
+    
+    return (
     <div className='home'> 
     <div id="homeinformations">
- {this.state.data.map(({id, inforid, title, content}, index) =>
-   ( <div className="homeinformation" id={id} key={index}>
-     <h4 className="hometitle">{title}</h4>
+    {home.map(({id, inforid, title, content}, index) =>
+      ( <div className="homeinformation" id={id} key={index}>
+        <h4 className="hometitle">{title}</h4>
         <div id={inforid}>{content}</div>
         </div>)
     )}
     </div>
-    </div>
-    </Layout>;
+    </div> );
   }
+};
+
+function mapStateToProps(state) {
+  //返回的是component的 property,需要返回一个object()
+  return  {home: state.info.home}
 }
+
+export default connect(mapStateToProps)(Home);
 
 
 

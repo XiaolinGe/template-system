@@ -1,0 +1,73 @@
+{"layout":{
+            "name":"J's Tea",
+            "logoimg":"",
+            "introduction":"   This is a wondeful world. This is a beautiful and wondeful world.",
+            "contact":" 919 Dominion Road, Mt Roskill, Auckland, 09 5507775",
+            "type":"Restaurant or Porterhouse",
+            "opentime":"Today:",
+            "src":"https://www.google.com/maps/embed?pb=!1m0!3m2!1sen!2snz!4v1436170131780!6m8!1m7!1sHgRaNXxF_McAAAAGOiCg5g!2m2!1d-36.900635!2d174.742684!3f250.1897867357879!4f-17.25214675495522!5f0.7820865974627469",
+            "children":[
+                        {"link":"home", "display":"J's Tea"},
+                        {"link":"gallery", "display":"gallery"},
+                        {"link":"phone", "display":"phone"},
+                        {"link":"map", "display":"map"}
+                        ]
+
+            },
+  "home": [
+    {
+      "id": "homeinformation-1",
+      "inforid": "home-map-canvas",
+      "title":"map",
+      "content": ""
+    }, {
+      "id": "homeinformation-2",
+      "inforid": "about",
+      "title":"about",
+      "content": "The only Dutch restaurant in New Zealand. It’s a place where the the Dutch feel at home, and where the Kiwis can explore the delicacies of the low lands. Try our pancakes, poffertjes or a broodje frikandel. Or pick your favourite Dutch Cheese to take home. Choose your restaurant by clicking on the tiles above."
+    }, {
+      "id": "homeinformation-3",
+      "inforid": "gallery",
+      "title":"gallery",
+      "content": "gallery"
+    }
+  ],
+  "gallery":[
+    {
+      "original": "http://lorempixel.com/1000/600/nature/1/",
+      "thumbnail": "http://lorempixel.com/250/150/nature/1/"
+    },
+    {
+      "original": "http://lorempixel.com/1000/600/nature/2/",
+      "thumbnail": "http://lorempixel.com/250/150/nature/2/"
+    },
+    {
+      "original": "http://lorempixel.com/1000/600/nature/3/",
+      "thumbnail": "http://lorempixel.com/250/150/nature/3/"
+    }
+  ],
+  "phone":{
+    "phone_about":{ "img": "/images/hexagon.png",
+                    "id": "img1",
+                    "icon": "/images/icon1-bw.jpg",
+                    "hoveredIcon": "/images/icon1.jpg",
+                    "title": "ABOUT"
+    },
+    "phone_time":{ "img": "/images/hexagon.png",
+                   "id": "img2",
+                   "icon": "/images/icon2-bw.jpg",
+                   "hoveredIcon": "/images/icon2.jpg",
+                   "title": "TIME"
+    },
+    "phone_contact":{ "img": "/images/hexagon.png",
+                      "id": "img3",
+                      "icon": "/images/icon3-bw.jpg",
+                      "hoveredIcon": "/images/icon3.jpg",
+                      "title": "CONTACT"
+    }
+  },
+  "map":{
+    "destination": "To Dutch Delight:",
+    "address": "3-5 Birkenhead ave, Birkenhead, Auckland",
+    "start":  "3-5 Birkenhead ave, Birkenhead, Auckland"
+  }}
