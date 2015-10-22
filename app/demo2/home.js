@@ -41,7 +41,6 @@ class Home extends React.Component {
       if(googleMap != undefined) {
         let inforid = googleMap.inforid;
         if(inforid != undefined){
-          alert('map');
           initMap();
         }
       }
