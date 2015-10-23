@@ -1,10 +1,13 @@
 {
-  "name": "skysee-template",
+  "name": "webpack-starter",
   "version": "1.0.0",
-  "description": "a template system to generate websites based on templates",
+  "description": "",
   "main": "app/main.js",
-  "dependencies": {
-    "es6-mapify": "~1.0.0",
+    "dependencies": {
+"express-session":"1.11.3",
+"uuid":"2.0.1",
+"hbs":"3.1.1",
+        "es6-mapify":"~1.0.0",
     "request-promise": "1.0.1",
     "log": "~1.4.0",
     "history": "~1.12.5",
@@ -52,19 +55,6 @@
     "build": "webpack",
     "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base public"
   },
-  "author": "XiaolinGe",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/XiaolinGe/template-system.git"
-  },
-  "keywords": [
-    "React",
-    "ReactJS",
-    "Redux"
-  ],
-  "bugs": {
-    "url": "https://github.com/XiaolinGe/template-system/issues"
-  },
-  "homepage": "https://github.com/XiaolinGe/template-system#readme"
+  "author": "",
+  "license": "ISC"
 }

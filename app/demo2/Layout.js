@@ -2,21 +2,9 @@ import React from "react";
 import { Link } from "react-router";
 import  "./layout.less";
 
+import { connect } from 'react-redux';
 
 export default class Layout extends React.Component {
-
-    constructor(props) {
-        super(props);
-          $.ajax({
-            type: "GET",
-            url: "json/layout.json",
-            async: false,
-              success : function(data) {
-                this.state = {data: data};
-            }.bind(this)
-        });
-    }
-
     
     getAllElementsWithAttribute(attribute,val){
 
@@ -39,13 +27,12 @@ export default class Layout extends React.Component {
 
  
   render() {
-    
-
-    return(
-
+    let {menus,contact,introduction,logoimg,name,opentime,src,type}=this.props.data;
+      return(
+      
       <div className="layout">
       <div id="header">
-      <h1  id="logo"><span>{this.state.data.name}</span></h1>
+      <h1  id="logo"><span>{name}</span></h1>
 
       </div>
 
@@ -54,22 +41,22 @@ export default class Layout extends React.Component {
       <div id="logo-img">
       </div>
       <p id="name">
-      {this.state.data.introduction}
+      {introduction}
       </p>
 
       <p id="contact">
-      {this.state.data.contact}<br/>
+      {contact}<br/>
 
       </p>
 
       <div id="opentime">
       <p>
-      {this.state.data.type}
+      {type}
       </p>
       <table id="todaytime">
       <tbody>
       <tr className="information-text-li" id="information-text-li-0">
-      <td className="week">{this.state.data.opentime}</td>
+      <td className="week">{opentime}</td>
       <td id="today-time"></td>
       </tr>
       </tbody>
@@ -78,14 +65,14 @@ export default class Layout extends React.Component {
 
       </div>
       <iframe width="100%" height="500px" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"
-      src={this.state.data.src}
+      src={src}
       ></iframe>
       <br/>
       <small></small>
       </div>
       <div id="navigation-bar">
       <ul id="myTab" className="nav nav-tabs">
-      {this.state.data.children.map(({link,display},index) =>
+      {menus.map(({link,display},index) =>
         (<li key={index}><Link to={link}>{display}</Link></li>))}
       </ul>
       <div className='clear'></div>
@@ -96,3 +83,10 @@ export default class Layout extends React.Component {
       </div>)
   }
 }
+
+function mapStateToProps(state) {
+  //返回的是component的 property,需要返回一个object()
+  return  {data: state.info.layout}
+}
+
+export default connect(mapStateToProps)(Layout);
