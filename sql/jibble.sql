@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.26, for osx10.10 (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.44, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: jibble
 -- ------------------------------------------------------
--- Server version	5.6.27
+-- Server version	5.5.44-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -55,7 +55,7 @@ CREATE TABLE `customers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `domain` varchar(250) DEFAULT NULL,
-  `ip` varchar(45) DEFAULT NULL,
+  `template_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -68,8 +68,34 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (2,'aa','aa','aa','2015-10-15 10:10:48','2015-10-19 20:47:20'),(3,'ab','a','a','2015-10-15 10:14:34','2015-10-15 10:14:34');
+INSERT INTO `customers` VALUES (1,'Cafe','127.0.0.1',1,'2015-10-15 10:10:48','2015-10-19 20:47:20'),(2,'Reataurant','localhost',2,'2015-10-15 10:14:34','2015-10-15 10:14:34');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `log`
+--
+
+DROP TABLE IF EXISTS `log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `operator` varchar(45) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `action` varchar(45) DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `log`
+--
+
+LOCK TABLES `log` WRITE;
+/*!40000 ALTER TABLE `log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `log` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -82,6 +108,8 @@ DROP TABLE IF EXISTS `roles`;
 CREATE TABLE `roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -92,7 +120,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` VALUES (1,'admin'),(2,'staff');
+INSERT INTO `roles` VALUES (1,'admin','2015-10-15 10:10:48','2015-10-15 10:10:48'),(2,'staff','2015-10-15 10:10:48','2015-10-15 10:10:48');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +138,7 @@ CREATE TABLE `template` (
   `updated_at` datetime DEFAULT NULL,
   `template_folder` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,6 +147,7 @@ CREATE TABLE `template` (
 
 LOCK TABLES `template` WRITE;
 /*!40000 ALTER TABLE `template` DISABLE KEYS */;
+INSERT INTO `template` VALUES (1,'Demo1','2015-10-15 10:10:48','2015-10-15 10:10:48','Demo1'),(2,'Demo2','2015-10-15 10:10:48','2015-10-15 10:10:48','Demo2');
 /*!40000 ALTER TABLE `template` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +175,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (49,'41','4',NULL,'2015-10-15 06:48:58','2015-10-19 20:45:03'),(50,'e','e',NULL,'2015-10-15 06:49:16','2015-10-15 06:49:16'),(51,'11','11',NULL,'2015-10-15 07:35:13','2015-10-15 07:35:13'),(61,'2','2',NULL,'2015-10-17 01:31:29','2015-10-17 01:31:29'),(62,'22','222',NULL,'2015-10-17 01:32:36','2015-10-17 01:32:36'),(63,'3','3f',NULL,'2015-10-17 03:10:59','2015-10-17 03:11:03'),(64,'2','2',NULL,'2015-10-20 06:01:12','2015-10-20 06:01:12');
+INSERT INTO `users` VALUES (49,'41','4','1','2015-10-15 06:48:58','2015-10-19 20:45:03'),(50,'e','e','2','2015-10-15 06:49:16','2015-10-15 06:49:16');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,4 +214,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-23 14:17:18
+-- Dump completed on 2015-10-23 20:37:22
