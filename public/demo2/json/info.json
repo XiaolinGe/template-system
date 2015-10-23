@@ -34,7 +34,7 @@
         }
     ],
     "layout": {
-        "children": [
+        "menus": [
             {
                 "display": "J's Tea",
                 "link": "home"
@@ -67,24 +67,24 @@
     },
     "phone": {
         "phone_about": {
-            "hoveredIcon": "/images/icon1.jpg",
-            "icon": "/images/icon1-bw.jpg",
+            "hoveredIcon": "/demo2/images/icon1.jpg",
+            "icon": "/demo2/images/icon1-bw.jpg",
             "id": "img1",
-            "img": "/images/hexagon.png",
+            "img": "/demo2/images/hexagon.png",
             "title": "ABOUT"
         },
         "phone_contact": {
-            "hoveredIcon": "/images/icon3.jpg",
-            "icon": "/images/icon3-bw.jpg",
+            "hoveredIcon": "/demo2/images/icon3.jpg",
+            "icon": "/demo2/images/icon3-bw.jpg",
             "id": "img3",
-            "img": "/images/hexagon.png",
+            "img": "/demo2/images/hexagon.png",
             "title": "CONTACT"
         },
         "phone_time": {
-            "hoveredIcon": "/images/icon2.jpg",
-            "icon": "/images/icon2-bw.jpg",
+            "hoveredIcon": "/demo2/images/icon2.jpg",
+            "icon": "/demo2/images/icon2-bw.jpg",
             "id": "img2",
-            "img": "/images/hexagon.png",
+            "img": "/demo2/images/hexagon.png",
             "title": "TIME"
         }
     }

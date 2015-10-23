@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 
 const initialState = {
-  "layout":{},
+  "layout":{menus:[]},
   "home":[],
   "gallery":[],
   "phone":{},
