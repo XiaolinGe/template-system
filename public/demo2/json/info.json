@@ -1,60 +1,77 @@
 {
     "gallery": [
         {
-            "original": "http://lorempixel.com/1000/600/nature/1/",
-            "thumbnail": "http://lorempixel.com/250/150/nature/1/"
+          "original": "./images/s1.jpg",
+          "thumbnail": "./images/s1.jpg"
         },
         {
-            "original": "http://lorempixel.com/1000/600/nature/2/",
-            "thumbnail": "http://lorempixel.com/250/150/nature/2/"
+          "original": "./images/s2.jpg",
+          "thumbnail": "./images/s2.jpg"
         },
-        {
-            "original": "http://lorempixel.com/1000/600/nature/3/",
-            "thumbnail": "http://lorempixel.com/250/150/nature/3/"
-        }
+      {
+        "original": "./images/s3.jpg",
+        "thumbnail":"./images/s3.jpg"
+      },
+      {
+        "original": "./images/s4.jpg",
+        "thumbnail": "./images/s4.jpg"
+      },
+      {
+        "original": "./images/s5.jpg",
+        "thumbnail": "./images/s5.jpg"
+      },
+      {
+        "original": "./images/s6.jpg",
+        "thumbnail":"./images/s6.jpg"
+      },
+      {
+        "original": "./images/s7.jpg",
+        "thumbnail": "./images/s7.jpg"
+      },
+      {
+        "original": "./images/s8.jpg",
+        "thumbnail":"./images/s8.jpg"
+      }
     ],
     "home": [
         {
             "content": "",
-            "id": "homeinformation-1",
             "inforid": "home-map-canvas",
             "title": "map"
         },
         {
             "content": "The only Dutch restaurant in New Zealand. It\u2019s a place where the the Dutch feel at home, and where the Kiwis can explore the delicacies of the low lands. Try our pancakes, poffertjes or a broodje frikandel. Or pick your favourite Dutch Cheese to take home. Choose your restaurant by clicking on the tiles above.",
-            "id": "homeinformation-2",
             "inforid": "about",
             "title": "about"
         },
         {
             "content": "gallery",
-            "id": "homeinformation-3",
             "inforid": "gallery",
             "title": "gallery"
         }
     ],
     "layout": {
-        "menus": [
-            {
-                "display": "J's Tea",
-                "link": "home"
-            },
-            {
-                "display": "gallery",
-                "link": "gallery"
-            },
-            {
-                "display": "phone",
-                "link": "phone"
-            },
-            {
-                "display": "map",
-                "link": "map"
-            }
-        ],
         "contact": " 919 Dominion Road, Mt Roskill, Auckland, 09 5507775",
         "introduction": "   This is a wondeful world. This is a beautiful and wondeful world.",
         "logoimg": "",
+        "menus": [
+            {
+                "display": "J's Tea",
+                "link": "/home"
+            },
+            {
+                "display": "gallery",
+                "link": "/gallery"
+            },
+            {
+                "display": "phone",
+                "link": "/phone"
+            },
+            {
+                "display": "map",
+                "link": "/map"
+            }
+        ],
         "name": "J's Tea",
         "opentime": "Today:",
         "src": "https://www.google.com/maps/embed?pb=!1m0!3m2!1sen!2snz!4v1436170131780!6m8!1m7!1sHgRaNXxF_McAAAAGOiCg5g!2m2!1d-36.900635!2d174.742684!3f250.1897867357879!4f-17.25214675495522!5f0.7820865974627469",
@@ -67,25 +84,58 @@
     },
     "phone": {
         "phone_about": {
+            "content": "The only Dutch restaurant in New Zealand. It\u2019s a place where the the Dutch feel at home, and where the Kiwis can explore the delicacies of the low lands. Try our pancakes, poffertjes or a broodje frikandel. Or pick your favourite Dutch Cheese to take home. Choose your restaurant by clicking on the tiles above.",
             "hoveredIcon": "/demo2/images/icon1.jpg",
             "icon": "/demo2/images/icon1-bw.jpg",
-            "id": "img1",
             "img": "/demo2/images/hexagon.png",
             "title": "ABOUT"
         },
         "phone_contact": {
+            "content": "3-5 Birkenhead ave, Birkenhead, Auckland, Phone (English): 09 418 1390, Phone (\u4e2d\u6587): 021 022 00379, Email: info@jibble.co.nz",
             "hoveredIcon": "/demo2/images/icon3.jpg",
             "icon": "/demo2/images/icon3-bw.jpg",
-            "id": "img3",
             "img": "/demo2/images/hexagon.png",
             "title": "CONTACT"
         },
         "phone_time": {
             "hoveredIcon": "/demo2/images/icon2.jpg",
             "icon": "/demo2/images/icon2-bw.jpg",
-            "id": "img2",
             "img": "/demo2/images/hexagon.png",
-            "title": "TIME"
+            "title": "TIME",
+            "workingHours": [
+                {
+                    "days": "Today:",
+                    "times": "9:00am - 6:00pm"
+                },
+                {
+                    "days": "Monday:",
+                    "times": "9:00am - 6:00pm"
+                },
+                {
+                    "days": "Tuesday:",
+                    "times": "9:00am - 6:00pm"
+                },
+                {
+                    "days": "Wednesday:",
+                    "times": "9:00am - 6:00pm"
+                },
+                {
+                    "days": "Thursday:",
+                    "times": "9:00am - 6:00pm"
+                },
+                {
+                    "days": "Friday:",
+                    "times": "9:00am - 6:00pm"
+                },
+                {
+                    "days": "Saturday:",
+                    "times": "9:00am - 6:00pm"
+                },
+                {
+                    "days": "Sunday:",
+                    "times": "9:00am - 6:00pm"
+                }
+            ]
         }
     }
 }

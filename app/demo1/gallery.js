@@ -2,27 +2,14 @@ import React from 'react';
 import "./gallery.less";
 import 'jquery';
 import 'bootstrap';
+import { connect} from 'react-redux';
 
 
-var images = [
-    {
-        original: 'http://lorempixel.com/1000/600/nature/1/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/1/'
-    },
-    {
-        original: 'http://lorempixel.com/1000/600/nature/2/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/2/'
-    },
-    {
-        original: 'http://lorempixel.com/1000/600/nature/3/',
-        thumbnail: 'http://lorempixel.com/250/150/nature/3/'
-    }
-];
 
 var blank='blank';
-var options ={
+var options = {
     // Functionality
-    'slideshow': 1,			// Slideshow on/off
+    slideshow: 1,			// Slideshow on/off
     autoplay: 1,			// Slideshow starts playing automatically
     start_slide: 1,			// Start slide (0 is random)
     stop_loop: 0,			// Pauses slideshow on last slide
@@ -53,10 +40,11 @@ var options ={
     mouse_scrub: 0};
 
 
-export default class Gallery extends React.Component {
+class Gallery extends React.Component {
 
    constructor(props) {
-        super(props);
+     super(props);
+     /*
           $.ajax({
             type: "GET",
             url: "json/gallery.json",
@@ -65,7 +53,8 @@ export default class Gallery extends React.Component {
                   console.log("gallery data "+ data);
                 this.state = {slides: data};
             }.bind(this)
-        });
+          });
+     */
     }
 
 
@@ -75,17 +64,24 @@ export default class Gallery extends React.Component {
     }
 
 
+  showGallery(){
+    let {gallery} = this.props;
 
-    componentDidMount(){
-        options['slides']=this.state.slides;
-
-        jQuery(function ($) {
-            $.supersized(options);
-        });
-
+    options['slides']=gallery;
+    console.log(options);
+    if(gallery.length>0){
+      jQuery(function ($) {
+        $.supersized(options);
+      });
     }
 
-    render() {
+  }
+  componentDidMount(){
+
+  }
+
+  render() {
+    this.showGallery();
         return(
 <div>
                 <div id="gallery">
@@ -129,3 +125,10 @@ export default class Gallery extends React.Component {
             </div>)
     }
 }
+
+function mapStateToProps(state) {
+  //返回的是component的 property,需要返回一个object()
+  return  {gallery: state.info.gallery}
+}
+
+export default connect(mapStateToProps)(Gallery);

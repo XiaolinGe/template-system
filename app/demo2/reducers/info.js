@@ -4,7 +4,12 @@ const initialState = {
   "layout":{menus:[]},
   "home":[],
   "gallery":[],
-  "phone":{},
+  "phone":{phone_about:{},
+           phone_time:{
+             workingHours:[]
+           },
+           phone_contact:{}
+           },
   "map":{}
 };
 

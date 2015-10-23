@@ -1,8 +1,14 @@
 import { combineReducers } from 'redux';
 const initialState = {
+    "layout":[],
     "home":{},
-    "gallery":{},
-    "phone":{},
+    "gallery":[],
+    "phone":{phone_about:{},
+             phone_time:{
+                 workingHours:[]
+             },
+             phone_contact:{}
+            },
     "map":{}
 };
 
@@ -17,6 +23,7 @@ export default function info(state = initialState, action) {
         state.fetching=action.context.fetching;
         return state;
     case "RECEIVE_INFO":
+      state = action.context.data;
         return state;
     default:
         return state;

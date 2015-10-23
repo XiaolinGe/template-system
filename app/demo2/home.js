@@ -61,11 +61,12 @@ class Home extends React.Component {
     return (
     <div className='home'> 
     <div id="homeinformations">
-    {home.map(({id, inforid, title, content}, index) =>
-      ( <div className="homeinformation" id={id} key={index}>
+      {home.map(({id, inforid, title, content}, index) =>{
+        let curId = "homeinformation-"+(++index);
+        return ( <div className="homeinformation" id={curId} key={index}>
         <h4 className="hometitle">{title}</h4>
         <div id={inforid}>{content}</div>
-        </div>)
+        </div>)}
     )}
     </div>
     </div> );
@@ -78,7 +79,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Home);
-
 
 
 

@@ -1,7 +1,8 @@
 import $ from 'jquery';
 
 
-function receive_info(customer, data) {
+function receive_info(data) {
+  console.log("demo1成功返回数据");
   return {
     type: "RECEIVE_INFO",
     context:{
@@ -12,7 +13,7 @@ function receive_info(customer, data) {
 }
 
 function fetch_info(id) {
-  console.log("不改变状态直接渲染静态页面，让ajax请求异步获取数据");
+  console.log("demo1不改变状态直接渲染静态页面，让ajax请求异步获取数据");
   return {
     type: "FETCH_INFO",
     context: {
@@ -25,8 +26,10 @@ function fetch_info(id) {
 //high order function
 export function getInfo(id) {
     return (dispatch, state) => {
-        $.get("/json/xx.json",function(data){
-            dispatch(receive_info(id,data));
+      $.get("/demo1/json/info.json",function(data){
+          console.log("demo1 get info callback");
+
+          dispatch(receive_info(data));
         });
         dispatch(fetch_info(id));
     };
