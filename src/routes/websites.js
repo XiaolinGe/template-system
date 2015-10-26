@@ -11,7 +11,8 @@ router.route('/')
         }else if(domain=="127.0.0.1"){
             req.url="/demo2/index.html";
         }
-        console.log(req.url);
+      console.log(req.url);
+       req.query.id=1;
         res.sendFile(req.url, { root : path.join(__dirname, '../../public')});
 
     });
