@@ -1,96 +1,126 @@
 {
     "gallery": [
         {
+            "customer_id": 1,
+            "id": 1,
             "image": "/demo1/images/s1.jpg",
             "thumb": "/demo1/images/s1.jpg",
             "title": "Dutch Delight",
             "url": "/demo1/images/s1.jpg"
         },
         {
+            "customer_id": 1,
+            "id": 2,
             "image": "/demo1/images/s2.jpg",
             "thumb": "/demo1/images/s2.jpg",
             "title": "Dutch Delight",
             "url": "/demo1/images/s2.jpg"
         },
         {
+            "customer_id": 1,
+            "id": 3,
             "image": "/demo1/images/s3.jpg",
             "thumb": "/demo1/images/s3.jpg",
             "title": "Dutch Delight",
             "url": "/demo1/images/s3.jpg"
         },
         {
+            "customer_id": 1,
+            "id": 4,
             "image": "/demo1/images/s4.jpg",
             "thumb": "/demo1/images/s4.jpg",
             "title": "Dutch Delight",
             "url": "/demo1/images/s4.jpg"
         },
         {
+            "customer_id": 1,
+            "id": 5,
             "image": "/demo1/images/s5.jpg",
             "thumb": "/demo1/images/s5.jpg",
             "title": "Dutch Delight",
             "url": "/demo1/images/s5.jpg"
         },
         {
+            "customer_id": 1,
+            "id": 6,
             "image": "/demo1/images/s6.jpg",
             "thumb": "/demo1/images/s6.jpg",
             "title": "Dutch Delight",
             "url": "/demo1/images/s6.jpg"
         },
         {
+            "customer_id": 1,
+            "id": 7,
             "image": "/demo1/images/s7.jpg",
             "thumb": "/demo1/images/s7.jpg",
             "title": "Dutch Delight",
             "url": "/demo1/images/s7.jpg"
         },
         {
+            "customer_id": 1,
+            "id": 8,
             "image": "/demo1/images/s8.jpg",
             "thumb": "/demo1/images/s8.jpg",
             "title": "Dutch Delight",
             "url": "/demo1/images/s8.jpg"
         },
         {
+            "customer_id": 1,
+            "id": 9,
             "image": "/demo1/images/s9.jpg",
             "thumb": "/demo1/images/s9.jpg",
             "title": "Dutch Delight",
             "url": "/demo1/images/s9.jpg"
         },
         {
+            "customer_id": 1,
+            "id": 10,
             "image": "/demo1/images/s10.jpg",
             "thumb": "/demo1/images/s10.jpg",
             "title": "Dutch Delight",
             "url": "/demo1/images/s10.jpg"
         },
         {
+            "customer_id": 1,
+            "id": 11,
             "image": "/demo1/images/s11.jpg",
             "thumb": "/demo1/images/s11.jpg",
             "title": "Dutch Delight",
             "url": "/demo1/images/s11.jpg"
         },
         {
+            "customer_id": 1,
+            "id": 12,
             "image": "/demo1/images/s12.jpg",
             "thumb": "/demo1/images/s12.jpg",
             "title": "Dutch Delight",
-            "url": "/demo1/images/s12.jpg"
+            "url": "/demo1/images/s1.jpg"
         }
     ],
-    "home": {
-        "src": "https://www.google.com/maps/embed?pb=!1m0!3m2!1sen!2sus!4v1436170635521!6m8!1m7!1sEmPx53PkIOUAAAQqmWhsgw!2m2!1d-36.81214!2d174.726475!3f60.649238235862214!4f-16.318097902715365!5f0.7820865974627469"
-    },
+    "home": "https://www.google.com/maps/embed?pb=!1m0!3m2!1sen!2sus!4v1436170635521!6m8!1m7!1sEmPx53PkIOUAAAQqmWhsgw!2m2!1d-36.81214!2d174.726475!3f60.649238235862214!4f-16.318097902715365!5f0.7820865974627469",
     "layout": [
         {
+            "customer_id": "1",
             "display": "home",
+            "id": 1,
             "link": "/home"
         },
         {
+            "customer_id": "1",
             "display": "gallery",
+            "id": 2,
             "link": "/gallery"
         },
         {
+            "customer_id": "1",
             "display": "phone",
+            "id": 3,
             "link": "/phone"
         },
         {
+            "customer_id": "1",
             "display": "map",
+            "id": 4,
             "link": "/map"
         }
     ],
@@ -101,63 +131,79 @@
     },
     "phone": {
         "phone_about": {
-            "content": "The only Dutch restaurant in New Zealand. It\u2019s a place where the the Dutch feel at home, and where the Kiwis can explore the delicacies of the low lands. Try our pancakes, poffertjes or a broodje frikandel. Or pick your favourite Dutch Cheese to take home. Choose your restaurant by clicking on the tiles above.",
+            "content": "The only Dutch restaurant in New Zealand. It\\u2019s a place where the the Dutch feel at home, and where the Kiwis can explore the delicacies of the low lands. Try our pancakes, poffertjes or a broodje frikandel. Or pick your favourite Dutch Cheese to take home. Choose your restaurant by clicking on the tiles above.",
             "hoveredIcon": "/demo1/images/icon1.jpg",
             "icon": "/demo1/images/icon1-bw.jpg",
             "img": "/demo1/images/hexagon.png",
             "title": "ABOUT"
         },
         "phone_contact": {
-          "content":  {
-            "address": "3-5 Birkenhead ave, Birkenhead, Auckland,",
-            "phone_en": "Phone (English): 09 418 1390,",
-            "phone_cn": "Phone (\u4e2d\u6587): 021 022 00379,",
-            "email":  "Email: info@jibble.co.nz"
-          },
             "hoveredIcon": "/demo1/images/icon3.jpg",
             "icon": "/demo1/images/icon3-bw.jpg",
             "img": "/demo1/images/hexagon.png",
-            "title": "CONTACT"
-        },
-        "phone_time": {
-            "hoveredIcon": "/demo1/images/icon2.jpg",
-            "icon": "/demo1/images/icon2-bw.jpg",
-            "img": "/demo1/images/hexagon.png",
-            "title": "TIME",
+            "title": "CONTACT",
             "workingHours": [
                 {
-                    "days": "Today:",
+                    "customer_id": "1",
+                    "days": "Today",
+                    "id": 1,
                     "times": "9:00am - 6:00pm"
                 },
                 {
-                    "days": "Monday:",
+                    "customer_id": "1",
+                    "days": "Monday",
+                    "id": 2,
                     "times": "9:00am - 6:00pm"
                 },
                 {
-                    "days": "Tuesday:",
+                    "customer_id": "1",
+                    "days": "Tuesday",
+                    "id": 3,
                     "times": "9:00am - 6:00pm"
                 },
                 {
-                    "days": "Wednesday:",
+                    "customer_id": "1",
+                    "days": "Wednesday",
+                    "id": 4,
                     "times": "9:00am - 6:00pm"
                 },
                 {
-                    "days": "Thursday:",
+                    "customer_id": "1",
+                    "days": "Thursday",
+                    "id": 5,
                     "times": "9:00am - 6:00pm"
                 },
                 {
-                    "days": "Friday:",
+                    "customer_id": "1",
+                    "days": "Friday",
+                    "id": 6,
                     "times": "9:00am - 6:00pm"
                 },
                 {
-                    "days": "Saturday:",
+                    "customer_id": "1",
+                    "days": "Saturday",
+                    "id": 7,
                     "times": "9:00am - 6:00pm"
                 },
                 {
-                    "days": "Sunday:",
+                    "customer_id": "1",
+                    "days": "Sunday",
+                    "id": 8,
                     "times": "9:00am - 6:00pm"
                 }
             ]
+        },
+        "phone_time": {
+            "content": {
+                "address": "3-5 Birkenhead ave, Birkenhead, Auckland,",
+                "email": "Email: info@jibble.co.nz",
+                "phone_cn": "Phone (\\u4e2d\\u6587): 021 022 00379,",
+                "phone_en": "Phone (English): 09 418 1390,"
+            },
+            "hoveredIcon": "/demo1/images/icon2.jpg",
+            "icon": "/demo1/images/icon2-bw.jpg",
+            "img": "/demo1/images/hexagon.png",
+            "title": "TIME"
         }
     }
 }

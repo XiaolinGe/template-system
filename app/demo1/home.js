@@ -11,7 +11,6 @@ class Home extends React.Component {
     }
     render() {
       let {home} =  this.props;
-      console.log(home);
 	return (
 	        <div className='home'>
                 <iframe width="100%" height="100%" frameBorder="0" scrolling="no"

@@ -1,14 +1,17 @@
 import React from 'react';
-import "./gallery.less";
 import ImageGallery from 'react-image-gallery';
 import "../../node_modules/react-image-gallery/src/ImageGallery.scss";
 import { connect} from 'react-redux';
+import "./gallery.less";
+
 
 
 
 export default class Gallery extends React.Component {
 
   render() {
+
+
     let {slides}=this.props;
     return(
       <ImageGallery
