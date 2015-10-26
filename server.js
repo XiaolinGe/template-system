@@ -42,7 +42,6 @@ app.use(session({
 
 // a middleware with no mount path; gets executed for every request to the app
 app.use(function (req, res, next) {
-//    console.log('domain',req.headers.host.replace(/:.*$/,""));
     let url = req.url;
     console.log(url);
     console.log(url.indexOf("/admin")===-1);
@@ -71,6 +70,8 @@ app.use('/api',user_routes);
 app.use('/test',test_routes);
 app.use('/api',customer_routes);
 app.use('/generator',generator_routes);
+app.use('/website',website_routes);
+
 
 app.get("/host", function (req, res){
     console.log("REQ:: "+req.headers.host);

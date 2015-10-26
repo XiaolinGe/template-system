@@ -50,7 +50,7 @@
     "style-loader": "^0.12.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "babel-node test.js",
     "start": "babel-node --stage 0 server.js ",
     "build": "webpack",
     "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base public"

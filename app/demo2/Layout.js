@@ -4,31 +4,31 @@ import  "./layout.less";
 
 import { connect } from 'react-redux';
 
-export default class Layout extends React.Component {
-    
-    getAllElementsWithAttribute(attribute,val){
+class Layout extends React.Component {
+  
+  getAllElementsWithAttribute(attribute,val){
 
-        return Array.from(document.getElementsByTagName('*'))
-            .filter(e=>e.getAttribute(attribute) ==val);
+    return Array.from(document.getElementsByTagName('*'))
+                .filter(e=>e.getAttribute(attribute) ==val);
 
-    }
+  }
 
-    componentDidMount(){
+  componentDidMount(){
 
-        this.getAllElementsWithAttribute("data-reactid","")
-            .filter(e=>e)
-            .map(e=>e.style.height = "100%");
+    this.getAllElementsWithAttribute("data-reactid","")
+        .filter(e=>e)
+        .map(e=>e.style.height = "100%");
 
-        this.getAllElementsWithAttribute("data-reactid",".0.1.1")
-            .map(e=>e.style.height = "100%")
-            .filter(e=>e);
+    this.getAllElementsWithAttribute("data-reactid",".0.1.1")
+        .map(e=>e.style.height = "100%")
+        .filter(e=>e);
 
-    }
+  }
 
- 
+  
   render() {
     let {menus,contact,introduction,logoimg,name,opentime,src,type}=this.props.data;
-      return(
+    return(
       
       <div className="layout">
       <div id="header">

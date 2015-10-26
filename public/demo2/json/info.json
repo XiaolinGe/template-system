@@ -1,38 +1,38 @@
 {
-    "gallery": [
-        {
-          "original": "./images/s1.jpg",
-          "thumbnail": "./images/s1.jpg"
-        },
-        {
-          "original": "./images/s2.jpg",
-          "thumbnail": "./images/s2.jpg"
-        },
-      {
-        "original": "./images/s3.jpg",
-        "thumbnail":"./images/s3.jpg"
-      },
-      {
-        "original": "./images/s4.jpg",
-        "thumbnail": "./images/s4.jpg"
-      },
-      {
-        "original": "./images/s5.jpg",
-        "thumbnail": "./images/s5.jpg"
-      },
-      {
-        "original": "./images/s6.jpg",
-        "thumbnail":"./images/s6.jpg"
-      },
-      {
-        "original": "./images/s7.jpg",
-        "thumbnail": "./images/s7.jpg"
-      },
-      {
-        "original": "./images/s8.jpg",
-        "thumbnail":"./images/s8.jpg"
-      }
-    ],
+  "gallery": [
+    {
+      "original": "/demo2/images/s1.jpg",
+      "thumbnail": "/demo2/images/s1.jpg"
+    },
+    {
+      "original": "/demo2/images/s2.jpg",
+      "thumbnail": "/demo2/images/s2.jpg"
+    },
+    {
+      "original": "/demo2/images/s3.jpg",
+      "thumbnail":"/demo2/images/s3.jpg"
+    },
+    {
+      "original": "/demo2/images/s4.jpg",
+      "thumbnail": "/demo2/images/s4.jpg"
+    },
+    {
+      "original": "/demo2/images/s5.jpg",
+      "thumbnail": "/demo2/images/s5.jpg"
+    },
+    {
+      "original": "/demo2/images/s6.jpg",
+      "thumbnail":"/demo2/images/s6.jpg"
+    },
+    {
+      "original": "/demo2/images/s7.jpg",
+      "thumbnail": "/demo2/images/s7.jpg"
+    },
+    {
+      "original": "/demo2/images/s8.jpg",
+      "thumbnail":"/demo2/images/s8.jpg"
+    }
+  ],
     "home": [
         {
             "content": "",
@@ -51,8 +51,8 @@
         }
     ],
     "layout": {
-        "contact": " 919 Dominion Road, Mt Roskill, Auckland, 09 5507775",
-        "introduction": "   This is a wondeful world. This is a beautiful and wondeful world.",
+        "contact": "919 Dominion Road, Mt Roskill, Auckland, 09 5507775",
+        "introduction": "This is a wondeful world. This is a beautiful and wondeful world.",
         "logoimg": "",
         "menus": [
             {

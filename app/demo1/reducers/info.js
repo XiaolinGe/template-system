@@ -7,7 +7,9 @@ const initialState = {
              phone_time:{
                  workingHours:[]
              },
-             phone_contact:{}
+             phone_contact:{
+               content:{}
+             }
             },
     "map":{}
 };
@@ -19,7 +21,6 @@ const initialState = {
 export default function info(state = initialState, action) {
     switch (action.type) {
     case "FETCH_INFO":
-        console.log("start to fetch data from remote site");
         state.fetching=action.context.fetching;
         return state;
     case "RECEIVE_INFO":

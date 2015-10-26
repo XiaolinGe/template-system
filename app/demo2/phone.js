@@ -1,10 +1,27 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import Layout from "./Layout";
 import "./phone.less";
 import { connect } from 'react-redux';
 
 
+
+
+
 class InfoBoxAbout extends React.Component {
+
+  divStyle(icon) {
+    return {
+      background: `url('${icon}') no-repeat top left`
+    };
+  }
+
+
+  hoveredStyle(hoveredIcon){
+    return {
+      background: `url('${hoveredIcon}') no-repeat top left`
+    };
+  }
 
 
     componentWillMount() {
@@ -13,13 +30,13 @@ class InfoBoxAbout extends React.Component {
     }
 
     componentDidMount() {
-        React.findDOMNode(this.refs.img).addEventListener("mouseover", this.onOver.bind(this));
-        React.findDOMNode(this.refs.img).addEventListener("mouseout", this.onOut.bind(this));
+        ReactDOM.findDOMNode(this.refs.img).addEventListener("mouseover", this.onOver.bind(this));
+        ReactDOM.findDOMNode(this.refs.img).addEventListener("mouseout", this.onOut.bind(this));
     }
 
     componentWillUnmount() {
-        React.findDOMNode(this.refs.img).removeEventListener("mouseover", this.onOver);
-        React.findDOMNode(this.refs.img).removeEventListener("mouseout", this.onOut);
+        ReactDOM.findDOMNode(this.refs.img).removeEventListener("mouseover", this.onOver);
+        ReactDOM.findDOMNode(this.refs.img).removeEventListener("mouseout", this.onOut);
     }
 
     onOver() {
@@ -30,32 +47,21 @@ class InfoBoxAbout extends React.Component {
         this.setState({hovered: false});
     }
 
+
   render() {
-    let {phone_about} = this.props;
-   // console.log(phone_about);
-
-        let icon = phone_about.icon;
-        let divStyle = {
-            background: "url('" + icon + "') no-repeat top left"
-
-        };
-    let hoveredIcon = phone_about.hoveredIcon;
-
-    let hoveredStyle = {
-      background: "url('" + hoveredIcon + "') no-repeat top left"
-    };
+    let {icon,img,title,content,hoveredIcon} = this.props.phone_about;
 
 
     return (
       <div className="inforbox" id="information-1">
-      <div ref="img" style={this.state.hovered? hoveredStyle:divStyle} id="img1">
-      <img src={phone_about.img} alt="image" width="35%"/>
+      <div ref="img" style={this.state.hovered? this.hoveredStyle(hoveredIcon): this.divStyle(icon)} id="img1">
+      <img src={img} alt="image" width="35%"/>
                 </div>
-      <h4>{phone_about.title}</h4>
+      <h4>{title}</h4>
 
                 <div className="content">
 
-      {phone_about.content}
+      {content}
                 </div>
 
             </div>
@@ -67,6 +73,18 @@ class InfoBoxAbout extends React.Component {
 
 
 class InfoBoxTime extends React.Component {
+  divStyle(icon) {
+    return {
+      background: `url('${icon}') no-repeat top left`
+    };
+  }
+
+
+  hoveredStyle(hoveredIcon){
+    return {
+      background: `url('${hoveredIcon}') no-repeat top left`
+    };
+  }
 
 
     componentWillMount() {
@@ -75,13 +93,13 @@ class InfoBoxTime extends React.Component {
     }
 
     componentDidMount() {
-        React.findDOMNode(this.refs.img).addEventListener("mouseover", this.onOver.bind(this));
-        React.findDOMNode(this.refs.img).addEventListener("mouseout", this.onOut.bind(this));
+        ReactDOM.findDOMNode(this.refs.img).addEventListener("mouseover", this.onOver.bind(this));
+        ReactDOM.findDOMNode(this.refs.img).addEventListener("mouseout", this.onOut.bind(this));
     }
 
     componentWillUnmount() {
-        React.findDOMNode(this.refs.img).removeEventListener("mouseover", this.onOver);
-        React.findDOMNode(this.refs.img).removeEventListener("mouseout", this.onOut);
+        ReactDOM.findDOMNode(this.refs.img).removeEventListener("mouseover", this.onOver);
+        ReactDOM.findDOMNode(this.refs.img).removeEventListener("mouseout", this.onOut);
     }
 
     onOver() {
@@ -93,32 +111,20 @@ class InfoBoxTime extends React.Component {
     }
 
   render() {
-    let {phone_time} = this.props;
-       // console.log(phone_time);
-        let icon = phone_time.icon;
-        let divStyle = {
-            background: "url('" + icon + "') no-repeat top left"
-
-        };
-    let hoveredIcon = phone_time.hoveredIcon;
-
-    let hoveredStyle = {
-      background: "url('" + hoveredIcon + "') no-repeat top left"
-    };
-
+    let {icon,hoveredIcon,img,title,workingHours} = this.props.phone_time;
 
     return (
       <div className="inforbox" id="information-2">
-      <div ref="img" style={this.state.hovered? hoveredStyle:divStyle} id="img2">
-      <img src={phone_time.img} alt="image" width="35%"/>
+      <div ref="img" style={this.state.hovered? this.hoveredStyle(hoveredIcon): this.divStyle(icon)} id="img2">
+      <img src={img} alt="image" width="35%"/>
       </div>
-      <h4>{phone_time.title}</h4>
+      <h4>{title}</h4>
 
                 <div className="content">
       {this.props.children}
       <table className="timeTable">
       <tbody>
-      {phone_time.workingHours.map(({days,times},index)=>(
+      {workingHours.map(({days,times},index)=>(
         <tr key={index}  className="information-text-li" id="information-text-li-0">
         <td className="days">{days}</td>
         <td className="times">{times}</td>
@@ -145,13 +151,13 @@ class InfoBoxContact extends React.Component {
     }
 
     componentDidMount() {
-        React.findDOMNode(this.refs.img).addEventListener("mouseover", this.onOver.bind(this));
-        React.findDOMNode(this.refs.img).addEventListener("mouseout", this.onOut.bind(this));
+        ReactDOM.findDOMNode(this.refs.img).addEventListener("mouseover", this.onOver.bind(this));
+        ReactDOM.findDOMNode(this.refs.img).addEventListener("mouseout", this.onOut.bind(this));
     }
 
     componentWillUnmount() {
-        React.findDOMNode(this.refs.img).removeEventListener("mouseover", this.onOver);
-        React.findDOMNode(this.refs.img).removeEventListener("mouseout", this.onOut);
+        ReactDOM.findDOMNode(this.refs.img).removeEventListener("mouseover", this.onOver);
+        ReactDOM.findDOMNode(this.refs.img).removeEventListener("mouseout", this.onOut);
     }
 
     onOver() {
@@ -163,17 +169,18 @@ class InfoBoxContact extends React.Component {
     }
 
     render() {
-        let {phone_contact} = this.props;
-        let icon = phone_contact.icon;
-        let divStyle = {
-            background: "url('" + icon + "') no-repeat top left"
+      let {phone_contact} = this.props;
+      let icon = phone_contact.icon;
+      let divStyle = {
+        background: `url('${icon}') no-repeat top left`
 
-        };
-      let hoveredIcon =phone_contact.hoveredIcon;
+      };
+      let hoveredIcon = phone_contact.hoveredIcon;
 
       let hoveredStyle = {
-        background: "url('" + hoveredIcon + "') no-repeat top left"
+        background: `url('${hoveredIcon}') no-repeat top left`
       };
+
 
 
       return (

@@ -44,17 +44,6 @@ class Gallery extends React.Component {
 
    constructor(props) {
      super(props);
-     /*
-          $.ajax({
-            type: "GET",
-            url: "json/gallery.json",
-            async: false,
-              success : function(data) {
-                  console.log("gallery data "+ data);
-                this.state = {slides: data};
-            }.bind(this)
-          });
-     */
     }
 
 
@@ -64,11 +53,10 @@ class Gallery extends React.Component {
     }
 
 
-  showGallery(){
+  showGallery() {
     let {gallery} = this.props;
 
     options['slides']=gallery;
-    console.log(options);
     if(gallery.length>0){
       jQuery(function ($) {
         $.supersized(options);
