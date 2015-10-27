@@ -1,15 +1,17 @@
 import fs from 'fs';
 import handlebars from 'handlebars';
-export let generate = function(temPath,descPath,data){
+export let generate = function(temPath,descPath,data) {
   let source = fs.readFileSync(temPath,"utf8");
   let template = handlebars.compile(source);
   let result = template(data);
   fs.writeFile(descPath,result);
 };
 
+// todo：此处可以封装一个首字母大写的功能
 String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 }
+
 
 export let create_context=function(table_name,column_info){
 

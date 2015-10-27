@@ -41,6 +41,7 @@ app.use(session({
 }));
 
 // a middleware with no mount path; gets executed for every request to the app
+/*
 app.use(function (req, res, next) {
     let url = req.url;
     console.log(url);
@@ -59,6 +60,7 @@ app.use(function (req, res, next) {
         }
     }
 });
+*/
 app.use("/",website_routes);
 
 app.use(express.static(path.join(__dirname, 'public')));
