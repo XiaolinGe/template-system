@@ -16,8 +16,8 @@
 <body style="height:100%;width:100%;overflow:hidden;border:none;" >	
 	<div id="win" class="easyui-window" title="Login" style="width:300px;height:180px;">
 		<form id="form" style="padding:10px 20px 10px 40px;" action="/login" method="post">
-			<pre>Name     <input type="name"></pre>
-			<pre>Password <input type="password"></pre>
+			<pre>Name     <input name="name" type="name"></pre>
+			<pre>Password <input name="password" type="password"></pre>
 			<div style="padding:5px;text-align:center;">
 				<a href="#" class="easyui-linkbutton" onclick=submitForm() icon="icon-ok">Ok</a>
 				<a href="#" class="easyui-linkbutton" icon="icon-cancel">Cancel</a>

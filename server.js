@@ -23,7 +23,7 @@ import gallery_routes from './src/routes/gallerys';
 import working_hour_routes from './src/routes/working_hours';
 import template_routes from './src/routes/templates';
 import log_routes from './src/routes/logs';
-
+import {login_checker,action_logger} from './middlewares';
 
 const app = express();
 const compiler = webpack(config);
@@ -44,27 +44,8 @@ app.use(session({
   secret: 'keyboard cat'
 }));
 
-// a middleware with no mount path; gets executed for every request to the app
-/*
-app.use(function (req, res, next) {
-    let url = req.url;
-    console.log(url);
-    console.log(url.indexOf("/admin")===-1);
-    if(url.indexOf("/admin")===-1||url.indexOf(".css")>-1
-       ||url.indexOf(".js")>-1||url.indexOf(".gig")>-1||url.indexOf(".png")>-1){
-        next();
-    }else{
-        let sess = req.session;
-        console.log(sess);
-        if(sess.user){
-            next();
-        }else{
-            req.url = '/admin/login.html';
-            next();
-        }
-    }
-});
-*/
+app.use(login_checker);
+app.use(action_logger);
 app.use("/",website_routes);
 
 app.use(express.static(path.join(__dirname, 'public')));
