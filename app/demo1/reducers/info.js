@@ -1,9 +1,32 @@
 import { combineReducers } from 'redux';
+const initialState = {
+    "layout":[],
+    "home":{},
+    "gallery":[],
+    "phone":{phone_about:{},
+             phone_time:{
+                 workingHours:[]
+             },
+             phone_contact:{
+               content:{}
+             }
+            },
+    "map":{}
+};
 
-export default function selectedReddit(state = 'reactjs', action) {
-  switch (action.type) {
+//Reducers receive a action then use data passed by action to change state.
 
-  default:
-    return state;
-  }
+//The parameter 'state' is the previous state while the return value of the
+//reducer is the new state
+export default function info(state = initialState, action) {
+    switch (action.type) {
+    case "FETCH_INFO":
+        state.fetching=action.context.fetching;
+        return state;
+    case "RECEIVE_INFO":
+      state = action.context.data;
+        return state;
+    default:
+        return state;
+    }
 }

@@ -7,14 +7,9 @@ function isEmpty(str) {
   return (!str || 0 === str.length);
 }
 
-var obj = {age:1,name:1}
-for(var prop in obj){
-  console.log(prop);
-  console.log(obj[prop])
-}
 
 router.route('/users')
-  // create a user (accessed at POST http://localhost:8080/api/users)
+// create a user (accessed at POST http://localhost:8080/api/users)
          .post(function(req, res) {
            console.log("start action method");
            User.create(req.body)
@@ -25,7 +20,7 @@ router.route('/users')
   // get all the users by conditions (accessed at GET http://localhost:8080/api/users)
          .get(function(req, res) {
            let cond={};
-           for(let propt in req.query) {
+           for(let propt in req.query){
              let val =  req.query[propt];
              if(!isEmpty(val)){
                cond[propt]={$like:"%"+val+"%"};
@@ -37,36 +32,36 @@ router.route('/users')
              res.json(users);
            });
 
-         });
+    });
 
 //users/1  //user
 router.route('/users/:id')
-  // get the user with that id (accessed at GET http://localhost:8080/api/users/:user_id)
-      .get(function(req, res) {
+// get the user with that id (accessed at GET http://localhost:8080/api/users/:user_id)
+    .get(function(req, res) {
         // search for known ids
         User.findById(req.params.id).then(function(user) {
           res.json(user);
         });
-      })
+    })
 
-  // update the user with this id (accessed at PUT http://localhost:8080/api/users/:user_id)
-      .put(function(req, res) {
+// update the user with this id (accessed at PUT http://localhost:8080/api/users/:user_id)
+    .put(function(req, res) {
         User.update(req.body,{where:{id:req.params.id}})
             .then(function(){
-              res.json({message: "Successfully created"});
+                res.json({message: "Successfully created"});
             });
-      })
+    })
 
-  // delete the user with this id (accessed at DELETE http://localhost:8080/api/users/:user_id)
-      .delete(function(req, res) {
-        User.destroy({
-          where: {
-            id: req.params.id
-          }
+// delete the user with this id (accessed at DELETE http://localhost:8080/api/users/:user_id)
+    .delete(function(req, res) {
+      User.destroy({
+            where: {
+                id: req.params.id
+            }
         }).then(function(){
-          res.json({ message: 'Successfully deleted' });
+            res.json({ message: 'Successfully deleted' });
         });
-      });
+    });
 
 
 

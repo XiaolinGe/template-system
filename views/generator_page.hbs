@@ -44,6 +44,7 @@ function new{{table_name_single_upper}}(){
     $('#fm').form('clear');
   url = '/api/{{table_name}}';
   method="POST";
+    id = 0;
 }
 
 function edit{{table_name_single_upper}}(){
@@ -61,7 +62,7 @@ function edit{{table_name_single_upper}}(){
   id=row.id;
 }
 
-function sav{{table_name_single_upper}}(){
+function save{{table_name_single_upper}}(){
   console.log("save {{table_name_single_upper}}");
   var $form = $("#fm");
   if($form.form('validate')) {
@@ -108,9 +109,11 @@ $(document).ready(function(){
     singleSelect: true,
     pagination: true,
     columns:[[
-      {field:'name',title:'Name',width:100},
-      {field:'password',title:'Password',width:100},
-    ]],
+    {{#column_info}}
+      {field:'{{column_name}}',title:'{{column_name}}'},
+
+    {{/column_info }}
+      ]],
     toolbar: [{
       iconCls: 'icon-add',
       handler: new{{table_name_single_upper}}

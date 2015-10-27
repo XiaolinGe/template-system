@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Gallerys management</title>
+    <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/color.css">
+    <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/demo/demo.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
+    <script type="text/javascript" src="http://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
+    <link   rel="stylesheet/less" type="text/css" href="./commen.less" />
+    <script type="text/javascript" src="/admin/js/gallerys_page.js"></script>
+  </head>
+  <body>
+    <form id="ff" method="post">
+      <table cellpadding="5">
+        <tbody>
+            <tr>
+              <td>image:</td>
+              <td><input class="easyui-textbox" type="text" name="image" ></input></td>
+              <td>thumb:</td>
+              <td><input class="easyui-textbox" type="text" name="thumb" ></input></td>
+              <td>title:</td>
+              <td><input class="easyui-textbox" type="text" name="title" ></input></td>
+              <td>url:</td>
+              <td><input class="easyui-textbox" type="text" name="url" ></input></td>
+              <td>customer_id:</td>
+              <td><input class="easyui-textbox" type="text" name="customer_id" ></input></td>
+            </tr>
+        </tbody>
+      </table>
+    </form>
+    <div style="text-align:right; padding:5px">
+      <a href="javascript:void(0)" class="easyui-linkbutton" onclick="searchData()">Submit</a>
+      <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clear()">Clear</a>
+    </div>
+
+
+    <table id="dg">
+    </table>
+    </div>
+
+    <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+      closed="true" buttons="#dlg-buttons">
+      <div class="ftitle">User Information</div>
+      <form id="fm" method="post">
+          <div class="fitem">
+            <label>image:</label>
+            <input name="image" class="easyui-textbox">
+          </div>
+          <div class="fitem">
+            <label>thumb:</label>
+            <input name="thumb" class="easyui-textbox">
+          </div>
+          <div class="fitem">
+            <label>title:</label>
+            <input name="title" class="easyui-textbox">
+          </div>
+          <div class="fitem">
+            <label>url:</label>
+            <input name="url" class="easyui-textbox">
+          </div>
+          <div class="fitem">
+            <label>customer_id:</label>
+            <input name="customer_id" class="easyui-textbox">
+          </div>
+      </form>
+    </div>
+    <div id="dlg-buttons">
+      <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveGallery()" style="width:90px">Save</a>
+      <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
+    </div>
+    <script type="text/javascript">
+    </script>
+  </body>
+</html>

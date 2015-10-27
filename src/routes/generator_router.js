@@ -1,7 +1,50 @@
 var express = require('express');
+
 var router = express.Router();
 import {sequelize,getColumnNamesFromTabel} from '../entity/db.js';
 import Sequelize from 'sequelize';
+import {generate, create_context}from '../common/templateKit';
+import path from 'path';
+
+// 代码生成器的route
+
+//模板根路径
+const template_folder = path.join(__dirname, '../../views');
+
+//workflow
+//1，在server中配置好路径
+//2，在route中配置好增删改查功能
+
+
+router.route('/all/:table_name').get(function(req,res) {
+  let {table_name} = req.params;
+  
+  console.log(table_name);
+  getColumnNamesFromTabel(table_name,function(results) {
+    results = results.filter((e) => (e.data_type!='datetime'))
+                     .filter((e) => (e.column_name!='id'));
+
+    let context = create_context(table_name,results);
+    let {table_name_single} = context;
+
+    let temp_to_src=[{
+      temp:"/generators.hbs",target: `./src/routes/${table_name}.js`
+    },{
+      temp:"/generator.hbs",target:`./src/entity/${table_name_single}.js`
+    },{
+      temp:"/generator_html.hbs",target:`./public/admin/${table_name}.html`
+    },{
+      temp:"/generator_page.hbs",target:`./public/admin/js/${table_name}_page.js`
+    }];
+    
+    temp_to_src.map(({temp,target})=>generate(`${template_folder}${temp}`,target,context)
+    );
+  
+    res.send("Files generated successfully");
+
+  });
+});
+
 
 
 // get the js
@@ -10,14 +53,12 @@ router.route('/js/:id')
         let table_name = req.params.id;
         console.log("table_name: "+table_name);
         getColumnNamesFromTabel(table_name,function(results) {
-          results = results.filter((e) => (e.data_type!='datetime'));
-          console.log(results);         
-          // console.log(results.table_name);
-          let table_name_single = table_name.slice(0,-1);
-          let table_name_upper = table_name.substring(0,1).toUpperCase()+table_name.substring(1);
-          let table_name_single_upper = table_name_single.substring(0,1).toUpperCase()+table_name_single.substring(1);
-          let context ={table_name: table_name, table_name_single: table_name_single, table_name_upper: table_name_upper, table_name_single_upper: table_name_single_upper, column_info:results}
-          console.log(context);
+          results = results.filter((e) => (e.data_type!='datetime'));        
+          
+          // 根据模版和数据生成文件到目标路径，
+          //generate a file on target location based on template and data
+          generate(`${template_folder}/generators.hbs`,"1.js",create_context(table_name,results));
+
           res.render('generators.hbs',context);
         });
       });
@@ -29,15 +70,9 @@ router.route('/entity/:id')
         let table_name = req.params.id;
         console.log("table_name: "+table_name);
         getColumnNamesFromTabel(table_name,function(results) {
-          results = results.filter((e) => (e.data_type!='datetime'));
-          console.log(results);         
-          // console.log(results.table_name);
-          let table_name_single = table_name.slice(0,-1);
-          let table_name_upper = table_name.substring(0,1).toUpperCase()+table_name.substring(1);
-          let table_name_single_upper = table_name_single.substring(0,1).toUpperCase()+table_name_single.substring(1);
-          let context ={table_name: table_name, table_name_single: table_name_single, table_name_upper: table_name_upper, table_name_single_upper: table_name_single_upper, column_info:results}
-          console.log(context);
-          res.render('generator.hbs',context);
+          results = results.filter((e) => (e.data_type!='datetime'));        
+          
+          res.render('generator.hbs',create_context(table_name,results));
         });
       });
 
@@ -49,14 +84,8 @@ router.route('/html/:id')
         console.log("table_name: "+table_name);
         getColumnNamesFromTabel(table_name,function(results) {
           results = results.filter((e) => (e.data_type!='datetime'));
-          console.log(results);         
-          // console.log(results.table_name);
-          let table_name_single = table_name.slice(0,-1);
-          let table_name_upper = table_name.substring(0,1).toUpperCase()+table_name.substring(1);
-          let table_name_single_upper = table_name_single.substring(0,1).toUpperCase()+table_name_single.substring(1);
-          let context ={table_name: table_name, table_name_single: table_name_single, table_name_upper: table_name_upper, table_name_single_upper: table_name_single_upper, column_info:results}
-          console.log(context);
-          res.render('generator_html.hbs',context);
+
+          res.render('generator_html.hbs',create_context(table_name,results));
         });
       });
 
@@ -69,14 +98,8 @@ router.route('/pagejs/:id')
                   console.log("table_name: "+table_name);
                   getColumnNamesFromTabel(table_name,function(results) {
                     results = results.filter((e) => (e.data_type!='datetime'));
-                    console.log(results);         
-                    // console.log(results.table_name);
-                    let table_name_single = table_name.slice(0,-1);
-                    let table_name_upper = table_name.substring(0,1).toUpperCase()+table_name.substring(1);
-                    let table_name_single_upper = table_name_single.substring(0,1).toUpperCase()+table_name_single.substring(1);
-                    let context ={table_name: table_name, table_name_single: table_name_single, table_name_upper: table_name_upper, table_name_single_upper: table_name_single_upper, column_info:results}
-                    console.log(context);
-                    res.render('generator_page.hbs',context);
+                    
+                    res.render('generator_page.hbs',create_context(table_name,results));
                   });
                 });
 

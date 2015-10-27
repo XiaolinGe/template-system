@@ -43,7 +43,8 @@ function newUser(){
     $('#dlg').dialog('open').dialog('center').dialog('setTitle','New User');
     $('#fm').form('clear');
     url = '/api/users';
-    method="POST";
+  method="POST";
+  id = 0;
 }
 
 function editUser(){

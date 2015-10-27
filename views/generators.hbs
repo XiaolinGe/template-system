@@ -7,17 +7,12 @@ function isEmpty(str) {
   return (!str || 0 === str.length);
 }
 
-var obj = {age:1,name:1}
-for(var prop in obj){
-  console.log(prop);
-  console.log(obj[prop])
-}
 
 router.route('/{{table_name}}')
 // create a user (accessed at POST http://localhost:8080/api/users)
          .post(function(req, res) {
            console.log("start action method");
-           User.create(req.body)
+            {{table_name_single_upper}}.create(req.body)
                .then(function(){
                  res.json({message: "Successfully created"});
                });
@@ -31,7 +26,7 @@ router.route('/{{table_name}}')
                cond[propt]={$like:"%"+val+"%"};
              }
            }
-           User.findAll({
+            {{table_name_single_upper}}.findAll({
              where: cond
            }).then(function({{table_name}}){
              res.json({{table_name}});
@@ -44,7 +39,7 @@ router.route('/{{table_name}}/:id')
 // get the user with that id (accessed at GET http://localhost:8080/api/users/:user_id)
     .get(function(req, res) {
         // search for known ids
-        User.findById(req.params.id).then(function({{table_name_single}}) {
+         {{table_name_single_upper}}.findById(req.params.id).then(function({{table_name_single}}) {
           res.json({{table_name_single}});
         });
     })
