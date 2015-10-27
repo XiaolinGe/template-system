@@ -1,17 +1,25 @@
 import sequelize from './db.js';
 import Sequelize from 'sequelize';
-let Customer =  sequelize.define('customers', {
+let Gallery =  sequelize.define('gallerys', {
 
 
-  name:{
+  image:{
   type: Sequelize.STRING
   },
 
-  domain:{
+  thumb:{
   type: Sequelize.STRING
   },
 
-  template_id:{
+  title:{
+  type: Sequelize.STRING
+  },
+
+  url:{
+  type: Sequelize.STRING
+  },
+
+  customer_id:{
   type: Sequelize.STRING
   }
 
@@ -21,4 +29,4 @@ underscored: true
 
 
 
-export default Customer;
+export default Gallery;

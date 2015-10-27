@@ -14,7 +14,7 @@ var id;
 
 function loadDataFromRemote(){
   $.ajax({
-    url: '/api/customers',
+    url: '/api/gallerys',
     type: "get",
     success: function(data){
       $('#dg').datagrid('loadData',data);
@@ -29,7 +29,7 @@ function searchData() {
   var $form = $("#ff");
   var data = getFormData($form);
   $.ajax({
-    url: '/api/customers',
+    url: '/api/gallerys',
     type: "get",
     data: data,
     success: function(data){
@@ -39,31 +39,31 @@ function searchData() {
 
 }
 
-function newCustomer(){
-    $('#dlg').dialog('open').dialog('center').dialog('setTitle','New Customer');
+function newGallery(){
+    $('#dlg').dialog('open').dialog('center').dialog('setTitle','New Gallery');
     $('#fm').form('clear');
-  url = '/api/customers';
+  url = '/api/gallerys';
   method="POST";
     id = 0;
 }
 
-function editCustomer(){
-  console.log("editCustomer");
+function editGallery(){
+  console.log("editGallery");
   var row = $('#dg').datagrid('getSelected');
   if (row){
-    $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit Customer');
+    $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit Gallery');
     $('#fm').form('load',row);
-    url = '/update_customer/'+row.id;
+    url = '/update_gallery/'+row.id;
   }else{
-    $.messager.alert('Info','Please select a customer !');
+    $.messager.alert('Info','Please select a gallery !');
   }
-  url = '/api/customers';
+  url = '/api/gallerys';
   method="PUT";
   id=row.id;
 }
 
-function saveCustomer(){
-  console.log("save Customer");
+function saveGallery(){
+  console.log("save Gallery");
   var $form = $("#fm");
   if($form.form('validate')) {
     var data = getFormData($form);
@@ -81,13 +81,13 @@ function saveCustomer(){
     });
   }
 }
-function destroyCustomer(){
+function destroyGallery(){
   var row = $('#dg').datagrid('getSelected');
   if (row){
-    $.messager.confirm('Confirm','Are you sure you want to destroy this customer?',function(r){
+    $.messager.confirm('Confirm','Are you sure you want to destroy this gallery?',function(r){
       if (r){
         $.ajax({
-          url: "/api/customers/"+row.id,
+          url: "/api/gallerys/"+row.id,
                     type: 'DELETE',
                     success: function(){
                       $('#dg').datagrid('reload');
@@ -97,7 +97,7 @@ function destroyCustomer(){
             }
         });
     }else{
-      $.messager.alert('Info','Please select a customer !');
+      $.messager.alert('Info','Please select a gallery !');
     }
 
 
@@ -109,22 +109,26 @@ $(document).ready(function(){
     singleSelect: true,
     pagination: true,
     columns:[[
-      {field:'name',title:'name'},
+      {field:'image',title:'image'},
 
-      {field:'domain',title:'domain'},
+      {field:'thumb',title:'thumb'},
 
-      {field:'template_id',title:'template_id'},
+      {field:'title',title:'title'},
+
+      {field:'url',title:'url'},
+
+      {field:'customer_id',title:'customer_id'},
 
       ]],
     toolbar: [{
       iconCls: 'icon-add',
-      handler: newCustomer
+      handler: newGallery
     },'-',{
       iconCls: 'icon-edit',
-      handler: editCustomer
+      handler: editGallery
     },'-',{
       iconCls: 'icon-remove',
-      handler: destroyCustomer
+      handler: destroyGallery
     }]
   });
   loadDataFromRemote();

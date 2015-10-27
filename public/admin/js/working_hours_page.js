@@ -14,7 +14,7 @@ var id;
 
 function loadDataFromRemote(){
   $.ajax({
-    url: '/api/customers',
+    url: '/api/working_hours',
     type: "get",
     success: function(data){
       $('#dg').datagrid('loadData',data);
@@ -29,7 +29,7 @@ function searchData() {
   var $form = $("#ff");
   var data = getFormData($form);
   $.ajax({
-    url: '/api/customers',
+    url: '/api/working_hours',
     type: "get",
     data: data,
     success: function(data){
@@ -39,31 +39,31 @@ function searchData() {
 
 }
 
-function newCustomer(){
-    $('#dlg').dialog('open').dialog('center').dialog('setTitle','New Customer');
+function newWorking_hour(){
+    $('#dlg').dialog('open').dialog('center').dialog('setTitle','New Working_hour');
     $('#fm').form('clear');
-  url = '/api/customers';
+  url = '/api/working_hours';
   method="POST";
     id = 0;
 }
 
-function editCustomer(){
-  console.log("editCustomer");
+function editWorking_hour(){
+  console.log("editWorking_hour");
   var row = $('#dg').datagrid('getSelected');
   if (row){
-    $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit Customer');
+    $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit Working_hour');
     $('#fm').form('load',row);
-    url = '/update_customer/'+row.id;
+    url = '/update_working_hour/'+row.id;
   }else{
-    $.messager.alert('Info','Please select a customer !');
+    $.messager.alert('Info','Please select a working_hour !');
   }
-  url = '/api/customers';
+  url = '/api/working_hours';
   method="PUT";
   id=row.id;
 }
 
-function saveCustomer(){
-  console.log("save Customer");
+function saveWorking_hour(){
+  console.log("save Working_hour");
   var $form = $("#fm");
   if($form.form('validate')) {
     var data = getFormData($form);
@@ -81,13 +81,13 @@ function saveCustomer(){
     });
   }
 }
-function destroyCustomer(){
+function destroyWorking_hour(){
   var row = $('#dg').datagrid('getSelected');
   if (row){
-    $.messager.confirm('Confirm','Are you sure you want to destroy this customer?',function(r){
+    $.messager.confirm('Confirm','Are you sure you want to destroy this working_hour?',function(r){
       if (r){
         $.ajax({
-          url: "/api/customers/"+row.id,
+          url: "/api/working_hours/"+row.id,
                     type: 'DELETE',
                     success: function(){
                       $('#dg').datagrid('reload');
@@ -97,7 +97,7 @@ function destroyCustomer(){
             }
         });
     }else{
-      $.messager.alert('Info','Please select a customer !');
+      $.messager.alert('Info','Please select a working_hour !');
     }
 
 
@@ -109,22 +109,22 @@ $(document).ready(function(){
     singleSelect: true,
     pagination: true,
     columns:[[
-      {field:'name',title:'name'},
+      {field:'days',title:'days'},
 
-      {field:'domain',title:'domain'},
+      {field:'times',title:'times'},
 
-      {field:'template_id',title:'template_id'},
+      {field:'customer_id',title:'customer_id'},
 
       ]],
     toolbar: [{
       iconCls: 'icon-add',
-      handler: newCustomer
+      handler: newWorking_hour
     },'-',{
       iconCls: 'icon-edit',
-      handler: editCustomer
+      handler: editWorking_hour
     },'-',{
       iconCls: 'icon-remove',
-      handler: destroyCustomer
+      handler: destroyWorking_hour
     }]
   });
   loadDataFromRemote();

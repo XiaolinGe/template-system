@@ -14,7 +14,7 @@ var id;
 
 function loadDataFromRemote(){
   $.ajax({
-    url: '/api/customers',
+    url: '/api/templates',
     type: "get",
     success: function(data){
       $('#dg').datagrid('loadData',data);
@@ -29,7 +29,7 @@ function searchData() {
   var $form = $("#ff");
   var data = getFormData($form);
   $.ajax({
-    url: '/api/customers',
+    url: '/api/templates',
     type: "get",
     data: data,
     success: function(data){
@@ -39,31 +39,31 @@ function searchData() {
 
 }
 
-function newCustomer(){
-    $('#dlg').dialog('open').dialog('center').dialog('setTitle','New Customer');
+function newTemplate(){
+    $('#dlg').dialog('open').dialog('center').dialog('setTitle','New Template');
     $('#fm').form('clear');
-  url = '/api/customers';
+  url = '/api/templates';
   method="POST";
     id = 0;
 }
 
-function editCustomer(){
-  console.log("editCustomer");
+function editTemplate(){
+  console.log("editTemplate");
   var row = $('#dg').datagrid('getSelected');
   if (row){
-    $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit Customer');
+    $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit Template');
     $('#fm').form('load',row);
-    url = '/update_customer/'+row.id;
+    url = '/update_template/'+row.id;
   }else{
-    $.messager.alert('Info','Please select a customer !');
+    $.messager.alert('Info','Please select a template !');
   }
-  url = '/api/customers';
+  url = '/api/templates';
   method="PUT";
   id=row.id;
 }
 
-function saveCustomer(){
-  console.log("save Customer");
+function saveTemplate(){
+  console.log("save Template");
   var $form = $("#fm");
   if($form.form('validate')) {
     var data = getFormData($form);
@@ -81,13 +81,13 @@ function saveCustomer(){
     });
   }
 }
-function destroyCustomer(){
+function destroyTemplate(){
   var row = $('#dg').datagrid('getSelected');
   if (row){
-    $.messager.confirm('Confirm','Are you sure you want to destroy this customer?',function(r){
+    $.messager.confirm('Confirm','Are you sure you want to destroy this template?',function(r){
       if (r){
         $.ajax({
-          url: "/api/customers/"+row.id,
+          url: "/api/templates/"+row.id,
                     type: 'DELETE',
                     success: function(){
                       $('#dg').datagrid('reload');
@@ -97,7 +97,7 @@ function destroyCustomer(){
             }
         });
     }else{
-      $.messager.alert('Info','Please select a customer !');
+      $.messager.alert('Info','Please select a template !');
     }
 
 
@@ -111,20 +111,18 @@ $(document).ready(function(){
     columns:[[
       {field:'name',title:'name'},
 
-      {field:'domain',title:'domain'},
-
-      {field:'template_id',title:'template_id'},
+      {field:'template_folder',title:'template_folder'},
 
       ]],
     toolbar: [{
       iconCls: 'icon-add',
-      handler: newCustomer
+      handler: newTemplate
     },'-',{
       iconCls: 'icon-edit',
-      handler: editCustomer
+      handler: editTemplate
     },'-',{
       iconCls: 'icon-remove',
-      handler: destroyCustomer
+      handler: destroyTemplate
     }]
   });
   loadDataFromRemote();

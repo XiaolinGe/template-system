@@ -13,7 +13,7 @@ const template_folder = path.join(__dirname, '../../views');
 
 //workflow
 //1，在server中配置好路径
-//2，在route中配置好增删该差功能
+//2，在route中配置好增删改查功能
 
 
 router.route('/all/:table_name').get(function(req,res) {

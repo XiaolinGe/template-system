@@ -1,17 +1,13 @@
 import sequelize from './db.js';
 import Sequelize from 'sequelize';
-let Customer =  sequelize.define('customers', {
+let Template =  sequelize.define('templates', {
 
 
   name:{
   type: Sequelize.STRING
   },
 
-  domain:{
-  type: Sequelize.STRING
-  },
-
-  template_id:{
+  template_folder:{
   type: Sequelize.STRING
   }
 
@@ -21,4 +17,4 @@ underscored: true
 
 
 
-export default Customer;
+export default Template;

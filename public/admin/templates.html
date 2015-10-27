@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Customers management</title>
+    <title>Templates management</title>
     <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/color.css">
@@ -10,7 +10,7 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
     <script type="text/javascript" src="http://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
     <link   rel="stylesheet/less" type="text/css" href="./commen.less" />
-    <script type="text/javascript" src="/admin/js/customers_page.js"></script>
+    <script type="text/javascript" src="/admin/js/templates_page.js"></script>
   </head>
   <body>
     <form id="ff" method="post">
@@ -19,10 +19,8 @@
             <tr>
               <td>name:</td>
               <td><input class="easyui-textbox" type="text" name="name" ></input></td>
-              <td>domain:</td>
-              <td><input class="easyui-textbox" type="text" name="domain" ></input></td>
-              <td>template_id:</td>
-              <td><input class="easyui-textbox" type="text" name="template_id" ></input></td>
+              <td>template_folder:</td>
+              <td><input class="easyui-textbox" type="text" name="template_folder" ></input></td>
             </tr>
         </tbody>
       </table>
@@ -46,17 +44,13 @@
             <input name="name" class="easyui-textbox">
           </div>
           <div class="fitem">
-            <label>domain:</label>
-            <input name="domain" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>template_id:</label>
-            <input name="template_id" class="easyui-textbox">
+            <label>template_folder:</label>
+            <input name="template_folder" class="easyui-textbox">
           </div>
       </form>
     </div>
     <div id="dlg-buttons">
-      <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveCustomer()" style="width:90px">Save</a>
+      <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveTemplate()" style="width:90px">Save</a>
       <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
     </div>
     <script type="text/javascript">

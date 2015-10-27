@@ -1,17 +1,13 @@
 import sequelize from './db.js';
 import Sequelize from 'sequelize';
-let Customer =  sequelize.define('customers', {
+let Log =  sequelize.define('logs', {
 
 
-  name:{
+  operator:{
   type: Sequelize.STRING
   },
 
-  domain:{
-  type: Sequelize.STRING
-  },
-
-  template_id:{
+  action:{
   type: Sequelize.STRING
   }
 
@@ -21,4 +17,4 @@ underscored: true
 
 
 
-export default Customer;
+export default Log;
