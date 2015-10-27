@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-import {{table_name_single_upper}} from '../entity/{{table_name_single}}.js';
+import Simple_info from '../entity/simple_info.js';
 import { mapify } from 'es6-mapify';
 
 function isEmpty(str) {
@@ -8,16 +8,16 @@ function isEmpty(str) {
 }
 
 
-router.route('/{{table_name}}')
+router.route('/simple_infos')
 // create a user (accessed at POST http://localhost:8080/api/users)
          .post(function(req, res) {
            console.log("start action method");
-            {{table_name_single_upper}}.create(req.body)
+            Simple_info.create(req.body)
                .then(function(){
                  res.json({message: "Successfully created"});
                });
          })
-  // get all the {{table_name}} by conditions (accessed at GET http://localhost:8080/api/users)
+  // get all the simple_infos by conditions (accessed at GET http://localhost:8080/api/users)
          .get(function(req, res) {
            let cond={};
            for(let propt in req.query){
@@ -26,27 +26,27 @@ router.route('/{{table_name}}')
                cond[propt]={$like:"%"+val+"%"};
              }
            }
-            {{table_name_single_upper}}.findAll({
+            Simple_info.findAll({
              where: cond
-           }).then(function({{table_name}}){
-             res.json({{table_name}});
+           }).then(function(simple_infos){
+             res.json(simple_infos);
            });
 
     });
 
 //users/1  //user
-router.route('/{{table_name}}/:id')
+router.route('/simple_infos/:id')
 // get the user with that id (accessed at GET http://localhost:8080/api/users/:user_id)
     .get(function(req, res) {
         // search for known ids
-         {{table_name_single_upper}}.findById(req.params.id).then(function({{table_name_single}}) {
-          res.json({{table_name_single}});
+         Simple_info.findById(req.params.id).then(function(simple_info) {
+          res.json(simple_info);
         });
     })
 
 // update the user with this id (accessed at PUT http://localhost:8080/api/users/:user_id)
     .put(function(req, res) {
-        {{table_name_single_upper}}.update(req.body,{where:{id:req.params.id}})
+        Simple_info.update(req.body,{where:{id:req.params.id}})
             .then(function(){
                 res.json({message: "Successfully created"});
             });
@@ -54,7 +54,7 @@ router.route('/{{table_name}}/:id')
 
 // delete the user with this id (accessed at DELETE http://localhost:8080/api/users/:user_id)
     .delete(function(req, res) {
-      {{table_name_single_upper}}.destroy({
+      Simple_info.destroy({
             where: {
                 id: req.params.id
             }

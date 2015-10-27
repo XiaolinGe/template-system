@@ -14,7 +14,7 @@ var id;
 
 function loadDataFromRemote(){
   $.ajax({
-    url: '/api/{{table_name}}',
+    url: '/api/simple_infos',
     type: "get",
     success: function(data){
       $('#dg').datagrid('loadData',data);
@@ -29,7 +29,7 @@ function searchData() {
   var $form = $("#ff");
   var data = getFormData($form);
   $.ajax({
-    url: '/api/{{table_name}}',
+    url: '/api/simple_infos',
     type: "get",
     data: data,
     success: function(data){
@@ -39,31 +39,31 @@ function searchData() {
 
 }
 
-function new{{table_name_single_upper}}(){
-    $('#dlg').dialog('open').dialog('center').dialog('setTitle','New {{table_name_single_upper}}');
+function newSimple_info(){
+    $('#dlg').dialog('open').dialog('center').dialog('setTitle','New Simple_info');
     $('#fm').form('clear');
-  url = '/api/{{table_name}}';
+  url = '/api/simple_infos';
   method="POST";
     id = 0;
 }
 
-function edit{{table_name_single_upper}}(){
-  console.log("edit{{table_name_single_upper}}");
+function editSimple_info(){
+  console.log("editSimple_info");
   var row = $('#dg').datagrid('getSelected');
   if (row){
-    $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit {{table_name_single_upper}}');
+    $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit Simple_info');
     $('#fm').form('load',row);
-    url = '/update_{{table_name_single}}/'+row.id;
+    url = '/update_simple_info/'+row.id;
   }else{
-    $.messager.alert('Info','Please select a {{table_name_single}} !');
+    $.messager.alert('Info','Please select a simple_info !');
   }
-  url = '/api/{{table_name}}';
+  url = '/api/simple_infos';
   method="PUT";
   id=row.id;
 }
 
-function save{{table_name_single_upper}}(){
-  console.log("save {{table_name_single_upper}}");
+function saveSimple_info(){
+  console.log("save Simple_info");
   var $form = $("#fm");
   if($form.form('validate')) {
     var data = getFormData($form);
@@ -81,13 +81,13 @@ function save{{table_name_single_upper}}(){
     });
   }
 }
-function destroy{{table_name_single_upper}}(){
+function destroySimple_info(){
   var row = $('#dg').datagrid('getSelected');
   if (row){
-    $.messager.confirm('Confirm','Are you sure you want to destroy this {{table_name_single}}?',function(r){
+    $.messager.confirm('Confirm','Are you sure you want to destroy this simple_info?',function(r){
       if (r){
         $.ajax({
-          url: "/api/{{table_name}}/"+row.id,
+          url: "/api/simple_infos/"+row.id,
                     type: 'DELETE',
                     success: function(){
                       $('#dg').datagrid('reload');
@@ -97,7 +97,7 @@ function destroy{{table_name_single_upper}}(){
             }
         });
     }else{
-      $.messager.alert('Info','Please select a {{table_name_single}} !');
+      $.messager.alert('Info','Please select a simple_info !');
     }
 
 
@@ -109,20 +109,23 @@ $(document).ready(function(){
     singleSelect: true,
     pagination: true,
     columns:[[
-    {{#column_info}}
-      {field:'{{column_name}}',title:'{{column_name}}',width:100},
+      {field:'address',title:'address'},
 
-    {{/column_info }}
+      {field:'phone_en',title:'phone_en'},
+
+      {field:'phone_cn',title:'phone_cn'},
+
+      {field:'email',title:'email'}
       ]],
     toolbar: [{
       iconCls: 'icon-add',
-      handler: new{{table_name_single_upper}}
+      handler: newSimple_info
     },'-',{
       iconCls: 'icon-edit',
-      handler: edit{{table_name_single_upper}}
+      handler: editSimple_info
     },'-',{
       iconCls: 'icon-remove',
-      handler: destroy{{table_name_single_upper}}
+      handler: destroySimple_info
     }]
   });
   loadDataFromRemote();

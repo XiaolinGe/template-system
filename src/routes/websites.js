@@ -37,10 +37,10 @@ router.route('/info/:id')
 
 
         let sqls=[
-          `select * from customers_info where id=${id}`,
-          `select * from gallery g where g.customer_id=${id}`,
-          `select * from layout l where l.customer_id=${id}`,
-          `select * from workingHours w where w.customer_id=${id}`]
+          `select * from simple_infos  where id=${id}`,
+          `select * from gallerys g where g.customer_id=${id}`,
+          `select * from menus l where l.customer_id=${id}`,
+          `select * from working_hours w where w.customer_id=${id}`]
                                           .join(";");
 
         connection.query(sqls, function(err,rows) {

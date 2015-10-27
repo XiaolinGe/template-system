@@ -21,7 +21,8 @@ router.route('/all/:table_name').get(function(req,res) {
   
   console.log(table_name);
   getColumnNamesFromTabel(table_name,function(results) {
-    results = results.filter((e) => (e.data_type!='datetime'));
+    results = results.filter((e) => (e.data_type!='datetime'))
+                     .filter((e) => (e.column_name!='id'));
 
     let context = create_context(table_name,results);
     let {table_name_single} = context;

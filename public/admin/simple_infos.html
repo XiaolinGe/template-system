@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>{{table_name_upper}} management</title>
+    <title>Simple_infos management</title>
     <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/themes/color.css">
@@ -10,18 +10,24 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
     <script type="text/javascript" src="http://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
     <link   rel="stylesheet/less" type="text/css" href="./commen.less" />
-    <script type="text/javascript" src="/admin/js/{{table_name}}_page.js"></script>
+    <script type="text/javascript" src="/admin/js/simple_infos_page.js"></script>
   </head>
   <body>
     <form id="ff" method="post">
       <table cellpadding="5">
         <tbody>
-          {{#column_info}}
+
             <tr>
-              <td>{{column_name}}:</td>
-              <td><input class="easyui-textbox" type="text" name="{{column_name}}" ></input></td>
+              <td>address:</td>
+              <td><input class="easyui-textbox" type="text" name="address" ></input></td>
+              <td>phone_en:</td>
+              <td><input class="easyui-textbox" type="text" name="phone_en" ></input></td>
+              <td>phone_cn:</td>
+              <td><input class="easyui-textbox" type="text" name="phone_cn" ></input></td>
+              <td>email:</td>
+              <td><input class="easyui-textbox" type="text" name="email" ></input></td>
             </tr>
-          {{/column_info}}
+
         </tbody>
       </table>
     </form>
@@ -39,16 +45,28 @@
       closed="true" buttons="#dlg-buttons">
       <div class="ftitle">User Information</div>
       <form id="fm" method="post">
-        {{#column_info}}
+
           <div class="fitem">
-            <label>{{column_name}}:</label>
-            <input name="{{column_name}}" class="easyui-textbox">
+            <label>address:</label>
+            <input name="address" class="easyui-textbox">
           </div>
-        {{/column_info}}
+          <div class="fitem">
+            <label>phone_en:</label>
+            <input name="phone_en" class="easyui-textbox">
+          </div>
+          <div class="fitem">
+            <label>phone_cn:</label>
+            <input name="phone_cn" class="easyui-textbox">
+          </div>
+          <div class="fitem">
+            <label>email:</label>
+            <input name="email" class="easyui-textbox">
+          </div>
+
       </form>
     </div>
     <div id="dlg-buttons">
-      <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="save{{table_name_single_upper}}()" style="width:90px">Save</a>
+      <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveSimple_info()" style="width:90px">Save</a>
       <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
     </div>
     <script type="text/javascript">
