@@ -18,7 +18,11 @@ import customer_routes from './src/routes/customers';
 import generator_routes from './src/routes/generator_router';
 import home_routes from './src/routes/home';
 import website_routes from './src/routes/websites';
-
+import simple_info_routes from './src/routes/simple_infos';
+import gallery_routes from './src/routes/gallerys';
+import working_hour_routes from './src/routes/working_hours';
+import template_routes from './src/routes/templates';
+import log_routes from './src/routes/logs';
 
 
 const app = express();
@@ -73,6 +77,11 @@ app.use('/test',test_routes);
 app.use('/api',customer_routes);
 app.use('/generator',generator_routes);
 app.use('/website',website_routes);
+app.use('/api',simple_info_routes);
+app.use('/api',gallery_routes);
+app.use('/api',working_hour_routes);
+app.use('/api',template_routes);
+app.use('/api',log_routes);
 
 
 app.get("/host", function (req, res){

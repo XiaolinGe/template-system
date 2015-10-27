@@ -1,13 +1,13 @@
 import sequelize from './db.js';
 import Sequelize from 'sequelize';
-let Template =  sequelize.define('templates', {
+let Log =  sequelize.define('logs', {
 
 
-  name:{
+  operator:{
   type: Sequelize.STRING
   },
 
-  template_folder:{
+  action:{
   type: Sequelize.STRING
   }
 
@@ -17,4 +17,4 @@ underscored: true
 
 
 
-export default Template;
+export default Log;

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-import Customer from '../entity/customer.js';
+import Working_hour from '../entity/working_hour.js';
 import { mapify } from 'es6-mapify';
 
 function isEmpty(str) {
@@ -8,16 +8,16 @@ function isEmpty(str) {
 }
 
 
-router.route('/customers')
+router.route('/working_hours')
 // create a user (accessed at POST http://localhost:8080/api/users)
          .post(function(req, res) {
            console.log("start action method");
-            Customer.create(req.body)
+            Working_hour.create(req.body)
                .then(function(){
                  res.json({message: "Successfully created"});
                });
          })
-  // get all the customers by conditions (accessed at GET http://localhost:8080/api/users)
+  // get all the working_hours by conditions (accessed at GET http://localhost:8080/api/users)
          .get(function(req, res) {
            let cond={};
            for(let propt in req.query){
@@ -26,27 +26,27 @@ router.route('/customers')
                cond[propt]={$like:"%"+val+"%"};
              }
            }
-            Customer.findAll({
+            Working_hour.findAll({
              where: cond
-           }).then(function(customers){
-             res.json(customers);
+           }).then(function(working_hours){
+             res.json(working_hours);
            });
 
     });
 
 //users/1  //user
-router.route('/customers/:id')
+router.route('/working_hours/:id')
 // get the user with that id (accessed at GET http://localhost:8080/api/users/:user_id)
     .get(function(req, res) {
         // search for known ids
-         Customer.findById(req.params.id).then(function(customer) {
-          res.json(customer);
+         Working_hour.findById(req.params.id).then(function(working_hour) {
+          res.json(working_hour);
         });
     })
 
 // update the user with this id (accessed at PUT http://localhost:8080/api/users/:user_id)
     .put(function(req, res) {
-        Customer.update(req.body,{where:{id:req.params.id}})
+        Working_hour.update(req.body,{where:{id:req.params.id}})
             .then(function(){
                 res.json({message: "Successfully created"});
             });
@@ -54,7 +54,7 @@ router.route('/customers/:id')
 
 // delete the user with this id (accessed at DELETE http://localhost:8080/api/users/:user_id)
     .delete(function(req, res) {
-      Customer.destroy({
+      Working_hour.destroy({
             where: {
                 id: req.params.id
             }

@@ -1,13 +1,17 @@
 import sequelize from './db.js';
 import Sequelize from 'sequelize';
-let Template =  sequelize.define('templates', {
+let Working_hour =  sequelize.define('working_hours', {
 
 
-  name:{
+  days:{
   type: Sequelize.STRING
   },
 
-  template_folder:{
+  times:{
+  type: Sequelize.STRING
+  },
+
+  customer_id:{
   type: Sequelize.STRING
   }
 
@@ -17,4 +21,4 @@ underscored: true
 
 
 
-export default Template;
+export default Working_hour;

@@ -14,7 +14,7 @@ var id;
 
 function loadDataFromRemote(){
   $.ajax({
-    url: '/api/customers',
+    url: '/api/simple_infos',
     type: "get",
     success: function(data){
       $('#dg').datagrid('loadData',data);
@@ -29,7 +29,7 @@ function searchData() {
   var $form = $("#ff");
   var data = getFormData($form);
   $.ajax({
-    url: '/api/customers',
+    url: '/api/simple_infos',
     type: "get",
     data: data,
     success: function(data){
@@ -39,31 +39,31 @@ function searchData() {
 
 }
 
-function newCustomer(){
-    $('#dlg').dialog('open').dialog('center').dialog('setTitle','New Customer');
+function newSimple_info(){
+    $('#dlg').dialog('open').dialog('center').dialog('setTitle','New Simple_info');
     $('#fm').form('clear');
-  url = '/api/customers';
+  url = '/api/simple_infos';
   method="POST";
     id = 0;
 }
 
-function editCustomer(){
-  console.log("editCustomer");
+function editSimple_info(){
+  console.log("editSimple_info");
   var row = $('#dg').datagrid('getSelected');
   if (row){
-    $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit Customer');
+    $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit Simple_info');
     $('#fm').form('load',row);
-    url = '/update_customer/'+row.id;
+    url = '/update_simple_info/'+row.id;
   }else{
-    $.messager.alert('Info','Please select a customer !');
+    $.messager.alert('Info','Please select a simple_info !');
   }
-  url = '/api/customers';
+  url = '/api/simple_infos';
   method="PUT";
   id=row.id;
 }
 
-function saveCustomer(){
-  console.log("save Customer");
+function saveSimple_info(){
+  console.log("save Simple_info");
   var $form = $("#fm");
   if($form.form('validate')) {
     var data = getFormData($form);
@@ -81,13 +81,13 @@ function saveCustomer(){
     });
   }
 }
-function destroyCustomer(){
+function destroySimple_info(){
   var row = $('#dg').datagrid('getSelected');
   if (row){
-    $.messager.confirm('Confirm','Are you sure you want to destroy this customer?',function(r){
+    $.messager.confirm('Confirm','Are you sure you want to destroy this simple_info?',function(r){
       if (r){
         $.ajax({
-          url: "/api/customers/"+row.id,
+          url: "/api/simple_infos/"+row.id,
                     type: 'DELETE',
                     success: function(){
                       $('#dg').datagrid('reload');
@@ -97,7 +97,7 @@ function destroyCustomer(){
             }
         });
     }else{
-      $.messager.alert('Info','Please select a customer !');
+      $.messager.alert('Info','Please select a simple_info !');
     }
 
 
@@ -109,22 +109,23 @@ $(document).ready(function(){
     singleSelect: true,
     pagination: true,
     columns:[[
-      {field:'name',title:'name'},
+      {field:'address',title:'address'},
 
-      {field:'domain',title:'domain'},
+      {field:'phone_en',title:'phone_en'},
 
-      {field:'template_id',title:'template_id'},
+      {field:'phone_cn',title:'phone_cn'},
 
+      {field:'email',title:'email'}
       ]],
     toolbar: [{
       iconCls: 'icon-add',
-      handler: newCustomer
+      handler: newSimple_info
     },'-',{
       iconCls: 'icon-edit',
-      handler: editCustomer
+      handler: editSimple_info
     },'-',{
       iconCls: 'icon-remove',
-      handler: destroyCustomer
+      handler: destroySimple_info
     }]
   });
   loadDataFromRemote();
