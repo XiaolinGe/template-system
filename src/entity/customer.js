@@ -1,5 +1,6 @@
 import sequelize from './db.js';
 import Sequelize from 'sequelize';
+import Template from './template';
 let Customer =  sequelize.define('customers', {
 
 
@@ -16,8 +17,10 @@ let Customer =  sequelize.define('customers', {
   }
 
 }, {
-underscored: true
+  underscored: true
 });
+
+Customer.belongsTo(Template);
 
 
 

@@ -3,6 +3,10 @@ var router = express.Router();
 import Gallery from '../entity/gallery';
 import Customer from '../entity/customer';
 
+function isEmpty(str) {
+  return (!str || 0 === str.length);
+}
+
 
 router.route('/gallerys')
 // create a user (accessed at POST http://localhost:8080/api/users)

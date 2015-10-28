@@ -130,7 +130,8 @@ $(document).ready(function(){
       field:'customer',
       title:'customer',
       formatter:function(val,row){
-        return row.customer == null ? "":row.customer.name;}
+        return row.customer == null ? "":row.customer.name;
+      }
     }]],
     toolbar: [{
       iconCls: 'icon-add',

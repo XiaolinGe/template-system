@@ -5,7 +5,6 @@ export let action_logger = function (req, res, next) {
     let domain = req.headers.host.replace(/:.*$/,"");
     let url = req.url;
 
-    console.log("ready to log...."+url);
     if(url.indexOf("/api")===-1){
         next();
     }else{
@@ -15,10 +14,8 @@ export let action_logger = function (req, res, next) {
         if(sess.user) {
             let data = {
                 operator:sess.user.name,
-                action:method+" "+url
+                action:method+" "+url.substring(5)
             };
-            console.log("add log...");
-            console.log(data);
             Log.create(data);
         };
         next();

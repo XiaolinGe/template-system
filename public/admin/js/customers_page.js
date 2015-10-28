@@ -108,14 +108,18 @@ $(document).ready(function(){
   $('#dg').datagrid({
     singleSelect: true,
     pagination: true,
-    columns:[[
-      {field:'name',title:'name'},
-
-      {field:'domain',title:'domain'},
-
-      {field:'template_id',title:'template_id'},
-
-      ]],
+    columns:[[{
+        field:'name',
+        title:'name'
+      }, {
+        field:'domain'
+        ,title:'domain'
+      }, {
+        field:'template_id',
+        title:'template_id',
+        formatter:function(val,row){
+          return row.template == null ? "":row.template.name;
+      }}]],
     toolbar: [{
       iconCls: 'icon-add',
       handler: newCustomer

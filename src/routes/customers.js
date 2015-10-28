@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 import Customer from '../entity/customer.js';
-import { mapify } from 'es6-mapify';
+import Template from '../entity/template';
+
 
 function isEmpty(str) {
   return (!str || 0 === str.length);
@@ -27,7 +28,8 @@ router.route('/customers')
              }
            }
             Customer.findAll({
-             where: cond
+              where: cond,
+              include:[Template]
            }).then(function(customers){
              res.json(customers);
            });

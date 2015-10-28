@@ -108,22 +108,16 @@ $(document).ready(function(){
   $('#dg').datagrid({
     singleSelect: true,
     pagination: true,
-    columns:[[
-      {field:'operator',title:'operator'},
-
-      {field:'action',title:'action'},
-
-      ]],
-    toolbar: [{
-      iconCls: 'icon-add',
-      handler: newLog
-    },'-',{
-      iconCls: 'icon-edit',
-      handler: editLog
-    },'-',{
-      iconCls: 'icon-remove',
-      handler: destroyLog
-    }]
+    columns:[[{
+        field:'operator',
+      title:'operator'
+    },{
+      field: 'created_at',
+      title:'operated time'
+    }, {
+      field:'action',
+      title:'action'
+    }]]
   });
   loadDataFromRemote();
 
