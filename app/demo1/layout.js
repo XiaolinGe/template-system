@@ -1,30 +1,9 @@
 import React from "react";
 import { IndexLink } from "react-router";
 import  "./layout.less";
-
-let data =[{"display":"home" ,"link":"/home"},
- {"display":"gallery" ,"link":"/gallery"},
- {"display":"phone" ,"link":"/phone"},
-           {"display":"map" ,"link":"/map"}];
-
+import { connect } from 'react-redux';
 
 export default class Layout extends React.Component {
-
-    constructor(props) {
-        super(props);
-          $.ajax({
-            type: "GET",
-            url: this.props.url,
-            async: false,
-              success : function(data) {
-                this.state = {data: data};
-            }.bind(this)
-        });
-    }
-
-
-
-
 
     getAllElementsWithAttribute(attribute,val){
 
@@ -46,11 +25,11 @@ export default class Layout extends React.Component {
     }
 
     render() {
-
+      let {menus} = this.props;
         return <div className='contain'>
             <div className='nav'>
             <ul>
-            {data.map(({link,display},index) =>
+            {menus.map(({link,display},index) =>
                                  (<li key={index}><IndexLink to={link}>{display}</IndexLink></li>))}
         </ul>
             <div className='clear'></div>
@@ -62,3 +41,9 @@ export default class Layout extends React.Component {
             </div>;
     }
 }
+function mapStateToProps(state) {
+  let [a,b,menus] = state.info;
+  return {menus: menus};
+}
+
+export default connect(mapStateToProps)(Layout);

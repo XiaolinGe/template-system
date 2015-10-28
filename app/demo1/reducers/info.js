@@ -1,18 +1,8 @@
 import { combineReducers } from 'redux';
-const initialState = {
-    "layout":[],
-    "home":{},
-    "gallery":[],
-    "phone":{phone_about:{},
-             phone_time:{
-                 workingHours:[]
-             },
-             phone_contact:{
-               content:{}
-             }
-            },
-    "map":{}
-};
+const initialState = [[{}],
+                      [],
+                      [],
+                      []];
 
 //Reducers receive a action then use data passed by action to change state.
 

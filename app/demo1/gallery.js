@@ -55,6 +55,7 @@ class Gallery extends React.Component {
 
   showGallery() {
     let {gallery} = this.props;
+    console.log(gallery);
 
     options['slides']=gallery;
     if(gallery.length>0){
@@ -115,8 +116,8 @@ class Gallery extends React.Component {
 }
 
 function mapStateToProps(state) {
-  //返回的是component的 property,需要返回一个object()
-  return  {gallery: state.info.gallery}
+  let [_,gallery] = state.info;
+  return  {gallery: gallery}
 }
 
 export default connect(mapStateToProps)(Gallery);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route ,IndexRoute} from 'react-router';
+import { Router, Route, IndexRoute} from 'react-router';
 import { connect } from 'react-redux';
 import createHashHistory from 'history/lib/createHashHistory';
 
@@ -7,47 +7,47 @@ import Home from './home';
 import Gallery from './gallery';
 import Phone from './phone';
 import Map from './map';
-import Layout from './layout';
-import {getInfo} from './actions/index';
+import Layout from './Layout';
+import {getInfo} from './actions';
 
 let history = createHashHistory();
 
-class NoMatch extends React.Component{
-    render(){
-        return(<div>Not Found</div>);
-    }
+class NoMatch extends React.Component {
+  render() {
+    return(<div>Not Found</div>);
+  }
 }
 
+export default class App extends React.Component {
+  constructor() {
+    super();
+  }
+  componentDidMount() {
+    const {dispatch} = this.props;
+    //dispatch 可以触发一个 action,action是一个普通的map
+    // 也可以触发一个action,action是一个function.function 第一个参数是dispatch,第二个参数是state,常用来做异步数据获取。
+    dispatch(getInfo());
 
-class App extends React.Component {
-    constructor() {
-        super();
-    }
-    componentDidMount() {
-        const {dispatch} = this.props;
-      //dispatch 可以触发一个 action,action 可以是一个普通的map，这个map必须有一个value为type的key
-      // 也可以触发一个action,action是一个function.function 第一个参数是dispatch,第二个参数是state,常用来做异步数据获取。
-      dispatch(getInfo(1));
-    }
+  }
 
-    render() {
-        return (
-                <Router history={history}>
-                 <Route path="/" component={Layout}>
-                     <IndexRoute component={Home} />
-                     <Route path="home" component={Home}/>
-                     <Route path="gallery" component={Gallery}/>
-                     <Route path="phone" component={Phone}/>
-                     <Route path="map" component={Map}/>
-                 </Route>
-                  <Route path="*" component={NoMatch}/>
-                </Router>
-
-        );
-    }
+  render() {
+    return (
+      <Router history={history}>
+      <Route path="/" component={Layout}>
+      <IndexRoute component={Home} />
+      <Route path="home" component={Home} />
+      <Route path="gallery" component={Gallery} />
+      <Route path="phone" component={Phone} />
+      <Route path="map" component={Map} />
+      </Route>
+      <Route path="*" component={NoMatch} />
+      </Router>
+    );
+  }
 }
+
 function mapStateToProps(state) {
-    return {};
+  return {};
 }
 
 export default connect(mapStateToProps)(App);

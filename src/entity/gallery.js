@@ -1,5 +1,6 @@
 import sequelize from './db.js';
 import Sequelize from 'sequelize';
+import Customer from './customer';
 let Gallery =  sequelize.define('gallerys', {
 
 
@@ -27,6 +28,6 @@ let Gallery =  sequelize.define('gallerys', {
 underscored: true
 });
 
-
+Gallery.belongsTo(Customer);
 
 export default Gallery;

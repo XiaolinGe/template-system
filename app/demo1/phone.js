@@ -110,7 +110,37 @@ class Phone extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return state.info.phone
+  let [[base_info],gallery,layout,workinghours] = state.info;
+
+  let phone={
+    phone_about:{
+      content: base_info.phone_about_content,
+      hoveredIcon: base_info.phone_about_hoveredIcon,
+      icon: base_info.phone_about_icon,
+      img: base_info.phone_about_img,
+      title: base_info.phone_about_title
+    },
+    phone_contact:{
+      content:{
+        address: base_info.address,
+        phone_en: base_info.phone_en,
+        phone_cn: base_info.phone_cn,
+        email: base_info.email
+      },
+      hoveredIcon: base_info.phone_time_hoveredIcon,
+      icon: base_info.phone_time_icon,
+      img: base_info.phone_time_img,
+      title: base_info.phone_time_title
+    },
+    phone_time:{
+      hoveredIcon: base_info.phone_contact_hoveredIcon,
+      icon: base_info.phone_contact_icon,
+      img: base_info.phone_contact_img,
+      title: base_info.phone_contact_title,
+      workingHours: workinghours
+    }
+  }
+  return phone
 }
 
 export default connect(mapStateToProps)(Phone);

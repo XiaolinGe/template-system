@@ -39,27 +39,33 @@ function searchData() {
 
 }
 
-function newGallery(){
+function newGallery() {
     $('#dlg').dialog('open').dialog('center').dialog('setTitle','New Gallery');
-    $('#fm').form('clear');
+  $('#fm').form('clear');
   url = '/api/gallerys';
+
+
+
   method="POST";
     id = 0;
 }
 
-function editGallery(){
+function editGallery() {
   console.log("editGallery");
   var row = $('#dg').datagrid('getSelected');
-  if (row){
+  if (row) {
     $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit Gallery');
     $('#fm').form('load',row);
     url = '/update_gallery/'+row.id;
+
   }else{
     $.messager.alert('Info','Please select a gallery !');
   }
   url = '/api/gallerys';
   method="PUT";
   id=row.id;
+
+
 }
 
 function saveGallery(){
@@ -118,7 +124,6 @@ $(document).ready(function(){
       {field:'url',title:'url'},
 
       {field:'customer_id',title:'customer_id'},
-
       ]],
     toolbar: [{
       iconCls: 'icon-add',
@@ -132,5 +137,12 @@ $(document).ready(function(){
     }]
   });
   loadDataFromRemote();
+  $('#customer_id').combobox({
+    url:'/api/customers',
+    valueField:'id',
+    textField:'name',
+    method:'GET'
+  });
+
 
 });

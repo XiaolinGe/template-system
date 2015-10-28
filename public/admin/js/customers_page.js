@@ -128,5 +128,11 @@ $(document).ready(function(){
     }]
   });
   loadDataFromRemote();
+  $('#template_id').combobox({
+    url:'/api/templates',
+    valueField:'id',
+    textField:'name',
+    method:'GET'
+  });
 
 });

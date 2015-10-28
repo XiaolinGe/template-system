@@ -129,4 +129,12 @@ $(document).ready(function(){
   });
   loadDataFromRemote();
 
+  $('#customer_id').combobox({
+    url:'/api/customers',
+    valueField:'id',
+    textField:'name',
+    method:'GET'
+  });
+
+
 });

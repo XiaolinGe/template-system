@@ -1,18 +1,9 @@
 import {combineReducers} from 'redux';
 
-const initialState = {
-  "layout":{menus:[]},
-  "home":[],
-  "gallery":[],
-  "phone":{phone_about:{},
-           phone_time:{
-             workingHours:[]
-           },
-           phone_contact:{}
-           },
-  "map":{}
-};
-
+const initialState = [[{}],
+                      [],
+                      [],
+                      []];
 
 export default function info(state = initialState, action) {
   switch (action.type) {

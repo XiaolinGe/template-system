@@ -44,7 +44,7 @@ function newSimple_info(){
     $('#fm').form('clear');
   url = '/api/simple_infos';
   method="POST";
-    id = 0;
+  id = 0;
 }
 
 function editSimple_info(){
@@ -109,13 +109,17 @@ $(document).ready(function(){
     singleSelect: true,
     pagination: true,
     columns:[[
+
       {field:'address',title:'address'},
 
       {field:'phone_en',title:'phone_en'},
 
       {field:'phone_cn',title:'phone_cn'},
 
-      {field:'email',title:'email'}
+      {field:'email',title:'email'},
+
+
+
       ]],
     toolbar: [{
       iconCls: 'icon-add',
