@@ -114,17 +114,24 @@ $(document).ready(function(){
   $('#dg').datagrid({
     singleSelect: true,
     pagination: true,
-    columns:[[
-      {field:'image',title:'image'},
-
-      {field:'thumb',title:'thumb'},
-
-      {field:'title',title:'title'},
-
-      {field:'url',title:'url'},
-
-      {field:'customer_id',title:'customer_id'},
-      ]],
+    columns:[[{
+      field:'image',
+      title:'image'
+    }, {
+      field:'thumb',
+      title:'thumb'
+    }, {
+      field:'title',
+      title:'title'
+    }, {
+      field:'url',
+      title:'url'
+    }, {
+      field:'customer',
+      title:'customer',
+      formatter:function(val,row){
+        return row.customer == null ? "":row.customer.name;}
+    }]],
     toolbar: [{
       iconCls: 'icon-add',
       handler: newGallery

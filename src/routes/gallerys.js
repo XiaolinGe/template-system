@@ -1,11 +1,7 @@
 var express = require('express');
 var router = express.Router();
-import Gallery from '../entity/gallery.js';
-import { mapify } from 'es6-mapify';
-
-function isEmpty(str) {
-  return (!str || 0 === str.length);
-}
+import Gallery from '../entity/gallery';
+import Customer from '../entity/customer';
 
 
 router.route('/gallerys')
@@ -27,7 +23,8 @@ router.route('/gallerys')
              }
            }
             Gallery.findAll({
-             where: cond
+              where: cond,
+              include: [Customer]
            }).then(function(gallerys){
              res.json(gallerys);
            });
