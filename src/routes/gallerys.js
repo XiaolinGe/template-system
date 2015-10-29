@@ -2,17 +2,29 @@ var express = require('express');
 var router = express.Router();
 import Gallery from '../entity/gallery';
 import Customer from '../entity/customer';
+import fs from 'fs';
+import path from "path";
+import  multer from 'multer'
+let  upload = multer({ dest: 'public/uploads/' });
 
 function isEmpty(str) {
   return (!str || 0 === str.length);
 }
 
 
-router.route('/gallerys')
-// create a user (accessed at POST http://localhost:8080/api/users)
-         .post(function(req, res) {
-           console.log("start action method");
-            Gallery.create(req.body)
+router.route('/gallerys').post(upload.single('image'),function(req, res) {
+            //文件上传功能
+  let file = req.file;
+  console.log(file);
+            let {filename,originalname} = file;
+            let web_context = path.resolve(path.join(__dirname, '../../', 'public'));
+            console.log(web_context);
+            fs.renameSync(web_context+'/uploads/'+filename,web_context+'/uploads/'+originalname);
+
+            // 将上传的图片的路径增加到将要保存到对象里面 add prop to obj needed to save
+            let gallery = req.body;
+            gallery.image = originalname;
+            Gallery.create(gallery)
                .then(function(){
                  res.json({message: "Successfully created"});
                });

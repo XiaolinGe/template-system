@@ -116,8 +116,22 @@ class Gallery extends React.Component {
 }
 
 function mapStateToProps(state) {
-  let [_,gallery] = state.info;
-  return  {gallery: gallery}
+  let [[base_info],gallery,menus,workinghours]=state.info;
+
+  function rename(obj,old_key,new_key){
+    obj[new_key]=obj[old_key];
+    delete obj[old_key];
+    return obj;
+  }
+
+  let copy = [];
+
+  gallery.map(({image}) => {copy.push({image:image,
+                                       thumb: image,
+                                       url: image})});
+
+  console.log(copy);
+  return  {gallery: copy}
 }
 
 export default connect(mapStateToProps)(Gallery);
