@@ -31,8 +31,9 @@ function mapStateToProps(state) {
 
   let copy = [];
 
-  gallery.map(({image,thumb}) => {copy.push({original: image,
-                                             thumbnail: thumb})});
+  gallery.map(({image}) => {copy.push({original: image,
+                                       thumbnail: image})});
+
   return  {slides:copy }
 }
 

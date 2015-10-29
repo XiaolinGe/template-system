@@ -8,6 +8,21 @@ function getFormData($form){
 
     return indexed_array;
 }
+
+function getFormDataWithFile($form,file_id){
+  var unindexed_array = $form.serializeArray();
+  console.log(unindexed_array);
+  var oData = new FormData($form);
+  var fileInput = document.getElementById(file_id);
+  var file = fileInput.files[0];
+  oData.append(file_id, file);
+  $.map(unindexed_array, function(n, i){
+    oData.append([n['name']],n['value']);
+  });
+  return oData;
+
+}
+
 var url;
 var method;
 var id;
@@ -40,14 +55,13 @@ function searchData() {
 }
 
 function newGallery() {
-    $('#dlg').dialog('open').dialog('center').dialog('setTitle','New Gallery');
+  $('#dlg').dialog('open').dialog('center').dialog('setTitle','New Gallery');
   $('#fm').form('clear');
+
   url = '/api/gallerys';
-
-
-
   method="POST";
-    id = 0;
+  id = 0;
+
 }
 
 function editGallery() {
@@ -68,23 +82,28 @@ function editGallery() {
 
 }
 
-function saveGallery(){
+
+function saveGallery() {
   console.log("save Gallery");
   var $form = $("#fm");
+  var oData = getFormDataWithFile($form,"image");
   if($form.form('validate')) {
-    var data = getFormData($form);
-    if(id>0){
-      url+="/"+id;
-    }
-    $.ajax({
-      url: url,
-      type: method,
-      data: data,
-      success: function(){
+
+    var oReq = new XMLHttpRequest();
+    oReq.open(method, url, true);
+    oReq.onload = function(oEvent) {
+      if (oReq.status == 200) {
         $('#dlg').dialog('close');        // close the dialog
         loadDataFromRemote();
+      } else {
+        console.log("upload failed");
       }
-    });
+    };
+    console.log(oData);
+    oReq.send(oData)
+
+
+
   }
 }
 function destroyGallery(){
@@ -118,14 +137,8 @@ $(document).ready(function(){
       field:'image',
       title:'image'
     }, {
-      field:'thumb',
-      title:'thumb'
-    }, {
       field:'title',
       title:'title'
-    }, {
-      field:'url',
-      title:'url'
     }, {
       field:'customer',
       title:'customer',
@@ -151,6 +164,4 @@ $(document).ready(function(){
     textField:'name',
     method:'GET'
   });
-
-
 });
