@@ -27,7 +27,13 @@ class Layout extends React.Component {
 
   
   render() {
-    let {menus,contact,introduction,logoimg,name,opentime,src,type}=this.props.data;
+    console.log(this.props);   
+    let {base_info:base_info,menus:menus}=this.props;
+    console.log(menus);
+    let {introduction,address,phone_en,phone_cn,email,logo_img,name,google_map_src,type,opentime}=base_info;
+   
+ 
+    
     return(
       
       <div className="layout">
@@ -45,7 +51,11 @@ class Layout extends React.Component {
       </p>
 
       <p id="contact">
-      {contact}<br/>
+      {address}<br/>
+      {phone_en}<br/>
+      {phone_cn}<br/>
+      {email}<br/>
+     
 
       </p>
 
@@ -65,7 +75,7 @@ class Layout extends React.Component {
 
       </div>
       <iframe width="100%" height="500px" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"
-      src={src}
+      src={google_map_src}
       ></iframe>
       <br/>
       <small></small>
@@ -85,8 +95,9 @@ class Layout extends React.Component {
 }
 
 function mapStateToProps(state) {
+  let [[base_info],gallery,menus] = state.info;
   //返回的是component的 property,需要返回一个object()
-  return  {data: state.info.layout}
+  return {base_info:base_info,menus:menus}
 }
 
 export default connect(mapStateToProps)(Layout);

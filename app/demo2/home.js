@@ -30,10 +30,71 @@ function toggleBounce() {
   }
 }
 
+
+class Map extends React.Component {
+
+  show_map() {
+    let base_info = this.props; 
+    let title_map = base_info.title_map;
+         if(title_map != undefined) {
+          initMap();
+        }
+  }
+  componentDidMount() {
+    this.show_map();
+  }
+  
+  render() {
+    let {title_map} = this.props;
+  return (    
+    <div className="homeinformation" id="homeinformation-1">
+    <h4 className="hometitle">{title_map}</h4>
+    <div id="home-map-canvas"></div>
+    </div>
+  );
+    }
+}
+
+
+class About extends React.Component {
+  render(){
+  let {title_about,phone_about_content} = this.props;
+  return (    
+    <div className="homeinformation" id="homeinformation-2">
+    <h4 className="hometitle">{title_about}</h4>
+    <div id="about">{phone_about_content}</div>
+    </div>
+  );
+    }
+}
+
+
+class Contact extends React.Component {
+  render(){
+    let {title_contact,address,phone_en,phone_cn,email} = this.props;
+    console.log(title_contact);
+    console.log(address);
+    
+  return (    
+    <div className="homeinformation" id="homeinformation-3">
+    <h4 className="hometitle">{title_contact}</h4>
+    <div id="contact">
+    <p> {address} </p>
+    <p> {phone_en}</p>
+    <p> {phone_cn}</p>
+    <p> {email}</p>    
+    </div>
+    </div>
+  );
+    }
+}
+
+
+
 class Home extends React.Component {
 
-
-  show_map(){
+/*
+  show_map() {
     let props = this.props;
     let home = props.home;
     if(home != undefined) {
@@ -51,31 +112,42 @@ class Home extends React.Component {
   //  props.home[0].inforid
 
   }
+  */
 
+  show_map() {
+    let base_info = this.props;
+    let title_map = base_info.title_map;
+    if(title_map != undefined) {
+      initMap();
+    }
+  }
+  componentDidMount() {
+    this.show_map();
+  }
 
   render() {
    // this.show_map();
-    let {home} =  this.props;
-    console.log(home);
-    
+   // let base_info =  this.props;
+    let {title_map,title_contact,address,phone_en,phone_cn,email,title_about,phone_about_content}=this.props;
+   
     return (
     <div className='home'> 
     <div id="homeinformations">
-      {home.map(({id, inforid, title, content}, index) =>{
-        let curId = "homeinformation-"+(++index);
-        return ( <div className="homeinformation" id={curId} key={index}>
-        <h4 className="hometitle">{title}</h4>
-        <div id={inforid}>{content}</div>
-        </div>)}
-    )}
+
+      <Map title_map={title_map}/>
+      <About title_about={title_about} phone_about_content={phone_about_content}/>
+      <Contact title_contact={title_contact} address={address} phone_en={phone_en} phone_cn={phone_cn} email={email}/>
+
     </div>
     </div> );
   }
 };
 
 function mapStateToProps(state) {
+  let [[base_info],gallery,menus,workinghours] = state.info; //[[],[],[]]
+  console.log(base_info);
   //返回的是component的 property,需要返回一个object()
-  return  {home: state.info.home}
+  return  base_info;
 }
 
 export default connect(mapStateToProps)(Home);

@@ -103,8 +103,7 @@ class Phone extends React.Component {
                 <InfoBoxAbout phone_about={phone_about} />
                 <InfoBoxTime  phone_time={phone_time} />
                 <InfoBoxContact phone_contact={phone_contact} />
-             </div>)
-        ;
+             </div>);
     }
 
 }

@@ -144,6 +144,19 @@ class InfoBoxTime extends React.Component {
 
 class InfoBoxContact extends React.Component {
 
+  divStyle(icon) {
+    return {
+      background: `url('${icon}') no-repeat top left`
+    };
+  }
+
+
+  hoveredStyle(hoveredIcon){
+    return {
+      background: `url('${hoveredIcon}') no-repeat top left`
+    };
+  }
+
 
     componentWillMount() {
         this.state = this.state || {};
@@ -168,61 +181,78 @@ class InfoBoxContact extends React.Component {
         this.setState({hovered: false});
     }
 
-    render() {
-      let {phone_contact} = this.props;
-      let icon = phone_contact.icon;
-      let divStyle = {
-        background: `url('${icon}') no-repeat top left`
+  render() {
 
-      };
-      let hoveredIcon = phone_contact.hoveredIcon;
+    let {icon,content,hoveredIcon,img,title} = this.props.phone_contact;
+    let {address,phone_en,phone_cn,email} = content;
 
-      let hoveredStyle = {
-        background: `url('${hoveredIcon}') no-repeat top left`
-      };
+    return (
+      <div className="inforbox" id="information-3">
+      <div ref="img" style={this.state.hovered? this.hoveredStyle(hoveredIcon): this.divStyle(icon)} id="img3">
+      <img src={img} alt="image" width="35%"/>
+      </div>
+      <h4>{title}</h4>
 
+      <div className="content">
+      <p> {address} </p>
+      <p> {phone_en}</p>
+      <p> {phone_cn}</p>
+      <p> {email}</p>
+      </div>
 
-
-      return (
-        <div className="inforbox" id="information-3">
-        <div ref="img" style={this.state.hovered? hoveredStyle:divStyle} id="img3">
-        <img src={phone_contact.img} alt="image" width="35%"/>
-                </div>
-        <h4>{phone_contact.title}</h4>
-
-                <div className="content">
-        {this.props.children}
-        {phone_contact.content}
-                </div>
-
-            </div>
-        );
-    }
+      </div>
+    );
+  }
 }
 
 
 class PhonePage extends React.Component {
 
   render() {
+    let {phone_about,phone_time,phone_contact} = this.props;
 
-    let {phone} = this.props;
-    console.log(phone);
-    let {phone_about,phone_time,phone_contact} = phone;
-    console.log(phone_about);
-
-        return (
-            <div className="infor">
-          <InfoBoxAbout  phone_about={phone.phone_about} > </InfoBoxAbout>
-      <InfoBoxTime phone_time={phone.phone_time}></InfoBoxTime>
-      <InfoBoxContact phone_contact={phone.phone_contact}> </InfoBoxContact>
-            </div>)
-        ;
-    }
+    return (
+      <div className="infor">
+      <InfoBoxAbout  phone_about={phone_about} />
+      <InfoBoxTime phone_time={phone_time} />
+      <InfoBoxContact phone_contact={phone_contact} />
+      </div>);
+  }
 
 }
 
 function mapStateToProps(state) {
-  return {phone: state.info.phone}
+  let [[base_info],gallery,layout,workinghours] = state.info;
+
+  let phone={
+    phone_about:{
+      content: base_info.phone_about_content,
+      hoveredIcon: base_info.phone_about_hoveredIcon,
+      icon: base_info.phone_about_icon,
+      img: base_info.phone_about_img,
+      title: base_info.phone_about_title
+    },
+    phone_contact:{
+      content:{
+        address: base_info.address,
+        phone_en: base_info.phone_en,
+        phone_cn: base_info.phone_cn,
+        email: base_info.email
+      },
+      hoveredIcon: base_info.phone_time_hoveredIcon,
+      icon: base_info.phone_time_icon,
+      img: base_info.phone_time_img,
+      title: base_info.phone_time_title
+    },
+    phone_time:{
+      hoveredIcon: base_info.phone_contact_hoveredIcon,
+      icon: base_info.phone_contact_icon,
+      img: base_info.phone_contact_img,
+      title: base_info.phone_contact_title,
+      workingHours: workinghours
+    }
+  }
+  return phone
 }
 
 export default connect(mapStateToProps)(PhonePage);

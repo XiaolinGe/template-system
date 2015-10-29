@@ -1,4 +1,4 @@
-function getFormData($form){
+function getFormData($form) {
     var unindexed_array = $form.serializeArray();
     var indexed_array = {};
 
@@ -100,11 +100,10 @@ function destroyLog(){
       $.messager.alert('Info','Please select a log !');
     }
 
-
 }
 
 
-$(document).ready(function(){
+$(document).ready(function() {
   $('#dg').datagrid({
     singleSelect: true,
     pagination: true,
