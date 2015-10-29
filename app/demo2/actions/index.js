@@ -27,7 +27,7 @@ function fetch_info(id) {
 //high order function
 export function getInfo(id) {
     return (dispatch, state) => {
-        $.get("/websites/info",function(data){
+        $.get("/website/info",function(data){
             dispatch(receive_info(data));
         });
         dispatch(fetch_info(id));
