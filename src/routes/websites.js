@@ -1,35 +1,23 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-import Customer from '../entity/customer.js';
-router.route('/')
-    .get(function(req, res) {
-        let domain = req.headers.host.replace(/:.*$/,"");
-        console.log(domain);
-        if(domain=="localhost"){
-            req.url="/demo1/index.html";
-        }else if(domain=="127.0.0.1"){
-            req.url="/demo2/index.html";
-        }
-        console.log(req.url);
-        res.sendFile(req.url, { root : path.join(__dirname, '../../public')});
+import Customer from '../entity/customer';
+import Template from '../entity/template';
 
-    });
 
 router.route('/info')
     .get(function(req, res) {
-        let referer =  req.header('Referer');
-
-
         let domain = req.headers.host.replace(/:.*$/,"");
         let url = req.url;
         let cond = {};
-        if(domain=="skysee.co.nz"){ //如果是本站域名,用/后的用户名 skysee.co.nz/cafe
-            cond.name=url.substring(0);
+        if(domain=="skysee.co.nz"||domain=="www.skysee.co.nz"){ //如果是本站域名,用/后的用户名 skysee.co.nz/cafe
+            let referer = req.header("referer");
+            let name = referer.substring(referer.lastIndexOf("/")+1);
+            cond.name=name;
         }else{         //不是本站用域名 leonzhou.xyz
             cond.domain=domain;
         }
-        console.log("referer"+referer);
+        console.log(cond);
         Customer.findOne({
             where: cond
         }).then((e)=>{
@@ -63,54 +51,42 @@ router.route('/info')
 
     });
 
-function create_result(rows, template_id) {
-    if(template_id==1){
-        let [[base_info],gallery,menus,workinghours] = rows;
-        return {
-            gallery: gallery,
-            home: {
-                src:base_info.google_map_src
-            },
-            menus: menus,
-            map: {
-                address: base_info.map_address,
-                destination: base_info.map_destination,
-                start: base_info.map_start
-            },
-            phone:{
-                phone_about:{
-                    content: base_info.phone_about_content,
-                    hoveredIcon: base_info.phone_about_hoveredIcon,
-                    icon: base_info.phone_about_icon,
-                    img: base_info.phone_about_img,
-                    title: base_info.phone_about_title
-                },
-                phone_contact:{
-                    content:{
-                        address: base_info.address,
-                        phone_en: base_info.phone_en,
-                        phone_cn: base_info.phone_cn,
-                        email: base_info.email
-                    },
-                    hoveredIcon: base_info.phone_time_hoveredIcon,
-                    icon: base_info.phone_time_icon,
-                    img: base_info.phone_time_img,
-                    title: base_info.phone_time_title
-                },
-                phone_time:{
-                    hoveredIcon: base_info.phone_contact_hoveredIcon,
-                    icon: base_info.phone_contact_icon,
-                    img: base_info.phone_contact_img,
-                    title: base_info.phone_contact_title,
-                    workingHours: workinghours
-                }
-            }
-        };
-    }else if(template_id==2){
-        return {};
-    }else{
-        return {};
-    }
-}
+
+router.route('/:cust')
+    .get(function(req, res, next) {
+        let domain = req.headers.host.replace(/:.*$/,"");
+        console.log(domain);
+        console.log(req.url);
+        if(domain=="skysee.co.nz"||domain=="www.skysee.co.nz"){ //如果是本站域名,访问官网首页skysee/index.html
+            let customer_name = req.url.substring(1);
+            Customer.findOne({
+                where: {name: customer_name}
+            }).then(function (customer) {
+                console.log(customer);
+                req.url="/demo"+customer.template_id +"/index.html";
+                res.sendFile(req.url, { root : path.join(__dirname, '../../public')});
+            });
+        }
+    });
+
+
+
+router.route('/')
+    .get(function(req, res) {
+        let domain = req.headers.host.replace(/:.*$/,"");
+        if(domain=="skysee.co.nz"||domain=="www.skysee.co.nz"){ //如果是本站域名,访问官网首页skysee/index.html
+            req.url="/skysee/index.html";
+            res.sendFile(req.url, { root : path.join(__dirname, '../../public')});
+        }else{         //不是本站用域名 用/后的名字作为customer的name查找用户模板路径
+           let customer_name = req.url.substring(0);
+            Customer.findOne({
+                where: {domain: domain},include: [Template]
+            }).then(function (customer) {
+                console.log(customer);
+                req.url="/demo"+customer.template_id +"/index.html";
+                res.sendFile(req.url, { root : path.join(__dirname, '../../public')});
+            });
+        }
+    });
 
 module.exports = router;

@@ -7,7 +7,7 @@ import Home from './home';
 import Gallery from './gallery';
 import Phone from './phone';
 import Map from './map';
-import Layout from './Layout';
+import Layout from './layout';
 import {getInfo} from './actions';
 
 let history = createHashHistory();

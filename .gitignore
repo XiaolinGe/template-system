@@ -3,4 +3,4 @@
 .vagrant
 .idea/*
 *.log
-
+public/uploads

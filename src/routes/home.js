@@ -26,16 +26,5 @@ router.route('/logout')
         req.session.user=null;
     });
 
-router.route('/upload')
-    .post(function(req, res) {
-        var fstream;
-        req.pipe(req.busboy);
-        req.busboy.on('file', function (fieldname, file, filename) {
-            console.log("Uploading: " + filename);
-            console.log(file);
-            fs.copySync("/tmp/"+filename, '/tmp/mynewfile');
-            res.send("success");
-        });
-    });
 
 module.exports = router;

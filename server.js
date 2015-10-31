@@ -44,7 +44,7 @@ app.use(session({
   secret: 'keyboard cat'
 }));
 
-//app.use(login_checker);
+app.use(login_checker);
 app.use(action_logger);
 app.use("/",website_routes);
 

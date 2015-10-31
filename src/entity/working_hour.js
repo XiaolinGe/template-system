@@ -1,6 +1,6 @@
 import sequelize from './db.js';
 import Sequelize from 'sequelize';
-import Customer from './Customer';
+import Customer from './customer';
 let Working_hour =  sequelize.define('working_hours', {
 
 

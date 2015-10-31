@@ -66,10 +66,12 @@ function newGallery() {
 
 function editGallery() {
   console.log("editGallery");
-  var row = $('#dg').datagrid('getSelected');
-  if (row) {
+    var row = $('#dg').datagrid('getSelected');
+    console.log(row);
+    if (row) {
+      delete row.image;
     $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit Gallery');
-    $('#fm').form('load',row);
+        $('#fm').form('load',row);
     url = '/update_gallery/'+row.id;
 
   }else{
@@ -88,7 +90,6 @@ function saveGallery() {
   var $form = $("#fm");
   var oData = getFormDataWithFile($form,"image");
   if($form.form('validate')) {
-
     var oReq = new XMLHttpRequest();
     oReq.open(method, url, true);
     oReq.onload = function(oEvent) {
@@ -99,8 +100,7 @@ function saveGallery() {
         console.log("upload failed");
       }
     };
-    console.log(oData);
-    oReq.send(oData)
+    oReq.send(oData);
 
 
 
@@ -134,9 +134,6 @@ $(document).ready(function(){
     singleSelect: true,
     pagination: true,
     columns:[[{
-      field:'image',
-      title:'image'
-    }, {
       field:'title',
       title:'title'
     }, {

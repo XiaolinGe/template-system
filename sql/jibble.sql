@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.26, for osx10.10 (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.44, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: jibble
 -- ------------------------------------------------------
--- Server version	5.6.27
+-- Server version	5.5.44-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -30,7 +30,7 @@ CREATE TABLE `customers` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'Cafe','127.0.0.1',2,'2015-10-15 10:10:48','2015-10-19 20:47:20'),(2,'Reataurant','localhost',1,'2015-10-15 10:14:34','2015-10-15 10:14:34');
+INSERT INTO `customers` VALUES (1,'Restaurant','localhost',1,'2015-10-15 10:14:34','2015-10-30 00:49:27'),(2,'Cafe','127.0.0.1',2,'2015-10-15 10:10:48','2015-10-19 20:47:20'),(3,'212','1',1,'2015-10-30 00:04:50','2015-10-30 00:07:10');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -52,15 +52,13 @@ DROP TABLE IF EXISTS `gallerys`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `gallerys` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `image` varchar(45) NOT NULL,
-  `thumb` varchar(45) NOT NULL,
+  `image` varchar(245) NOT NULL,
   `title` varchar(45) NOT NULL,
-  `url` varchar(45) NOT NULL,
   `customer_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +67,7 @@ CREATE TABLE `gallerys` (
 
 LOCK TABLES `gallerys` WRITE;
 /*!40000 ALTER TABLE `gallerys` DISABLE KEYS */;
-INSERT INTO `gallerys` VALUES (1,'/demo1/images/s1.jpg','/demo1/images/s1.jpg','Dutch Delight','/demo1/images/s1.jpg',1,NULL,NULL),(2,'/demo1/images/s2.jpg','/demo1/images/s2.jpg','Dutch Delight','/demo1/images/s2.jpg',1,NULL,NULL),(3,'/demo1/images/s3.jpg','/demo1/images/s3.jpg','Dutch Delight','/demo1/images/s3.jpg',1,NULL,NULL),(4,'/demo1/images/s4.jpg','/demo1/images/s4.jpg','Dutch Delight','/demo1/images/s4.jpg',1,NULL,NULL),(5,'/demo1/images/s5.jpg','/demo1/images/s5.jpg','Dutch Delight','/demo1/images/s5.jpg',1,NULL,NULL),(6,'/demo1/images/s6.jpg','/demo1/images/s6.jpg','Dutch Delight','/demo1/images/s6.jpg',1,NULL,NULL),(7,'/demo1/images/s7.jpg','/demo1/images/s7.jpg','Dutch Delight','/demo1/images/s7.jpg',1,NULL,NULL),(8,'/demo1/images/s8.jpg','/demo1/images/s8.jpg','Dutch Delight','/demo1/images/s8.jpg',1,NULL,NULL),(9,'/demo1/images/s9.jpg','/demo1/images/s9.jpg','Dutch Delight','/demo1/images/s9.jpg',1,NULL,NULL),(10,'/demo1/images/s10.jpg','/demo1/images/s10.jpg','Dutch Delight','/demo1/images/s10.jpg',1,NULL,NULL),(11,'/demo1/images/s11.jpg','/demo1/images/s11.jpg','Dutch Delight','/demo1/images/s11.jpg',1,NULL,NULL),(12,'/demo1/images/s12.jpg','/demo1/images/s12.jpg','Dutch Delight','/demo1/images/s1.jpg',1,NULL,NULL),(13,'/demo2/images/s1.jpg','/demo2/images/s1.jpg','','',2,NULL,NULL),(14,'/demo2/images/s2.jpg','/demo2/images/s2.jpg','','',2,NULL,NULL),(15,'/demo2/images/s3.jpg','/demo2/images/s3.jpg','','',2,NULL,NULL),(16,'/demo2/images/s4.jpg','/demo2/images/s4.jpg','','',2,NULL,NULL),(17,'/demo2/images/s5.jpg','/demo2/images/s5.jpg','','',2,NULL,NULL),(18,'/demo2/images/s6.jpg','/demo2/images/s6.jpg','','',2,NULL,NULL),(19,'/demo2/images/s7.jpg','/demo2/images/s7.jpg','','',2,NULL,NULL),(20,'/demo2/images/s8.jpg','/demo2/images/s8.jpg','','',2,NULL,NULL),(21,'/demo2/images/s9.jpg','/demo2/images/s9.jpg','','',2,NULL,NULL),(22,'/demo2/images/s10.jpg','/demo2/images/s10.jpg','','',2,NULL,NULL),(23,'/demo2/images/s11.jpg','/demo2/images/s11.jpg','','',2,NULL,NULL),(24,'/demo2/images/s12.jpg','/demo2/images/s12.jpg','','',2,NULL,NULL);
+INSERT INTO `gallerys` VALUES (1,'/demo1/images/s1.jpg','Dutch Delight',1,NULL,NULL),(2,'/demo1/images/s2.jpg','Dutch Delight',1,NULL,NULL),(3,'/demo1/images/s3.jpg','Dutch Delight',1,NULL,NULL),(4,'/demo1/images/s4.jpg','Dutch Delight',1,NULL,NULL),(5,'/demo1/images/s5.jpg','Dutch Delight',1,NULL,NULL),(6,'/demo1/images/s6.jpg','Dutch Delight',1,NULL,NULL),(7,'/demo1/images/s7.jpg','Dutch Delight',1,NULL,NULL),(8,'/demo1/images/s8.jpg','Dutch Delight',1,NULL,NULL),(9,'/demo1/images/s9.jpg','Dutch Delight',1,NULL,NULL),(10,'/demo1/images/s10.jpg','Dutch Delight',1,NULL,NULL),(11,'/demo1/images/s11.jpg','Dutch Delight',1,NULL,NULL),(12,'/demo1/images/s12.jpg','Dutch Delight',1,NULL,NULL),(13,'/demo2/images/s1.jpg','',2,NULL,NULL),(14,'/demo2/images/s2.jpg','',2,NULL,NULL),(15,'/demo2/images/s3.jpg','',2,NULL,NULL),(16,'/demo2/images/s4.jpg','',2,NULL,NULL),(17,'/demo2/images/s5.jpg','',2,NULL,NULL),(18,'/demo2/images/s6.jpg','',2,NULL,NULL),(19,'/demo2/images/s7.jpg','',2,NULL,NULL),(20,'/demo2/images/s8.jpg','',2,NULL,NULL),(21,'/demo2/images/s9.jpg','',2,NULL,NULL),(22,'/demo2/images/s10.jpg','',2,NULL,NULL),(44,'/Restaurant/images/risk-register-template-g6xfw7oa.jpg','222',1,'2015-10-30 00:54:31','2015-10-30 00:54:31'),(45,'/Restaurant/images/选区_013.png','new',1,'2015-10-30 00:55:43','2015-10-30 00:55:43');
 /*!40000 ALTER TABLE `gallerys` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +85,7 @@ CREATE TABLE `logs` (
   `action` varchar(45) DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +94,6 @@ CREATE TABLE `logs` (
 
 LOCK TABLES `logs` WRITE;
 /*!40000 ALTER TABLE `logs` DISABLE KEYS */;
-INSERT INTO `logs` VALUES (2,'staff','2015-10-27 11:34:03','GET /api/customers','2015-10-27 11:30:30'),(3,'staff','2015-10-27 11:34:04','GET /api/simple_infos','2015-10-27 11:34:04'),(4,'staff','2015-10-27 11:34:33','GET /api/logs','2015-10-27 11:34:33'),(5,'staff','2015-10-27 11:39:38','GET /api/gallerys','2015-10-27 11:39:38'),(6,'staff','2015-10-27 11:40:08','GET /api/users','2015-10-27 11:40:08'),(7,'staff','2015-10-27 11:40:13','GET /api/customers','2015-10-27 11:40:13'),(8,'staff','2015-10-27 11:40:49','GET /api/templates','2015-10-27 11:40:49'),(9,'staff','2015-10-27 11:41:22','GET /api/working_hours','2015-10-27 11:41:22');
 /*!40000 ALTER TABLE `logs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -180,6 +177,7 @@ CREATE TABLE `simple_infos` (
   `address` varchar(45) NOT NULL,
   `phone_en` varchar(45) NOT NULL,
   `phone_cn` varchar(45) NOT NULL,
+  `opentime` int(11) DEFAULT NULL,
   `email` varchar(45) NOT NULL,
   `map_address` varchar(45) NOT NULL,
   `map_destination` varchar(45) NOT NULL,
@@ -191,10 +189,11 @@ CREATE TABLE `simple_infos` (
   `title_map` varchar(45) NOT NULL,
   `title_gallery` varchar(45) NOT NULL,
   `title_about` varchar(45) NOT NULL,
+  `title_contact` varchar(45) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,7 +202,7 @@ CREATE TABLE `simple_infos` (
 
 LOCK TABLES `simple_infos` WRITE;
 /*!40000 ALTER TABLE `simple_infos` DISABLE KEYS */;
-INSERT INTO `simple_infos` VALUES (1,'https://www.google.com/maps/embed?pb=!1m0!3m2!1sen!2sus!4v1436170635521!6m8!1m7!1sEmPx53PkIOUAAAQqmWhsgw!2m2!1d-36.81214!2d174.726475!3f60.649238235862214!4f-16.318097902715365!5f0.7820865974627469','The only Dutch restaurant in New Zealand. It\\u2019s a place where the the Dutch feel at home, and where the Kiwis can explore the delicacies of the low lands. Try our pancakes, poffertjes or a broodje frikandel. Or pick your favourite Dutch Cheese to take home. Choose your restaurant by clicking on the tiles above.','/demo1/images/icon1.jpg','/demo1/images/icon1-bw.jpg','/demo1/images/hexagon.png','ABOUT','/demo1/images/icon2.jpg','/demo1/images/icon2-bw.jpg','/demo1/images/hexagon.png','TIME','/demo1/images/icon3.jpg','/demo1/images/icon3-bw.jpg','/demo1/images/hexagon.png','CONTACT','3-5 Birkenhead ave, Birkenhead, Auckland,','Phone (English): 09 418 1390,','Phone (中文): 021 022 00379,','Email: info@jibble.co.nz','3-5 Birkenhead ave, Birkenhead, Auckland','To Dutch Delight:','3-5 Birkenhead ave, Birkenhead, Auckland','Dutch Delight','Restaurant or Porterhouse','','','','','',NULL,NULL),(2,'https://www.google.com/maps/embed?pb=!1m0!3m2!1sen!2snz!4v1436170131780!6m8!1m7!1sHgRaNXxF_McAAAAGOiCg5g!2m2!1d-36.900635!2d174.742684!3f250.1897867357879!4f-17.25214675495522!5f0.7820865974627469','The only Dutch restaurant in New Zealand. It\\','/demo2/images/icon1.jpg','/demo2/images/icon1-bw.jpg','/demo2/images/hexagon.png','ABOUT','/demo2/images/icon2.jpg','/demo2/images/icon2-bw.jpg','/demo2/images/hexagon.png','TIME','/demo2/images/icon3.jpg','/demo2/images/icon3-bw.jpg','/demo2/images/hexagon.png','CONTACT','919 Dominion Road, Mt Roskill, Auckland,','Phone (English): 09 5507775,','Phone (中文): 09 5507775,','Email: info@jibble.co.nz','919 Dominion Road, Mt Roskill, Auckland','To J\'s Tea:','919 Dominion Road, Mt Roskill, Auckland','J\'s Tea','Restaurant or Porterhouse','','','','','',NULL,NULL);
+INSERT INTO `simple_infos` VALUES (1,'https://www.google.com/maps/embed?pb=!1m0!3m2!1sen!2sus!4v1436170635521!6m8!1m7!1sEmPx53PkIOUAAAQqmWhsgw!2m2!1d-36.81214!2d174.726475!3f60.649238235862214!4f-16.318097902715365!5f0.7820865974627469','The only Dutch restaurant in New Zealand. It’s a place where the the Dutch feel at home, and where the Kiwis can explore the delicacies of the low lands. Try our pancakes, poffertjes or a broodje frikandel. Or pick your favourite Dutch Cheese to take home. Choose your restaurant by clicking on the tiles above.','/demo1/images/icon1.jpg','/demo1/images/icon1-bw.jpg','/demo1/images/hexagon.png','ABOUT','/demo1/images/icon2.jpg','/demo1/images/icon2-bw.jpg','/demo1/images/hexagon.png','TIME','/demo1/images/icon3.jpg','/demo1/images/icon3-bw.jpg','/demo1/images/hexagon.png','CONTACT','3-5 Birkenhead ave, Birkenhead, Auckland,','Phone (English): 09 418 1390,','Phone (中文): 021 022 00379,',NULL,'Email: info@jibble.co.nz','3-5 Birkenhead ave, Birkenhead, Auckland','To Dutch Delight:','3-5 Birkenhead ave, Birkenhead, Auckland','Dutch Delight','Restaurant or Porterhouse','this is a restaurant','','map','gallery','about','contact',NULL,NULL),(2,'https://www.google.com/maps/embed?pb=!1m0!3m2!1sen!2snz!4v1436170131780!6m8!1m7!1sHgRaNXxF_McAAAAGOiCg5g!2m2!1d-36.900635!2d174.742684!3f250.1897867357879!4f-17.25214675495522!5f0.7820865974627469','The only Dutch restaurant in New Zealand. It’s a place where the the Dutch feel at home, and where the Kiwis can explore the delicacies of the low lands. Try our pancakes, poffertjes or a broodje frikandel. Or pick your favourite Dutch Cheese to take home. Choose your restaurant by clicking on the tiles above.','/demo2/images/icon1.jpg','/demo2/images/icon1-bw.jpg','/demo2/images/hexagon.png','ABOUT','/demo2/images/icon2.jpg','/demo2/images/icon2-bw.jpg','/demo2/images/hexagon.png','TIME','/demo2/images/icon3.jpg','/demo2/images/icon3-bw.jpg','/demo2/images/hexagon.png','CONTACT','919 Dominion Road, Mt Roskill, Auckland,','Phone (English): 09 5507775,','Phone (中文): 09 5507775,',NULL,'Email: info@jibble.co.nz','919 Dominion Road, Mt Roskill, Auckland','To J\'s Tea:','919 Dominion Road, Mt Roskill, Auckland','J\'s Tea','Restaurant or Porterhouse','this is a restaurant','','map','gallery','about','contact',NULL,NULL);
 /*!40000 ALTER TABLE `simple_infos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -230,7 +229,7 @@ CREATE TABLE `templates` (
 
 LOCK TABLES `templates` WRITE;
 /*!40000 ALTER TABLE `templates` DISABLE KEYS */;
-INSERT INTO `templates` VALUES (1,'Demo1','2015-10-15 10:10:48','2015-10-15 10:10:48','Demo1'),(2,'Demo2','2015-10-15 10:10:48','2015-10-15 10:10:48','Demo2');
+INSERT INTO `templates` VALUES (1,'Gallery','2015-10-15 10:10:48','2015-10-15 10:10:48','Demo1'),(2,'GoogelPlusStyle','2015-10-15 10:10:48','2015-10-15 10:10:48','Demo2');
 /*!40000 ALTER TABLE `templates` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -249,7 +248,7 @@ CREATE TABLE `users` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -299,4 +298,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-28 13:03:51
+-- Dump completed on 2015-11-01 10:35:29
