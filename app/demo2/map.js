@@ -2,7 +2,6 @@ import React from "react";
 import Layout from "./Layout";
 import $ from "jquery";
 import styles from "./map.less";
-
 import { connect} from 'react-redux';
 
 var map;
@@ -103,7 +102,7 @@ function toggleBounce() {
 }
 
 
-export default class MapPage extends React.Component {
+class Map extends React.Component {
 
   constructor(props) {
     super(props);
@@ -114,14 +113,14 @@ export default class MapPage extends React.Component {
   }
 
   render() {
-    let {destination,address} = this.props;
+    let {name,address} = this.props;
     return  <div  id="address">
     <div id="map-canvas"/>
     <div id="frmholder">
     <div id="map-form">
     <span className="address-lable">From:</span>
     <input type="search" size="25" id="end" placeholder="Enter your address here"/>
-    <span className="address-lable">{destination}</span>
+    <span className="address-lable">To {name}:</span>
     <span id="toaddress">{address}</span>
 
     <span id="panel2">
@@ -140,8 +139,13 @@ export default class MapPage extends React.Component {
     </div>;
   }
 }
+
+
+
 function mapStateToProps(state) {
+  let [[base_info]] =  state.info;//[[],[],[]]
   //返回的是component的 property,需要返回一个object()
-  return  {map: state.info.map}
+  return base_info;
 }
-export default connect(mapStateToProps)(MapPage);
+
+export default connect(mapStateToProps)(Map);

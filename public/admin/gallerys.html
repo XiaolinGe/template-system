@@ -39,20 +39,23 @@
 
     <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
       closed="true" buttons="#dlg-buttons">
-      <div class="ftitle">User Information</div>
       <form id="fm" method="post"  enctype="multipart/form-data">
-        <div class="fitem">
-          <label>title:</label>
-          <input name="title" class="easyui-textbox">
-        </div>
-        <div class="fitem">
-          <label>image:</label>
-          <input id="image" name="image"  type="file"/>
-        </div>
-        <div class="fitem">
-          <label>customer_id:</label>
-          <input id="customer_id" class="easyui-combobox" name="customer_id">
-        </div>
+        <table>
+          <tbody>
+            <tr>
+              <td>title:</td>
+              <td><input name="title" class="easyui-textbox"  style="width:200px" /></td>
+            </tr>
+            <tr>
+              <td>customer:</td>
+              <td> <input id="customer_id" class="easyui-combobox" name="customer_id" style="width:200px"/></td>
+            </tr>
+            <tr>
+              <td>image:</td>
+              <td> <input id="image" name="image" type="file"  style="width:200px"/></td>
+            </tr>
+          </tbody>
+        </table>
       </form>
     </div>
     <div id="dlg-buttons">

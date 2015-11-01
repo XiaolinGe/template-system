@@ -3,59 +3,59 @@ import Sequelize from 'sequelize';
 let Simple_info =  sequelize.define('simple_infos', {
 
 
-  google_map_src:{
+  google_src:{
   type: Sequelize.STRING
   },
 
-  phone_about_content:{
+ introduction:{
   type: Sequelize.STRING
   },
 
-  phone_about_hoveredIcon:{
+  about_hoveredIcon:{
   type: Sequelize.STRING
   },
 
-  phone_about_icon:{
+  about_icon:{
   type: Sequelize.STRING
   },
 
-  phone_about_img:{
+  about_img:{
   type: Sequelize.STRING
   },
 
-  phone_about_title:{
+  about_title:{
   type: Sequelize.STRING
   },
 
-  phone_time_hoveredIcon:{
+  time_hoveredIcon:{
   type: Sequelize.STRING
   },
 
-  phone_time_icon:{
+  time_icon:{
   type: Sequelize.STRING
   },
 
-  phone_time_img:{
+  time_img:{
   type: Sequelize.STRING
   },
 
-  phone_time_title:{
+  time_title:{
   type: Sequelize.STRING
   },
 
-  phone_contact_hoveredIcon:{
+  contact_hoveredIcon:{
   type: Sequelize.STRING
   },
 
-  phone_contact_icon:{
+  contact_icon:{
   type: Sequelize.STRING
   },
 
-  phone_contact_img:{
+  contact_img:{
   type: Sequelize.STRING
   },
 
-  phone_contact_title:{
+  contact_title:{
   type: Sequelize.STRING
   },
 
@@ -95,11 +95,11 @@ let Simple_info =  sequelize.define('simple_infos', {
   type: Sequelize.STRING
   },
 
-  introduction:{
+  summary:{
   type: Sequelize.STRING
   },
 
-  logo_img:{
+  logo:{
   type: Sequelize.STRING
   },
 
@@ -113,6 +113,10 @@ let Simple_info =  sequelize.define('simple_infos', {
 
   title_about:{
   type: Sequelize.STRING
+  },
+
+  title_contact:{
+    type: Sequelize.STRING
   }
 
 }, {

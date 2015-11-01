@@ -25,14 +25,15 @@ router.route('/gallerys')
         let web_context = path.resolve(path.join(__dirname, '../../', 'public'));
         Customer.findOne({where:{id:customer_id}})
             .then(function (cust) {
-                let image = "/"+cust.name+"/images/"+originalname;
-                let desc = web_context + image;
-                fs.renameSync(web_context+'/uploads/'+filename, desc);
-                // 将上传的图片的路径增加到将要保存到对象里面 add prop to obj needed to save
-                gallery.image = image;
-                Gallery.create(gallery)
-                    .then(function(){
-                        res.json({message: "Successfully created"});
+              let image = "/"+cust.name+"/images/"+originalname;
+              let desc = web_context + image;
+              console.log(desc);
+              fs.renameSync(web_context+'/uploads/'+filename, desc);
+              // 将上传的图片的路径增加到将要保存到对象里面 add prop to obj needed to save
+              gallery.image = image;
+              Gallery.create(gallery)
+                     .then(function(){
+                       res.json({message: "Successfully created"});
                     });
             });
     }).get(function(req, res) {

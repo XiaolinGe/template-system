@@ -10,12 +10,12 @@ class Home extends React.Component {
         super(props);
     }
     render() {
-      let {google_map_src} =  this.props;
+      let {google_src} =  this.props;
 	return (
 	        <div className='home'>
                 <iframe width="100%" height="100%" frameBorder="0" scrolling="no"
                         marginHeight="0" marginWidth="0"
-                	    src={google_map_src}></iframe>
+                	    src={google_src}></iframe>
 	        </div>
 	);
     }

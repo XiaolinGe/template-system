@@ -58,11 +58,11 @@ class Map extends React.Component {
 
 class About extends React.Component {
   render(){
-  let {title_about,phone_about_content} = this.props;
+  let {title_about,introduction} = this.props;
   return (    
     <div className="homeinformation" id="homeinformation-2">
     <h4 className="hometitle">{title_about}</h4>
-    <div id="about">{phone_about_content}</div>
+    <div id="about">{introduction}</div>
     </div>
   );
     }
@@ -128,14 +128,14 @@ class Home extends React.Component {
   render() {
    // this.show_map();
    // let base_info =  this.props;
-    let {title_map,title_contact,address,phone_en,phone_cn,email,title_about,phone_about_content}=this.props;
+    let {title_map,title_contact,address,phone_en,phone_cn,email,title_about,introduction}=this.props;
    
     return (
     <div className='home'> 
     <div id="homeinformations">
 
       <Map title_map={title_map}/>
-      <About title_about={title_about} phone_about_content={phone_about_content}/>
+      <About title_about={title_about} introduction={introduction}/>
       <Contact title_contact={title_contact} address={address} phone_en={phone_en} phone_cn={phone_cn} email={email}/>
 
     </div>

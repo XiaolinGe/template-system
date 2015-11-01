@@ -206,7 +206,7 @@ class InfoBoxContact extends React.Component {
 }
 
 
-class PhonePage extends React.Component {
+class Phone extends React.Component {
 
   render() {
     let {phone_about,phone_time,phone_contact} = this.props;
@@ -226,11 +226,11 @@ function mapStateToProps(state) {
 
   let phone={
     phone_about:{
-      content: base_info.phone_about_content,
-      hoveredIcon: base_info.phone_about_hoveredIcon,
-      icon: base_info.phone_about_icon,
-      img: base_info.phone_about_img,
-      title: base_info.phone_about_title
+      content: base_info.introduction,
+      hoveredIcon: base_info.about_hoveredIcon,
+      icon: base_info.about_icon,
+      img: base_info.about_img,
+      title: base_info.about_title
     },
     phone_contact:{
       content:{
@@ -239,20 +239,20 @@ function mapStateToProps(state) {
         phone_cn: base_info.phone_cn,
         email: base_info.email
       },
-      hoveredIcon: base_info.phone_time_hoveredIcon,
-      icon: base_info.phone_time_icon,
-      img: base_info.phone_time_img,
-      title: base_info.phone_time_title
+      hoveredIcon: base_info.time_hoveredIcon,
+      icon: base_info.time_icon,
+      img: base_info.time_img,
+      title: base_info.time_title
     },
     phone_time:{
-      hoveredIcon: base_info.phone_contact_hoveredIcon,
-      icon: base_info.phone_contact_icon,
-      img: base_info.phone_contact_img,
-      title: base_info.phone_contact_title,
+      hoveredIcon: base_info.contact_hoveredIcon,
+      icon: base_info.contact_icon,
+      img: base_info.contact_img,
+      title: base_info.contact_title,
       workingHours: workinghours
     }
   }
   return phone
 }
 
-export default connect(mapStateToProps)(PhonePage);
+export default connect(mapStateToProps)(Phone);

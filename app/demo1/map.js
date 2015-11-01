@@ -1,6 +1,7 @@
 import React from "react";
 import $ from "jquery";
 import styles from "./map.less";
+import { connect } from 'react-redux';
 
 
         var map;
@@ -132,7 +133,7 @@ import styles from "./map.less";
 
 
 
-export default class MapPage extends React.Component {
+class Map extends React.Component {
 
     constructor() {
         super();
@@ -154,9 +155,10 @@ export default class MapPage extends React.Component {
         }
     }
 
-    render() {
-        return(
+  render() {
+    let {name,address} =  this.props;
 
+        return(
             <div  id="address">
 
             <div id="map-canvas"></div>
@@ -164,8 +166,8 @@ export default class MapPage extends React.Component {
             <div id="map-form">
             <span className="address-lable">From:</span>
             <input type="search" size="25" id="end" placeholder="Enter your address here"/>
-            <span className="address-lable">To Dutch Delight:</span>
-            <span id="toaddress">3-5 Birkenhead ave, Birkenhead, Auckland</span>
+            <span className="address-lable">To {name}:</span>
+            <span id="toaddress">{address}</span>
 
             <span id="panel2">
 
@@ -180,8 +182,16 @@ export default class MapPage extends React.Component {
             </div>
             </div>
 
-                </div>)
-
-        ;
+          </div>
+        );
     }
 }
+
+
+function mapStateToProps(state) {
+  let [[base_info]] =  state.info;//[[],[],[]]
+  //返回的是component的 property,需要返回一个object()
+  return base_info;
+}
+
+export default connect(mapStateToProps)(Map);

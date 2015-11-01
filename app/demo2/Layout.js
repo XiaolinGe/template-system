@@ -30,7 +30,7 @@ class Layout extends React.Component {
     console.log(this.props);   
     let {base_info:base_info,menus:menus}=this.props;
     console.log(menus);
-    let {introduction,address,phone_en,phone_cn,email,logo_img,name,google_map_src,type,opentime}=base_info;
+    let {summary,address,phone_en,phone_cn,email,logo,name,google_src,type,opentime}=base_info;
    
  
     
@@ -47,7 +47,7 @@ class Layout extends React.Component {
       <div id="logo-img">
       </div>
       <p id="name">
-      {introduction}
+      {summary}
       </p>
 
       <p id="contact">
@@ -75,7 +75,7 @@ class Layout extends React.Component {
 
       </div>
       <iframe width="100%" height="500px" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0"
-      src={google_map_src}
+      src={google_src}
       ></iframe>
       <br/>
       <small></small>

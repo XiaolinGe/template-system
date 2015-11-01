@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="http://www.jeasyui.com/easyui/demo/demo.css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
     <script type="text/javascript" src="http://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
-    <link   rel="stylesheet/less" type="text/css" href="./commen.less" />
+    <link rel="stylesheet/less" type="text/css" href="./commen.less" />
     <script type="text/javascript" src="/admin/js/simple_infos_page.js"></script>
   </head>
   <body>
@@ -19,7 +19,7 @@
 
             <tr>
               <td>address:</td>
-              <td><input class="easyui-textbox" type="text" name="address" ></input></td>
+              <td><input class="easyui-textbox" type="text" name="address"></input></td>
               <td>phone_en:</td>
               <td><input class="easyui-textbox" type="text" name="phone_en" ></input></td>
               <td>phone_cn:</td>
@@ -42,122 +42,131 @@
     </table>
     </div>
 
-    <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+    <div id="dlg" class="easyui-dialog" style="width:700px;height:700px;padding:10px 20px"
       closed="true" buttons="#dlg-buttons">
-      <div class="ftitle">User Information</div>
       <form id="fm" method="post">
-          <div class="fitem">
-            <label>google_map_src:</label>
-            <input name="google_map_src" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>phone_about_content:</label>
-            <input name="phone_about_content" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>phone_about_hoveredIcon:</label>
-            <input name="phone_about_hoveredIcon" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>phone_about_icon:</label>
-            <input name="phone_about_icon" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>phone_about_img:</label>
-            <input name="phone_about_img" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>phone_about_title:</label>
-            <input name="phone_about_title" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>phone_time_hoveredIcon:</label>
-            <input name="phone_time_hoveredIcon" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>phone_time_icon:</label>
-            <input name="phone_time_icon" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>phone_time_img:</label>
-            <input name="phone_time_img" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>phone_time_title:</label>
-            <input name="phone_time_title" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>phone_contact_hoveredIcon:</label>
-            <input name="phone_contact_hoveredIcon" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>phone_contact_icon:</label>
-            <input name="phone_contact_icon" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>phone_contact_img:</label>
-            <input name="phone_contact_img" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>phone_contact_title:</label>
-            <input name="phone_contact_title" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>address:</label>
-            <input name="address" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>phone_en:</label>
-            <input name="phone_en" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>phone_cn:</label>
-            <input name="phone_cn" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>email:</label>
-            <input name="email" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>map_address:</label>
-            <input name="map_address" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>map_destination:</label>
-            <input name="map_destination" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>map_start:</label>
-            <input name="map_start" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>name:</label>
-            <input name="name" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>type:</label>
-            <input name="type" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>introduction:</label>
-            <input name="introduction" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>logo_img:</label>
-            <input name="logo_img" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>title_map:</label>
-            <input name="title_map" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>title_gallery:</label>
-            <input name="title_gallery" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>title_about:</label>
-            <input name="title_about" class="easyui-textbox">
-          </div>
+        <table>
+          <tbody>
+
+            <tr class="fitem">
+              <td><label>summary:</label></td>
+              <td colSpan="3"><input name="summary" class="easyui-textbox"   style="width:520px"></td>
+            </tr>
+
+            <tr class="fitem">
+              <td><label>introduction:</label></td>
+              <td colSpan="3"><input name="introduction" class="easyui-textbox"   style="width:520px"  data-options="multiline:true"></td>
+            </tr>
+
+            <tr class="fitem">
+              <td><label>google_src:</label></td>
+              <td colSpan="3" ><input name="google_src" class="easyui-textbox"   style="width:520px"></td>
+            </tr>
+
+            <tr class="fitem">
+              <td><label>name:</label></td>
+              <td style="width:230px"><input name="name" class="easyui-textbox"   style="width:200px"></td>
+              <td ><label>type:</label></td>
+              <td style="width:230px"><input name="type" class="easyui-textbox"   style="width:200px;"></td>
+            </tr>
+
+            <tr class="fitem">
+              <td><label>address:</label></td>
+              <td style="width:230px"><input name="address" class="easyui-textbox"   style="width:200px"></td>
+              <td ><label>email:</label></td>
+              <td style="width:230px"><input name="email" class="easyui-textbox"   style="width:200px;"></td>
+            </tr>
+
+            <tr class="fitem">
+              <td><label>phone_en:</label></td>
+              <td style="width:230px"><input name="phone_en" class="easyui-textbox"   style="width:200px"></td>
+              <td ><label>phone_cn:</label></td>
+              <td style="width:230px"><input name="phone_cn" class="easyui-textbox"   style="width:200px;"></td>
+            </tr>
+
+
+
+            <tr class="fitem">
+              <td><label>map_address:</label></td>
+              <td style="width:230px"><input name="map_address" class="easyui-textbox"   style="width:200px"></td>
+              <td ><label>logo:</label></td>
+              <td style="width:230px"><input name="logo"  id="logo"  type="file"  style="width:200px;"></td>
+            </tr>
+
+
+            <tr class="fitem">
+              <td><label>title_map:</label></td>
+              <td style="width:230px"><input name="title_map" class="easyui-textbox"   style="width:200px"></td>
+              <td ><label>title_gallery:</label></td>
+              <td style="width:230px"><input name="title_gallery" class="easyui-textbox"   style="width:200px;"></td>
+            </tr>
+
+            <tr class="fitem">
+              <td><label>title_about:</label></td>
+              <td style="width:230px"><input name="title_about" class="easyui-textbox"   style="width:200px"></td>
+              <td ><label>title_contact:</label></td>
+              <td style="width:230px"><input name="title_contact" class="easyui-textbox"   style="width:200px;"></td>
+            </tr>
+
+
+
+
+            <tr>
+              <td colSpan="4"><lable class="lable" style="font-size:17px; text-transform:uppercase; line-height:40px;">about</lable></td>
+            </tr>
+
+            <tr class="fitem">
+              <td><label>title:</label></td>
+              <td style="width:230px"><input name="about_title" class="easyui-textbox"   style="width:200px"></td>
+              <td ><label>image:</label></td>
+              <td style="width:230px"><input name="about_img"  id="about_img"  type="file" style="width:200px;"></td>
+            </tr>
+            <tr class="fitem">
+              <td><label>icon:</label></td>
+              <td style="width:230px"><input name="about_icon"  id="about_icon"  type="file"  style="width:200px"></td>
+              <td ><label>hoveredIcon:</label></td>
+              <td style="width:230px"><input name="about_hoveredIcon"  id="about_hoveredIcon"  type="file"  style="width:200px;"></td>
+            </tr>
+
+            <tr>
+              <td colSpan="4"><lable class="lable" style="font-size:17px; text-transform:uppercase; line-height:40px;">workinghours</lable></td>
+            </tr>
+
+
+            <tr class="fitem">
+              <td><label>title:</label></td>
+              <td style="width:230px"><input name=time_title" class="easyui-textbox"   style="width:200px"></td>
+              <td ><label>image:</label></td>
+              <td style="width:230px"><input name="time_img"  id="time_img"  type="file"  style="width:200px;"></td>
+            </tr>
+            <tr class="fitem">
+              <td><label>icon:</label></td>
+              <td style="width:230px"><input name="time_icon"  id="time_icon"  type="file"  style="width:200px"></td>
+              <td ><label>hoveredIcon:</label></td>
+              <td style="width:230px"><input name="time_hoveredIcon" id="time_hoveredIcon"  type="file" style="width:200px;"></td>
+            </tr>
+
+            <tr>
+              <td colSpan="4"><lable class="lable" style="font-size:17px; text-transform:uppercase; line-height:40px;">contact</lable></td>
+            </tr>
+
+
+            <tr class="fitem">
+              <td><label>title:</label></td>
+              <td style="width:230px"><input name="contact_title" class="easyui-textbox" style="width:200px"></td>
+              <td ><label>image:</label></td>
+              <td style="width:230px"><input name="contact_img"  id="contact_img"  type="file" style="width:200px;"></td>
+            </tr>
+            <tr class="fitem">
+              <td><label>icon:</label></td>
+              <td style="width:230px"><input name="contact_icon"  id="contact_icon"  type="file" style="width:200px"></td>
+              <td ><label>hoveredIcon:</label></td>
+              <td style="width:230px"><input name="contact_hoveredIcon"  id="contact_hoveredIcon"  type="file"  style="width:200px;"></td>
+            </tr>
+
+          </tbody>
+        </table>
+
       </form>
     </div>
     <div id="dlg-buttons">

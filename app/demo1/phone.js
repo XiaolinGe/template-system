@@ -8,6 +8,7 @@ class InfoBoxAbout extends HoveredComponent {
 
 
   render() {
+  //  let {introduction} = this.props.base_info;
     let {icon,hoveredIcon,img,title,content} = this.props.phone_about;
     let style = this.style(icon,hoveredIcon);
 
@@ -113,11 +114,11 @@ function mapStateToProps(state) {
 
   let phone={
     phone_about:{
-      content: base_info.phone_about_content,
-      hoveredIcon: base_info.phone_about_hoveredIcon,
-      icon: base_info.phone_about_icon,
-      img: base_info.phone_about_img,
-      title: base_info.phone_about_title
+      content: base_info.introduction,
+      hoveredIcon: base_info.about_hoveredIcon,
+      icon: base_info.about_icon,
+      img: base_info.about_img,
+      title: base_info.about_title
     },
     phone_contact:{
       content:{
@@ -126,16 +127,16 @@ function mapStateToProps(state) {
         phone_cn: base_info.phone_cn,
         email: base_info.email
       },
-      hoveredIcon: base_info.phone_time_hoveredIcon,
-      icon: base_info.phone_time_icon,
-      img: base_info.phone_time_img,
-      title: base_info.phone_time_title
+      hoveredIcon: base_info.time_hoveredIcon,
+      icon: base_info.time_icon,
+      img: base_info.time_img,
+      title: base_info.time_title
     },
     phone_time:{
-      hoveredIcon: base_info.phone_contact_hoveredIcon,
-      icon: base_info.phone_contact_icon,
-      img: base_info.phone_contact_img,
-      title: base_info.phone_contact_title,
+      hoveredIcon: base_info.contact_hoveredIcon,
+      icon: base_info.contact_icon,
+      img: base_info.contact_img,
+      title: base_info.contact_title,
       workingHours: workinghours
     }
   }
