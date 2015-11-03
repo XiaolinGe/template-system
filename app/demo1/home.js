@@ -24,6 +24,7 @@ class Home extends React.Component {
 function mapStateToProps(state) {
   let [[base_info]] =  state.info;//[[],[],[]]
   //返回的是component的 property,需要返回一个object()
+  console.log(base_info);
   return base_info;
 }
 

@@ -1,5 +1,6 @@
 import sequelize from './db.js';
 import Sequelize from 'sequelize';
+import Customer from './customer';
 let Simple_info =  sequelize.define('simple_infos', {
 
 
@@ -75,18 +76,6 @@ let Simple_info =  sequelize.define('simple_infos', {
   type: Sequelize.STRING
   },
 
-  map_address:{
-  type: Sequelize.STRING
-  },
-
-  map_destination:{
-  type: Sequelize.STRING
-  },
-
-  map_start:{
-  type: Sequelize.STRING
-  },
-
   name:{
   type: Sequelize.STRING
   },
@@ -117,12 +106,16 @@ let Simple_info =  sequelize.define('simple_infos', {
 
   title_contact:{
     type: Sequelize.STRING
+  },
+  customer_id:{
+    type: Sequelize.STRING
   }
+
 
 }, {
 underscored: true
 });
 
-
+Simple_info.belongsTo(Customer);
 
 export default Simple_info;

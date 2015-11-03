@@ -13,27 +13,36 @@ function isEmpty(str) {
   return (!str || 0 === str.length);
 }
 
+const web_context = path.resolve(path.join(__dirname, '../../', 'public'));
+
+
+/* copy temp file to destination and add file path to object */
+function save_file_and_add_prop(file,obj,cust_name) {
+    let {filename,originalname,fieldname} = file;
+    let image_name = "/"+cust_name+"/images/"+originalname;
+    let dest = web_context + image_name;
+    console.log(dest);
+    fs.renameSync(web_context+'/uploads/'+filename, dest);
+    // 将上传的图片的路径增加到将要保存到对象里面 add prop to obj needed to save
+    obj[fieldname] = image_name;
+}
+
 
 router.route('/gallerys')
-    .post(upload.single('image'),function(req, res) {
+    .post(upload.any(),function(req, res) {
         //文件上传功能
-        let file = req.file;
         let gallery = req.body;
         let customer_id = gallery.customer_id;
-        let {filename,originalname} = file;
-
-        let web_context = path.resolve(path.join(__dirname, '../../', 'public'));
         Customer.findOne({where:{id:customer_id}})
             .then(function (cust) {
-              let image = "/"+cust.name+"/images/"+originalname;
-              let desc = web_context + image;
-              console.log(desc);
-              fs.renameSync(web_context+'/uploads/'+filename, desc);
-              // 将上传的图片的路径增加到将要保存到对象里面 add prop to obj needed to save
-              gallery.image = image;
-              Gallery.create(gallery)
-                     .then(function(){
-                       res.json({message: "Successfully created"});
+                let files = req.files;
+                files.map(function(file) {
+                    console.log(file);
+                    save_file_and_add_prop(file, gallery, cust.name);
+                });
+                Gallery.create(gallery)
+                    .then(function(){
+                        res.json({message: "Successfully created"});
                     });
             });
     }).get(function(req, res) {

@@ -71,16 +71,12 @@ function editGallery() {
       delete row.image;
     $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit Gallery');
         $('#fm').form('load',row);
-    url = '/update_gallery/'+row.id;
-
+      url = '/update_gallery/'+row.id;
+      method="PUT";
+      id=row.id;
   }else{
     $.messager.alert('Info','Please select a gallery !');
   }
-  url = '/api/gallerys';
-  method="PUT";
-  id=row.id;
-
-
 }
 
 
@@ -93,7 +89,8 @@ function saveGallery() {
     oReq.open(method, url, true);
     oReq.onload = function(oEvent) {
       if (oReq.status == 200) {
-        $('#dlg').dialog('close');        // close the dialog
+        $('#dlg').dialog('close');
+        // close the dialog
         loadDataFromRemote();
       } else {
         console.log("upload failed");

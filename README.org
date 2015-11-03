@@ -1,3 +1,4 @@
+
 #+TITLE:     README
 #+AUTHOR:    Leon ZHOU
 #+EMAIL:     zhouleib1412@gmail.com
@@ -14,8 +15,22 @@
 
   npm run dev
 
+
 * Back-end
   npm start
 
-* Production mode
-  先执行 npm run build 编译出bundle.js 到public/目录
+
+* Todo
+
+** Fetch remote data for map page
+
+
+** Set init values when get data from db
+
+** Cannot use FormData object to make a request without file
+
+** when refresh phone page of demo1, there is a bug(Unhandled rejection TypeError: Cannot read property 'template_id' of null)
+
+** using js to code opentime on today in phone page of two demos and layout page in demo2
+
+** the size of images in phone page

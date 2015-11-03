@@ -194,10 +194,10 @@ class InfoBoxContact extends React.Component {
       <h4>{title}</h4>
 
       <div className="content">
-      <p> {address} </p>
-      <p> {phone_en}</p>
-      <p> {phone_cn}</p>
-      <p> {email}</p>
+      <p> Address: {address} </p>
+      <p> Phone (Englis): {phone_en}</p>
+      <p> Phone (中文): {phone_cn}</p>
+      <p> Email: {email}</p>
       </div>
 
       </div>
@@ -241,14 +241,14 @@ function mapStateToProps(state) {
       },
       hoveredIcon: base_info.time_hoveredIcon,
       icon: base_info.time_icon,
-      img: base_info.time_img,
+      img: base_info.contact_img,
       title: base_info.time_title
     },
     phone_time:{
       hoveredIcon: base_info.contact_hoveredIcon,
       icon: base_info.contact_icon,
       img: base_info.contact_img,
-      title: base_info.contact_title,
+      title: base_info.time_title,
       workingHours: workinghours
     }
   }

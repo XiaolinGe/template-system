@@ -74,6 +74,7 @@ class InfoBoxContact extends HoveredComponent {
     let {icon,content,hoveredIcon,img,title} = this.props.phone_contact;
     let {address,phone_en,phone_cn,email} = content;
     let style = this.style(icon,hoveredIcon);
+    console.log(title);
 
     return (<div className="inforbox" id="information-3">
                 <div ref="img" style={style} >
@@ -81,10 +82,10 @@ class InfoBoxContact extends HoveredComponent {
               </div>
                 <h4>{title}</h4>
                 <div className="content">
-                 <p> {address} </p>
-                 <p> {phone_en}</p>
-                 <p> {phone_cn}</p>
-                 <p> {email}</p>
+                 <p> Address: {address} </p>
+                 <p> Phone (Englis): {phone_en}</p>
+                 <p> Phone (中文): {phone_cn}</p>
+                 <p> Email: {email}</p>
                 </div>
 
             </div>
@@ -130,13 +131,13 @@ function mapStateToProps(state) {
       hoveredIcon: base_info.time_hoveredIcon,
       icon: base_info.time_icon,
       img: base_info.time_img,
-      title: base_info.time_title
+      title: base_info.contact_title
     },
     phone_time:{
       hoveredIcon: base_info.contact_hoveredIcon,
       icon: base_info.contact_icon,
       img: base_info.contact_img,
-      title: base_info.contact_title,
+      title: base_info.time_title,
       workingHours: workinghours
     }
   }

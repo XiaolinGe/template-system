@@ -56,9 +56,8 @@ function editCustomer(){
   if (row){
     $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit Customer');
     $('#fm').form('load',row);
-    url = '/update_customer/'+row.id;
+    url = '/api/customers/'+row.id;
     method="PUT";
-
   }else{
     $.messager.alert('Info','Please select a customer !');
   }
@@ -120,7 +119,7 @@ $(document).ready(function(){
         ,title:'domain'
       }, {
         field:'template_id',
-        title:'template_id',
+        title:'template',
         formatter:function(val,row){
           return row.template == null ? "":row.template.name;
       }}]],

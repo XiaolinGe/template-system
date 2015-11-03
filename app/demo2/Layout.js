@@ -31,9 +31,8 @@ class Layout extends React.Component {
     let {base_info:base_info,menus:menus}=this.props;
     console.log(menus);
     let {summary,address,phone_en,phone_cn,email,logo,name,google_src,type,opentime}=base_info;
-   
  
-    
+   
     return(
       
       <div className="layout">
@@ -44,17 +43,16 @@ class Layout extends React.Component {
 
       <div className="tab-pane fade in active" id="home">
       <div id="comprehensiveness">
-      <div id="logo-img">
-      </div>
+      <img src={logo} id="logo-img" />
       <p id="name">
       {summary}
       </p>
 
       <p id="contact">
-      {address}<br/>
-      {phone_en}<br/>
-      {phone_cn}<br/>
-      {email}<br/>
+      Address: {address}<br/>
+      Phone (English): {phone_en}<br/>
+      Phone (中文): {phone_cn}<br/>
+      Email: {email}<br/>
      
 
       </p>
@@ -66,7 +64,7 @@ class Layout extends React.Component {
       <table id="todaytime">
       <tbody>
       <tr className="information-text-li" id="information-text-li-0">
-      <td className="week">{opentime}</td>
+      <td className="week"></td>
       <td id="today-time"></td>
       </tr>
       </tbody>
@@ -95,9 +93,9 @@ class Layout extends React.Component {
 }
 
 function mapStateToProps(state) {
-  let [[base_info],gallery,menus] = state.info;
+  let [[base_info],gallery,menus,workinghours] = state.info;
   //返回的是component的 property,需要返回一个object()
-  return {base_info:base_info,menus:menus}
+  return {base_info:base_info,menus:menus,workinghours:workinghours}
 }
 
 export default connect(mapStateToProps)(Layout);
