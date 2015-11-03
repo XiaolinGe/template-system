@@ -7,11 +7,6 @@ function isEmpty(str) {
   return (!str || 0 === str.length);
 }
 
-var obj = {age:1,name:1}
-for(var prop in obj){
-  console.log(prop);
-  console.log(obj[prop])
-}
 
 router.route('/users')
 // create a user (accessed at POST http://localhost:8080/api/users)

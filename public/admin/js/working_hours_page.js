@@ -109,11 +109,18 @@ $(document).ready(function(){
     singleSelect: true,
     pagination: true,
     columns:[[
-      {field:'days',title:'days'},
-
-      {field:'times',title:'times'},
-
-      {field:'customer_id',title:'customer_id'},
+      {
+        field:'days',
+        title:'days'
+      }, {
+        field:'times',
+        title:'times'
+      }, {
+        field:'customer_id',
+        title:'customer_id',
+        formatter:function(val,row){
+        return row.customer == null ? "":row.customer.name;
+      }},
 
       ]],
     toolbar: [{
@@ -128,5 +135,13 @@ $(document).ready(function(){
     }]
   });
   loadDataFromRemote();
+
+  $('#customer_id').combobox({
+    url:'/api/customers',
+    valueField:'id',
+    textField:'name',
+    method:'GET'
+  });
+
 
 });

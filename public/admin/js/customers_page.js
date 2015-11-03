@@ -1,13 +1,16 @@
-function getFormData($form){
-    var unindexed_array = $form.serializeArray();
-    var indexed_array = {};
+function getFormData($form) {
+  var unindexed_array = $form.serializeArray();
+  var indexed_array = {};
+  console.log(unindexed_array);
 
-    $.map(unindexed_array, function(n, i){
-        indexed_array[n['name']] = n['value'];
-    });
 
-    return indexed_array;
+  $.map(unindexed_array, function(n, i) {
+    indexed_array[n['name']] = n['value'];
+  });
+  console.log(indexed_array);
+  return indexed_array;
 }
+
 var url;
 var method;
 var id;
@@ -53,16 +56,16 @@ function editCustomer(){
   if (row){
     $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit Customer');
     $('#fm').form('load',row);
-    url = '/update_customer/'+row.id;
+    url = '/api/customers/'+row.id;
+    method="PUT";
   }else{
     $.messager.alert('Info','Please select a customer !');
   }
-  url = '/api/customers';
-  method="PUT";
-  id=row.id;
+
 }
 
-function saveCustomer(){
+
+function saveCustomer() {
   console.log("save Customer");
   var $form = $("#fm");
   if($form.form('validate')) {
@@ -108,14 +111,18 @@ $(document).ready(function(){
   $('#dg').datagrid({
     singleSelect: true,
     pagination: true,
-    columns:[[
-      {field:'name',title:'name'},
-
-      {field:'domain',title:'domain'},
-
-      {field:'template_id',title:'template_id'},
-
-      ]],
+    columns:[[{
+        field:'name',
+        title:'name'
+      }, {
+        field:'domain'
+        ,title:'domain'
+      }, {
+        field:'template_id',
+        title:'template',
+        formatter:function(val,row){
+          return row.template == null ? "":row.template.name;
+      }}]],
     toolbar: [{
       iconCls: 'icon-add',
       handler: newCustomer
@@ -128,5 +135,11 @@ $(document).ready(function(){
     }]
   });
   loadDataFromRemote();
+  $('#template_id').combobox({
+    url:'/api/templates',
+    valueField:'id',
+    textField:'name',
+    method:'GET'
+  });
 
 });

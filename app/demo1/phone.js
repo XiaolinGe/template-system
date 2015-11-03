@@ -8,6 +8,7 @@ class InfoBoxAbout extends HoveredComponent {
 
 
   render() {
+  //  let {introduction} = this.props.base_info;
     let {icon,hoveredIcon,img,title,content} = this.props.phone_about;
     let style = this.style(icon,hoveredIcon);
 
@@ -73,6 +74,7 @@ class InfoBoxContact extends HoveredComponent {
     let {icon,content,hoveredIcon,img,title} = this.props.phone_contact;
     let {address,phone_en,phone_cn,email} = content;
     let style = this.style(icon,hoveredIcon);
+    console.log(title);
 
     return (<div className="inforbox" id="information-3">
                 <div ref="img" style={style} >
@@ -80,10 +82,10 @@ class InfoBoxContact extends HoveredComponent {
               </div>
                 <h4>{title}</h4>
                 <div className="content">
-                 <p> {address} </p>
-                 <p> {phone_en}</p>
-                 <p> {phone_cn}</p>
-                 <p> {email}</p>
+                 <p> Address: {address} </p>
+                 <p> Phone (Englis): {phone_en}</p>
+                 <p> Phone (中文): {phone_cn}</p>
+                 <p> Email: {email}</p>
                 </div>
 
             </div>
@@ -103,14 +105,43 @@ class Phone extends React.Component {
                 <InfoBoxAbout phone_about={phone_about} />
                 <InfoBoxTime  phone_time={phone_time} />
                 <InfoBoxContact phone_contact={phone_contact} />
-             </div>)
-        ;
+             </div>);
     }
 
 }
 
 function mapStateToProps(state) {
-  return state.info.phone
+  let [[base_info],gallery,layout,workinghours] = state.info;
+
+  let phone={
+    phone_about:{
+      content: base_info.introduction,
+      hoveredIcon: base_info.about_hoveredIcon,
+      icon: base_info.about_icon,
+      img: base_info.about_img,
+      title: base_info.about_title
+    },
+    phone_contact:{
+      content:{
+        address: base_info.address,
+        phone_en: base_info.phone_en,
+        phone_cn: base_info.phone_cn,
+        email: base_info.email
+      },
+      hoveredIcon: base_info.time_hoveredIcon,
+      icon: base_info.time_icon,
+      img: base_info.time_img,
+      title: base_info.contact_title
+    },
+    phone_time:{
+      hoveredIcon: base_info.contact_hoveredIcon,
+      icon: base_info.contact_icon,
+      img: base_info.contact_img,
+      title: base_info.time_title,
+      workingHours: workinghours
+    }
+  }
+  return phone
 }
 
 export default connect(mapStateToProps)(Phone);

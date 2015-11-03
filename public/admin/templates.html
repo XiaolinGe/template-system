@@ -19,8 +19,7 @@
             <tr>
               <td>name:</td>
               <td><input class="easyui-textbox" type="text" name="name" ></input></td>
-              <td>template_folder:</td>
-              <td><input class="easyui-textbox" type="text" name="template_folder" ></input></td>
+
             </tr>
         </tbody>
       </table>
@@ -37,16 +36,19 @@
 
     <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
       closed="true" buttons="#dlg-buttons">
-      <div class="ftitle">User Information</div>
       <form id="fm" method="post">
-          <div class="fitem">
-            <label>name:</label>
-            <input name="name" class="easyui-textbox">
-          </div>
-          <div class="fitem">
-            <label>template_folder:</label>
-            <input name="template_folder" class="easyui-textbox">
-          </div>
+        <table>
+          <tbody>
+            <tr>
+              <td>name:</td>
+              <td><input name="name" class="easyui-textbox" style="width:200px" /></td>
+            </tr>
+            <tr>
+              <td>template_folder:</td>
+              <td> <input name="template_folder" class="easyui-textbox" style="width:200px" /></td>
+            </tr>
+          </tbody>
+        </table>
       </form>
     </div>
     <div id="dlg-buttons">

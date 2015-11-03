@@ -2,8 +2,10 @@ import React from "react";
 import Layout from "./Layout";
 import $ from "jquery";
 import styles from "./map.less";
-
 import { connect} from 'react-redux';
+
+
+
 
 var map;
 var directionsDisplay;
@@ -13,41 +15,51 @@ var markerArray = [];
 
 /*location*/
 /*  var stockholm = new google.maps.LatLng(-36.8121758,174.7265294);*/
-var parliament = new google.maps.LatLng(-36.8121758,174.7265294);
 var marker;
 
-var  start;
 var  address;
-var  destination;
 
+$.ajax({
+  type: "GET",
+  url: '/website/map',
+  async: false,
+  success : function(data) {
+    address = data.address;
+  }
+});
 
-
+function toggleBounce() {
+  if (marker.getAnimation() != null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+}
 
 function initialize() {
-
-  directionsService = new google.maps.DirectionsService();
-
-  var manhattan = new google.maps.LatLng(-36.8121758,174.7265294);
-  var mapOptions = {
-    zoom: 13,
-    center: manhattan
-  };
-  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-  var rendererOptions = {
-    map: map
-  };
-  directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions)
-
-    stepDisplay = new google.maps.InfoWindow();
-
-  marker = new google.maps.Marker({
-    map:map,
-    draggable:true,
-    animation: google.maps.Animation.DROP,
-    position: parliament
+  var geocoder = new google.maps.Geocoder();
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+      var loc = results[0].geometry.location;
+      directionsService = new google.maps.DirectionsService();
+      var mapOptions = {
+        zoom: 13,
+        center: loc
+      };
+      map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      directionsDisplay = new google.maps.DirectionsRenderer({map: map})
+      stepDisplay = new google.maps.InfoWindow();
+      marker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+        animation: google.maps.Animation.DROP,
+        position: loc
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+    google.maps.event.addListener(marker, 'click', toggleBounce);
   });
-  google.maps.event.addListener(marker, 'click', toggleBounce);
 }
 
 function calcRoute() {
@@ -62,7 +74,7 @@ function calcRoute() {
   var end = document.getElementById('end').value;
   var selectedMode = document.getElementById('mode').value;
   var request = {
-    origin: start,
+    origin: address,
     destination: end,
     travelMode: google.maps.TravelMode[selectedMode]
   };
@@ -93,35 +105,26 @@ function attachInstructionText(marker, text) {
     stepDisplay.open(map, marker);
   });
 }
-function toggleBounce() {
-
-  if (marker.getAnimation() != null) {
-    marker.setAnimation(null);
-  } else {
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-  }
-}
 
 
-export default class MapPage extends React.Component {
+class Map extends React.Component {
 
   constructor(props) {
     super(props);
   }
   componentDidMount(){
-    initialize();
-
+      initialize();
   }
 
   render() {
-    let {destination,address} = this.props;
+    let {name,address} = this.props;
     return  <div  id="address">
     <div id="map-canvas"/>
     <div id="frmholder">
     <div id="map-form">
     <span className="address-lable">From:</span>
     <input type="search" size="25" id="end" placeholder="Enter your address here"/>
-    <span className="address-lable">{destination}</span>
+    <span className="address-lable">To {name}:</span>
     <span id="toaddress">{address}</span>
 
     <span id="panel2">
@@ -140,8 +143,13 @@ export default class MapPage extends React.Component {
     </div>;
   }
 }
+
+
+
 function mapStateToProps(state) {
+  let [[base_info]] =  state.info;//[[],[],[]]
   //返回的是component的 property,需要返回一个object()
-  return  {map: state.info.map}
+  return base_info;
 }
-export default connect(mapStateToProps)(MapPage);
+
+export default connect(mapStateToProps)(Map);

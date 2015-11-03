@@ -43,8 +43,8 @@ function newUser(){
     $('#dlg').dialog('open').dialog('center').dialog('setTitle','New User');
     $('#fm').form('clear');
     url = '/api/users';
-  method="POST";
-  id = 0;
+    method="POST";
+    id = 0;
 }
 
 function editUser(){
@@ -53,13 +53,13 @@ function editUser(){
     if (row){
         $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit User');
         $('#fm').form('load',row);
-        url = '/update_user/'+row.id;
+        url = '/api/users';
+        method="PUT";
+        id=row.id;
     }else{
         $.messager.alert('Info','Please select a user !');
     }
-    url = '/api/users';
-    method="PUT";
-    id=row.id;
+
 }
 
 function saveUser(){

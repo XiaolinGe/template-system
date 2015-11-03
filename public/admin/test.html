@@ -1,17 +1,18 @@
-<script>
- var obj = {
-   name: "Simon",
-   age: "20",
-   clothing: {
-     style: "simple",
-     isDouche: false
-   }
- }
+<html>
 
- for(var propt in obj){
-   alert(propt + ': ' + obj[propt]);
- }
-   var prop="name";
- obj[prop]
- obj.name
-</script>
+  <head>
+    <script type="text/javascript">
+     function formSubmit()
+     {
+       document.getElementById("myForm").submit()
+     }
+    </script>
+  </head>
+  <body>
+
+    <form id="myForm" action="/test/profile" method="post"  enctype="multipart/form-data">
+      <input name="avatar" type="file"  value=""/>
+      <input type="button" onclick="formSubmit()" value="submit">
+    </form>
+  </body>
+</html>

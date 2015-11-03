@@ -1,4 +1,4 @@
-function getFormData($form){
+function getFormData($form) {
     var unindexed_array = $form.serializeArray();
     var indexed_array = {};
 
@@ -100,30 +100,23 @@ function destroyLog(){
       $.messager.alert('Info','Please select a log !');
     }
 
-
 }
 
 
-$(document).ready(function(){
+$(document).ready(function() {
   $('#dg').datagrid({
     singleSelect: true,
     pagination: true,
-    columns:[[
-      {field:'operator',title:'operator'},
-
-      {field:'action',title:'action'},
-
-      ]],
-    toolbar: [{
-      iconCls: 'icon-add',
-      handler: newLog
-    },'-',{
-      iconCls: 'icon-edit',
-      handler: editLog
-    },'-',{
-      iconCls: 'icon-remove',
-      handler: destroyLog
-    }]
+    columns:[[{
+        field:'operator',
+      title:'operator'
+    },{
+      field: 'created_at',
+      title:'operated time'
+    }, {
+      field:'action',
+      title:'action'
+    }]]
   });
   loadDataFromRemote();
 

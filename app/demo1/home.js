@@ -10,20 +10,22 @@ class Home extends React.Component {
         super(props);
     }
     render() {
-      let {home} =  this.props;
+      let {google_src} =  this.props;
 	return (
 	        <div className='home'>
                 <iframe width="100%" height="100%" frameBorder="0" scrolling="no"
                         marginHeight="0" marginWidth="0"
-                	    src={home.src}></iframe>
+                	    src={google_src}></iframe>
 	        </div>
 	);
     }
 };
 
 function mapStateToProps(state) {
+  let [[base_info]] =  state.info;//[[],[],[]]
   //返回的是component的 property,需要返回一个object()
-  return  {home: state.info.home}
+  console.log(base_info);
+  return base_info;
 }
 
 export default connect(mapStateToProps)(Home);

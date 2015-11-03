@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 import Template from '../entity/template.js';
-import { mapify } from 'es6-mapify';
+
 
 function isEmpty(str) {
   return (!str || 0 === str.length);

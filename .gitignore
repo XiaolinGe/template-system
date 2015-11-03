@@ -3,4 +3,5 @@
 .vagrant
 .idea/*
 *.log
-
+public/uploads
+.DS_Store

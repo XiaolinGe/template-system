@@ -3,15 +3,12 @@ import ImageGallery from 'react-image-gallery';
 import "../../node_modules/react-image-gallery/src/ImageGallery.scss";
 import { connect} from 'react-redux';
 import "./gallery.less";
-
-
+import  Immutable from 'immutable';
 
 
 export default class Gallery extends React.Component {
 
   render() {
-
-
     let {slides}=this.props;
     return(
       <ImageGallery
@@ -19,13 +16,25 @@ export default class Gallery extends React.Component {
         autoPlay={true}
         slideInterval={4000}
         id="image-gallery"/>)
-
   }
 }
 
 function mapStateToProps(state) {
-  //返回的是component的 property,需要返回一个object()
-  return  {slides: state.info.gallery}
+  let [[base_info],gallery,menus,workinghours]=state.info;
+
+
+  function rename(obj,old_key,new_key){
+    obj[new_key]=obj[old_key];
+    delete obj[old_key];
+    return obj;
+  }
+
+  let copy = [];
+
+  gallery.map(({image}) => {copy.push({original: image,
+                                       thumbnail: image})});
+
+  return  {slides:copy }
 }
 
 export default connect(mapStateToProps)(Gallery);

@@ -1,5 +1,6 @@
 import sequelize from './db.js';
 import Sequelize from 'sequelize';
+import Customer from './customer';
 let Working_hour =  sequelize.define('working_hours', {
 
 
@@ -16,8 +17,10 @@ let Working_hour =  sequelize.define('working_hours', {
   }
 
 }, {
-underscored: true
+  underscored: true
 });
+
+Working_hour.belongsTo(Customer);
 
 
 

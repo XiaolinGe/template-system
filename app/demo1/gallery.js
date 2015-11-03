@@ -55,6 +55,7 @@ class Gallery extends React.Component {
 
   showGallery() {
     let {gallery} = this.props;
+    console.log(gallery);
 
     options['slides']=gallery;
     if(gallery.length>0){
@@ -115,8 +116,22 @@ class Gallery extends React.Component {
 }
 
 function mapStateToProps(state) {
-  //返回的是component的 property,需要返回一个object()
-  return  {gallery: state.info.gallery}
+  let [[base_info],gallery,menus,workinghours]=state.info;
+
+  function rename(obj,old_key,new_key){
+    obj[new_key]=obj[old_key];
+    delete obj[old_key];
+    return obj;
+  }
+
+  let copy = [];
+
+  gallery.map(({image}) => {copy.push({image:image,
+                                       thumb: image,
+                                       url: image})});
+
+  console.log(copy);
+  return  {gallery: copy}
 }
 
 export default connect(mapStateToProps)(Gallery);

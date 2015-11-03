@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 import Contact from '../entity/contact.js';
 
+var multer  = require('multer')
+var upload = multer({ dest: 'public/uploads/' })
+import fs from 'fs';
+import path from "path";
 
 router.route('/')
 // create a user (accessed at POST http://localhost:8080/api/users)
@@ -74,5 +78,17 @@ router.route('/contact').get(function(req,res) {
   })
 
 
+  //upload
+
+  router.route('/profile').post(upload.single('avatar'), function (req, res) {
+    let file = req.file;
+    let {filename,originalname} = file;
+    let web_context = path.resolve(path.join(__dirname, '../../', 'public'));
+    console.log(web_context);
+    fs.renameSync(web_context+'/uploads/'+filename,web_context+'/uploads/'+originalname);
+    res.send(originalname);
+    // req.file is the `avatar` file
+    // req.body will hold the text fields, if there were any
+  });
 
 module.exports = router;

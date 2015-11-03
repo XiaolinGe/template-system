@@ -1,36 +1,64 @@
 var express = require('express');
 var router = express.Router();
-import Gallery from '../entity/gallery.js';
-import { mapify } from 'es6-mapify';
+import Gallery from '../entity/gallery';
+import Customer from '../entity/customer';
+import Template from '../entity/template';
+import sequelize from '../entity/db';
+import fs from 'fs';
+import path from "path";
+import  multer from 'multer';
+let upload = multer({ dest: 'public/uploads/' });
 
 function isEmpty(str) {
   return (!str || 0 === str.length);
 }
 
+const web_context = path.resolve(path.join(__dirname, '../../', 'public'));
+
+
+/* copy temp file to destination and add file path to object */
+function save_file_and_add_prop(file,obj,cust_name) {
+    let {filename,originalname,fieldname} = file;
+    let image_name = "/"+cust_name+"/images/"+originalname;
+    let dest = web_context + image_name;
+    console.log(dest);
+    fs.renameSync(web_context+'/uploads/'+filename, dest);
+    // 将上传的图片的路径增加到将要保存到对象里面 add prop to obj needed to save
+    obj[fieldname] = image_name;
+}
+
 
 router.route('/gallerys')
-// create a user (accessed at POST http://localhost:8080/api/users)
-         .post(function(req, res) {
-           console.log("start action method");
-            Gallery.create(req.body)
-               .then(function(){
-                 res.json({message: "Successfully created"});
-               });
-         })
-  // get all the gallerys by conditions (accessed at GET http://localhost:8080/api/users)
-         .get(function(req, res) {
-           let cond={};
-           for(let propt in req.query){
-             let val =  req.query[propt];
-             if(!isEmpty(val)){
-               cond[propt]={$like:"%"+val+"%"};
-             }
-           }
-            Gallery.findAll({
-             where: cond
-           }).then(function(gallerys){
-             res.json(gallerys);
-           });
+    .post(upload.any(),function(req, res) {
+        //文件上传功能
+        let gallery = req.body;
+        let customer_id = gallery.customer_id;
+        Customer.findOne({where:{id:customer_id}})
+            .then(function (cust) {
+                let files = req.files;
+                files.map(function(file) {
+                    console.log(file);
+                    save_file_and_add_prop(file, gallery, cust.name);
+                });
+                Gallery.create(gallery)
+                    .then(function(){
+                        res.json({message: "Successfully created"});
+                    });
+            });
+    }).get(function(req, res) {
+        let cond={};
+        for(let propt in req.query){
+            let val =  req.query[propt];
+            if(!isEmpty(val)){
+                cond[propt]={$like:"%"+val+"%"};
+            }
+        }
+        Gallery.findAll({
+            where: cond,
+            include: [Customer]
+        }).then(function(gallerys){
+            res.json(gallerys);
+        });
 
     });
 

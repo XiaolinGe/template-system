@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 import Working_hour from '../entity/working_hour.js';
-import { mapify } from 'es6-mapify';
+import Customer from '../entity/customer';
 
 function isEmpty(str) {
   return (!str || 0 === str.length);
@@ -27,7 +27,8 @@ router.route('/working_hours')
              }
            }
             Working_hour.findAll({
-             where: cond
+              where: cond,
+              include: [Customer]
            }).then(function(working_hours){
              res.json(working_hours);
            });
