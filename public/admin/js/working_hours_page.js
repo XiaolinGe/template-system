@@ -1,12 +1,21 @@
-function getFormData($form){
-    var unindexed_array = $form.serializeArray();
-    var indexed_array = {};
+'use strict';
 
-    $.map(unindexed_array, function(n, i){
-        indexed_array[n['name']] = n['value'];
-    });
+String.prototype.subAfter = function(item) {
+  return this.substring(this.indexOf(item)+1);
+};
 
-    return indexed_array;
+function getFormData($form) {
+  var unindexed_array = $form.serializeArray();
+  var indexed_array = {};
+
+  $.map(unindexed_array, function(n, i){
+    indexed_array[n['name']] = n['value'];
+  });
+  let current_url = window.location.href.toString();
+  let cust_id = current_url.subAfter("#");
+  console.log(cust_id);
+  indexed_array.customer_id = cust_id;
+  return indexed_array;
 }
 var url;
 var method;
@@ -113,14 +122,17 @@ $(document).ready(function(){
         field:'days',
         title:'days'
       }, {
-        field:'times',
-        title:'times'
+        field:'from_times',
+        title:'from_times'
       }, {
+        field:'to_times',
+        title:'to_times'
+      },{
         field:'customer_id',
         title:'customer_id',
         formatter:function(val,row){
-        return row.customer == null ? "":row.customer.name;
-      }},
+          return row.customer == null ? "":row.customer.name;
+        }},
 
       ]],
     toolbar: [{
@@ -135,13 +147,4 @@ $(document).ready(function(){
     }]
   });
   loadDataFromRemote();
-
-  $('#customer_id').combobox({
-    url:'/api/customers',
-    valueField:'id',
-    textField:'name',
-    method:'GET'
-  });
-
-
 });

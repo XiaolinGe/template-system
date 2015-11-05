@@ -1,3 +1,12 @@
+'use strict';
+
+String.prototype.subAfter = function(item) {
+    return this.substring(this.indexOf(item)+1);
+};
+
+
+
+
 function getFormData($form) {
     var unindexed_array = $form.serializeArray();
     var indexed_array = {};
@@ -9,7 +18,7 @@ function getFormData($form) {
     return indexed_array;
 }
 
-function getFormDataWithFile($form){
+function getFormDataWithFile($form) { //save调用的方法，即将所填的表单里面的数据取出
     var unindexed_array = $form.serializeArray();
     var oData = new FormData();
     var file_ids =Array.from(arguments).slice(1);//get all file ids
@@ -24,6 +33,12 @@ function getFormDataWithFile($form){
     $.map(unindexed_array, function(n, i){
         oData.append([n['name']],n['value']);
     });
+    
+    let current_url = window.location.href.toString();
+    console.log(current_url);
+    let cust_id = current_url.subAfter("#");
+    console.log(cust_id);       
+    oData.append("customer_id",cust_id);//从当前页面的url中获取的cust_id,将其拼入到oData中
     return oData;
 
 }
@@ -61,7 +76,7 @@ function searchData() {
 
 }
 
-function newSimple_info(){
+function newSimple_info() {    
     $('#dlg').dialog('open').dialog('center').dialog('setTitle','New Simple_info');
     $('#fm').form('clear');
     url = '/api/simple_infos';
@@ -140,6 +155,8 @@ function destroySimple_info(){
 
 
 $(document).ready(function() {
+
+    
     $('#dg').datagrid({
         singleSelect: true,
         pagination: true,
@@ -172,10 +189,15 @@ $(document).ready(function() {
         }]
     });
     loadDataFromRemote();
-    $('#customer_id').combobox({
+
+    /*
+    $('#customer_id').combobox( {
         url:'/api/customers',
         valueField:'id',
         textField:'name',
         method:'GET'
     });
+
+    */
 });
+

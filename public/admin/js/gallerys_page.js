@@ -1,3 +1,9 @@
+'use strict';
+
+String.prototype.subAfter = function(item){
+  return this.substring(this.indexOf(item)+1);
+};
+
 function getFormData($form) {
   var unindexed_array = $form.serializeArray();
   var indexed_array = {};
@@ -10,15 +16,21 @@ function getFormData($form) {
 
 
 function getFormDataWithFile($form,file_id){
-  var unindexed_array = $form.serializeArray();
-  var oData = new FormData();
-  var fileInput = document.getElementById(file_id);
-  var file = fileInput.files[0];
-  oData.append(file_id, file);
-  $.map(unindexed_array, function(n, i){
-    oData.append([n['name']],n['value']);
-  });
-  return oData;
+    var unindexed_array = $form.serializeArray();
+    var oData = new FormData();
+    var fileInput = document.getElementById(file_id);
+    var file = fileInput.files[0];
+    oData.append(file_id, file);
+    $.map(unindexed_array, function(n, i){
+        oData.append([n['name']],n['value']);
+    });
+
+    let current_url = window.location.href.toString();
+    console.log(current_url);
+    let cust_id = current_url.subAfter("#");
+    console.log(cust_id);
+    oData.append("customer_id",cust_id);
+    return oData;
 
 }
 
@@ -71,7 +83,7 @@ function editGallery() {
       delete row.image;
     $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit Gallery');
         $('#fm').form('load',row);
-      url = '/update_gallery/'+row.id;
+      url = '/api/gallerys/'+row.id;
       method="PUT";
       id=row.id;
   }else{
@@ -81,9 +93,9 @@ function editGallery() {
 
 
 function saveGallery() {
-  console.log("save Gallery");
   var $form = $("#fm");
-  var oData = getFormDataWithFile($form,"image");
+    var oData = getFormDataWithFile($form,"image");
+    console.log(oData);
   if($form.form('validate')) {
     var oReq = new XMLHttpRequest();
     oReq.open(method, url, true);
@@ -148,12 +160,4 @@ $(document).ready(function(){
     }]
   });
   loadDataFromRemote();
-  $('#customer_id').combobox({
-    url:'/api/customers',
-    valueField:'id',
-    textField:'name',
-    method:'GET'
-  });
-
-
 });

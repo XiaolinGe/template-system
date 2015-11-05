@@ -7,7 +7,7 @@ import sequelize from '../entity/db';
 import fs from 'fs';
 import path from "path";
 import  multer from 'multer';
-let upload = multer({ dest: 'public/uploads/' });
+let upload  = multer({ dest: 'public/uploads/' });
 
 function isEmpty(str) {
   return (!str || 0 === str.length);
@@ -73,11 +73,26 @@ router.route('/gallerys/:id')
     })
 
 // update the user with this id (accessed at PUT http://localhost:8080/api/users/:user_id)
-    .put(function(req, res) {
+      .put(upload.any(),function(req, res) {
+        //upload.any()是用 enctype="multipart/form-data"对http的协议中的body进行解码 ，解码出的文件放在req.files， 解码出的健值对放在req.body, 对应http的client中body的编码的代码是：<form id="fm" method="post"  enctype="multipart/form-data">即用 enctype="multipart/form-data"把form表单中的数据进行编码
+        let gallery = req.body;
+        let files = req.files;
+        Customer.findOne({where:{id:gallery.customer_id}}).then(({name})=> {
+          files.map(function(file) {
+            save_file_and_add_prop(file, gallery,name);
+          });
+          Gallery.update(gallery,{where:{id:req.params.id}})
+                     .then(function(){
+                       res.json({message: "Successfully created"});
+                     });
+        });
+
+/* 
         Gallery.update(req.body,{where:{id:req.params.id}})
-            .then(function(){
+            .then(function() {
                 res.json({message: "Successfully created"});
             });
+*/        
     })
 
 // delete the user with this id (accessed at DELETE http://localhost:8080/api/users/:user_id)

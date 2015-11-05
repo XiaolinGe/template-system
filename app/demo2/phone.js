@@ -124,10 +124,13 @@ class InfoBoxTime extends React.Component {
       {this.props.children}
       <table className="timeTable">
       <tbody>
-      {workingHours.map(({days,times},index)=>(
+      {workingHours.map(({days,from_times,to_times},index)=>(
         <tr key={index}  className="information-text-li" id="information-text-li-0">
         <td className="days">{days}</td>
-        <td className="times">{times}</td>
+        <td className="times">From </td>
+        <td className="times"> {from_times} </td>
+        <td className="times"> To </td>
+        <td className="times"> {to_times}</td>
         </tr>))
       }
       </tbody>

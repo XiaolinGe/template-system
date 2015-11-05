@@ -8,8 +8,12 @@ let Working_hour =  sequelize.define('working_hours', {
   type: Sequelize.STRING
   },
 
-  times:{
+  from_times:{
   type: Sequelize.STRING
+  },
+
+  to_times:{
+    type: Sequelize.STRING
   },
 
   customer_id:{
