@@ -25,35 +25,52 @@
 
   //   System Log
      //
+
+    var menus;//变量先声明在调用！！！
+     $.ajax({
+       type: "GET",
+       url: '/api/admin_menus',
+       async: false,
+       success : function(data) {
+         menus = data.map(e=>{e.menuid = e.id;return e}); //方法体中如果只有一条语句，则返回的是这条语句，所以当需要当返回的不是这条语句，需要return要返回当内容；
+         console.log(menus);
+       }
+     });
+     
      
      var _menus = {
        "menus": [{
 	 "menuid": "1",
 	 "icon": "icon-sys",
 	 "menuname": "Menus",
-	 "menus": [{
-	   "menuid": "1",
-	   "menuname": "Customer",
-	   "icon": "icon-nav",
-	   "url": "customers.html"
-         },{
-	   "menuid": "5",
-	   "menuname": "Templates Management",
-	   "icon": "icon-nav",
-	   "url": "templates.html"
-         },{
-	   "menuid": "6",
-	   "menuname": "Users Management",
-	   "icon": "icon-nav",
-	   "url": "users.html"
-         },{
-	   "menuid": "7",
-	   "menuname": "System Log",
-	   "icon": "icon-nav",
-	   "url": "logs.html"
-	 }]
+	 "menus": menus
        }]
      };
+
+     /*
+        [{
+	"menuid": "1",
+	"menuname": "Customer",
+	"icon": "icon-nav",
+	"url": "customers.html"
+        },{
+	"menuid": "5",
+	"menuname": "Templates Management",
+	"icon": "icon-nav",
+	"url": "templates.html"
+        },{
+	"menuid": "6",
+	"menuname": "Users Management",
+	"icon": "icon-nav",
+	"url": "users.html"
+        },{
+	"menuid": "7",
+	"menuname": "System Log",
+	"icon": "icon-nav",
+	"url": "logs.html"
+	}]
+*/
+     
 
         //设置登录窗口
         function openPwd() {

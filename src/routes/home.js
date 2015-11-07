@@ -7,7 +7,7 @@ router.route('/login')
         let body =req.body;
         console.log(body);
         User.findAll({
-            where: body
+          where: body
         }).then(function(users){
           console.log(users);
             if(users.length==0){

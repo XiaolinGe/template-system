@@ -23,6 +23,8 @@ import gallery_routes from './src/routes/gallerys';
 import working_hour_routes from './src/routes/working_hours';
 import template_routes from './src/routes/templates';
 import log_routes from './src/routes/logs';
+import admin_menu_routes from './src/routes/admin_menus';
+import role_routes from './src/routes/roles';
 import {login_checker,action_logger} from './middlewares';
 
 const app = express();
@@ -63,6 +65,8 @@ app.use('/api',gallery_routes);
 app.use('/api',working_hour_routes);
 app.use('/api',template_routes);
 app.use('/api',log_routes);
+app.use('/api',admin_menu_routes);
+app.use('/api',role_routes);
 
 
 app.get("/host", function (req, res){

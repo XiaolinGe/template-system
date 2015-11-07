@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-import Customer from '../entity/customer.js';
+import Customer from '../entity/customer';
 import Template from '../entity/template';
 import mkdirp from 'mkdirp';
 import mv from 'mv';

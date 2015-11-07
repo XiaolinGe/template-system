@@ -8,6 +8,25 @@ function getFormData($form){
 
     return indexed_array;
 }
+
+function getFormDataWithFile($form,file_id) {
+  var unindexed_array = $form.serializeArray();
+  // console.log(unindexed_array);
+  var oData = new FormData();
+  // console.log(oData);
+  var fileInput = document.getElementById(file_id);
+  console.log(fileInput);
+  var file = fileInput.files[0];
+  // console.log(file);
+  oData.append(file_id, file);
+  $.map(unindexed_array, function(n, i){
+    oData.append([n['name']],n['value']);
+  });
+  // console.log(oData);
+  return oData;
+}
+
+
 var url;
 var method;
 var id;
@@ -62,25 +81,28 @@ function editTemplate(){
   id=row.id;
 }
 
-function saveTemplate(){
+function saveTemplate() {
   console.log("save Template");
   var $form = $("#fm");
+  var oData = getFormDataWithFile($form,"template_folder");
+  console.log(oData);
   if($form.form('validate')) {
-    var data = getFormData($form);
-    if(id>0){
-      url+="/"+id;
-    }
-    $.ajax({
-      url: url,
-      type: method,
-      data: data,
-      success: function(){
-        $('#dlg').dialog('close');        // close the dialog
+    var oReq = new XMLHttpRequest();
+    oReq.open(method, url, true);
+    console.log(oReq.open(method, url, true));
+    oReq.onload = function(oEvent) {
+      if (oReq.status == 200) {
+        $('#dlg').dialog('close');
+        // close the dialog
         loadDataFromRemote();
+      } else {
+        console.log("upload failed");
       }
-    });
+    };
+    oReq.send(oData);
   }
 }
+
 function destroyTemplate(){
   var row = $('#dg').datagrid('getSelected');
   if (row){
@@ -100,7 +122,6 @@ function destroyTemplate(){
       $.messager.alert('Info','Please select a template !');
     }
 
-
 }
 
 
@@ -111,7 +132,7 @@ $(document).ready(function(){
     columns:[[
       {field:'name',title:'name'},
 
-      {field:'template_folder',title:'template_folder'},
+      {field:'template_folder',title:'template'},
 
       ]],
     toolbar: [{

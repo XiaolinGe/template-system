@@ -17,19 +17,23 @@ function getFormData($form) {
 
 function getFormDataWithFile($form,file_id){
     var unindexed_array = $form.serializeArray();
+   // console.log(unindexed_array);
     var oData = new FormData();
+   // console.log(oData);
     var fileInput = document.getElementById(file_id);
+    console.log(fileInput);
     var file = fileInput.files[0];
+   // console.log(file);
     oData.append(file_id, file);
     $.map(unindexed_array, function(n, i){
         oData.append([n['name']],n['value']);
     });
-
-    let current_url = window.location.href.toString();
+   // console.log(oData);
+    let current_url = window.location.href.toString();//获取当前页面customer的URL并转为字符串
     console.log(current_url);
-    let cust_id = current_url.subAfter("#");
+    let cust_id = current_url.subAfter("#");//取url字符串中＃之后的部分，即要从前端页面传的参数
     console.log(cust_id);
-    oData.append("customer_id",cust_id);
+    oData.append("customer_id",cust_id);//在oData中追加customer_id,即传参到了galery这个页面
     return oData;
 
 }
@@ -95,10 +99,11 @@ function editGallery() {
 function saveGallery() {
   var $form = $("#fm");
     var oData = getFormDataWithFile($form,"image");
-    console.log(oData);
+   // console.log(oData);
   if($form.form('validate')) {
-    var oReq = new XMLHttpRequest();
-    oReq.open(method, url, true);
+      var oReq = new XMLHttpRequest();
+      oReq.open(method, url, true);
+      console.log(oReq.open(method, url, true));
     oReq.onload = function(oEvent) {
       if (oReq.status == 200) {
         $('#dlg').dialog('close');
@@ -108,7 +113,7 @@ function saveGallery() {
         console.log("upload failed");
       }
     };
-    oReq.send(oData);
+      oReq.send(oData);
   }
 }
 function destroyGallery(){

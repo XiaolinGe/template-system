@@ -24,11 +24,11 @@ export let action_logger = function (req, res, next) {
 export let login_checker = function (req, res, next) {
     let url = req.url;
     if(url.indexOf("/admin")===-1||url.indexOf(".css")>-1
-       ||url.indexOf(".js")>-1||url.indexOf(".gif")>-1||url.indexOf(".png")>-1){
+       ||url.indexOf(".js")>-1||url.indexOf(".gif")>-1||url.indexOf(".png")>-1){   //ingnore login checker
         next();
     }else{
         let sess = req.session;
-        if(sess.user){
+        if(sess['user']){
             next();
         }else{
             req.url = '/admin/login.html';

@@ -23,7 +23,7 @@ function save_file_and_add_prop(file,obj,cust_name) {
     let dest = web_context + image_name;
     console.log(dest);
     fs.renameSync(web_context+'/uploads/'+filename, dest);
-    // 将上传的图片的路径增加到将要保存到对象里面 add prop to obj needed to save
+    // 将上传的图片的路径增加到将要保存的对象里面 add prop to obj needed to save
     obj[fieldname] = image_name;
 }
 
@@ -41,7 +41,7 @@ router.route('/gallerys')
                     save_file_and_add_prop(file, gallery, cust.name);
                 });
                 Gallery.create(gallery)
-                    .then(function(){
+                    .then(function() {
                         res.json({message: "Successfully created"});
                     });
             });

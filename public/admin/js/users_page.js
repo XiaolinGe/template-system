@@ -109,8 +109,17 @@ $(document).ready(function(){
     singleSelect: true,
     pagination: true,
     columns:[[
-      {field:'name',title:'Name',width:100},
-      {field:'password',title:'Password',width:100},
+      {
+        field:'name',title:'Name',width:100
+      },{
+        field:'password',title:'Password',width:100
+      },{
+        field:'role_id',
+        title:'role',
+        formatter:function(val,row) {
+          return row.role == null ? "":row.role.name;
+        }
+      }
     ]],
     toolbar: [{
       iconCls: 'icon-add',
@@ -124,5 +133,11 @@ $(document).ready(function(){
     }]
   });
   loadDataFromRemote();
+  $('#role_id').combobox({
+    url:'/api/roles',
+    valueField:'id',
+    textField:'name',
+    method:'GET'
+  });
 
 });

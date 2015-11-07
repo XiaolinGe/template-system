@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-import User from '../entity/user.js';
+import User from '../entity/user';
+import Role from '../entity/role';
 import { mapify } from 'es6-mapify';
 
 function isEmpty(str) {
@@ -27,7 +28,8 @@ router.route('/users')
              }
            }
            User.findAll({
-             where: cond
+             where: cond,
+             include:[Role]
            }).then(function(users){
              res.json(users);
            });

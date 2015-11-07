@@ -1,15 +1,16 @@
 import sequelize from './db.js';
 import Sequelize from 'sequelize';
-import Role from './role';
+let Admin_menu =  sequelize.define('admin_menus', {
 
-let User =  sequelize.define('users', {
-  name: {
+  menuname:{
     type: Sequelize.STRING
   },
-  password: {
+
+  icon:{
     type: Sequelize.STRING
   },
-  role_id:{
+
+  url:{
     type: Sequelize.STRING
   }
 
@@ -17,7 +18,5 @@ let User =  sequelize.define('users', {
   underscored: true
 });
 
-User.belongsTo(Role);
 
-
-export default User;
+export default Admin_menu;
